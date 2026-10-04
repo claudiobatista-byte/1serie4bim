@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poder, Resistência e Cidadania: Brasil e Goiás na República — História, 1ª série</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#12304a;--navy2:#1c4a6b;--teal:#1f6f78;--teal-bg:#e6f1f1;
+  --gold:#b8842b;--gold-bg:#f8efdc;--terra:#a8472a;--terra-bg:#f7e8e2;
+  --green:#2f6b52;--green-bg:#e5f0ea;
+  --ink:#1d2731;--muted:#5d6a74;--line:#dcd6c8;--paper:#fcfbf7;--stone:#efece4;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --display:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --side:292px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--gold),#e3b45a);z-index:60}
+
+/* ---------- sumário (gaveta à direita) ---------- */
+.toc-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:60;background:var(--navy);color:#fff;border:0;border-radius:12px 0 0 12px;padding:14px 11px;cursor:pointer;font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;writing-mode:vertical-rl;box-shadow:-4px 4px 18px #0004;display:flex;align-items:center;gap:8px}
+.toc-tab:hover{background:var(--navy2)}
+.toc-tab b{font-size:16px;writing-mode:horizontal-tb;color:#e3b45a}
+.toc-ov{position:fixed;inset:0;background:#0b1a2988;opacity:0;pointer-events:none;transition:opacity .25s;z-index:70}
+.toc-ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,92vw);background:var(--navy);color:#e9eef2;z-index:80;transform:translateX(102%);transition:transform .28s ease;display:flex;flex-direction:column;font-family:var(--sans);box-shadow:-10px 0 40px #0006}
+.drawer.open{transform:none}
+.dr-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:22px 22px 14px;border-bottom:1px solid #ffffff1f}
+.dr-head .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#e3b45a;font-weight:700}
+.dr-head .t{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;margin-top:5px;color:#fff}
+.dr-close{background:#ffffff14;border:1px solid #ffffff33;color:#fff;width:36px;height:36px;border-radius:9px;font-size:20px;cursor:pointer;flex:none}
+.dr-prog{padding:12px 22px 0;font-size:12px;color:#b6c6d3}
+.dr-prog i{display:block;height:5px;border-radius:3px;background:#ffffff1f;margin-top:7px;overflow:hidden}
+.dr-prog i span{display:block;height:100%;width:0;background:#e3b45a;transition:width .2s}
+.dr-body{flex:1;overflow:auto;padding:10px 12px 24px}
+.dr-link{display:block;padding:9px 12px;border-radius:8px;color:#cfd9e1;text-decoration:none;font-size:14px;line-height:1.35}
+.dr-link:hover{background:#ffffff12;color:#fff}
+.dr-link.on{background:#ffffff1c;color:#fff}
+.acc{border-top:1px solid #ffffff14;margin-top:6px}
+.acc>button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:#fff;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:14px 12px 8px;cursor:pointer;text-align:left}
+.acc>button:after{content:"";width:8px;height:8px;border-right:2px solid #e3b45a;border-bottom:2px solid #e3b45a;transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
+.acc.open>button:after{transform:rotate(-135deg)}
+.acc>.panel{display:none}.acc.open>.panel{display:block}
+.item>.row{display:flex;align-items:center}
+.item>.row a{flex:1;display:flex;gap:11px;align-items:baseline;padding:9px 12px;border-radius:8px;color:#e1e9ef;text-decoration:none;font-size:14.5px;line-height:1.3}
+.item>.row a b{color:#e3b45a;min-width:16px;font-variant-numeric:tabular-nums}
+.item>.row a:hover{background:#ffffff12}
+.item>.row a.on{background:#ffffff1c;color:#fff}
+.item .row>button{background:none;border:0;cursor:pointer;padding:10px 14px;display:flex;align-items:center;justify-content:center;color:#e3b45a;font-size:14px;line-height:1}
+.item .row>button:after{content:"▾";width:auto;height:auto;border:0;transform:none;margin:0}
+.item.open .row>button:after{transform:rotate(180deg)}
+.item>.subs{display:none;margin:0 0 6px 38px;border-left:2px solid #ffffff22}
+.item.open>.subs{display:block}
+.subs a{display:block;padding:6px 12px;color:#aebfcc;text-decoration:none;font-size:13px;line-height:1.35}
+.subs a:hover{color:#fff}
+
+/* ---------- conteúdo ---------- */
+main{margin-left:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 40px}
+.sheet{background:var(--paper);box-shadow:0 1px 0 #0000000d,0 18px 44px -24px #1d27314d;margin:0 auto;max-width:980px}
+
+/* capa */
+.cover{background:var(--navy);margin:0;padding:0;line-height:0}
+.cover img{display:block;width:100%;height:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* bloco de abertura / seções */
+section.chapter{background:var(--paper);margin:28px auto;max-width:980px;box-shadow:0 1px 0 #0000000d,0 18px 44px -26px #1d27314d}
+.ch-head{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:end;padding:54px 64px 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f4f1e8,var(--paper))}
+.ch-num{font-family:var(--display);font-weight:800;font-size:96px;line-height:.8;color:var(--navy);opacity:.14;letter-spacing:-.04em}
+.eyebrow{font:700 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,42px);line-height:1.1;color:var(--navy);margin:0;letter-spacing:-.01em}
+.deck{font-size:19px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.body{padding:34px 64px 50px}
+.body>p:first-of-type:not(.nodrop)::first-letter{font-family:var(--display);font-weight:800;font-size:3.6em;float:left;line-height:.82;padding:6px 10px 0 0;color:var(--navy)}
+h3{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.2;color:var(--navy);margin:38px 0 8px}
+h4{font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:26px 0 6px}
+p{margin:12px 0}
+.lead{font-size:20.5px;line-height:1.6;color:#2a3744}
+ul,ol{padding-left:1.3em}li{margin:6px 0}
+strong,b{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px}
+.chip{font:700 11px var(--sans);letter-spacing:.04em;padding:5px 10px;border-radius:99px;background:var(--teal-bg);color:#14565d}
+.chip.g{background:var(--gold-bg);color:#7a5614}
+
+/* caixas */
+.callout{border-radius:12px;padding:18px 22px;margin:26px 0;border:1px solid var(--line);background:#fff;font-size:17px;line-height:1.6}
+.callout .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+.callout p{margin:6px 0}
+.callout.concept{background:var(--gold-bg);border-color:#ecd9ac}.callout.concept .lab{color:#8a5f12}
+.callout.teal{background:var(--teal-bg);border-color:#c4dede}.callout.teal .lab{color:#14565d}
+.callout.warn{background:var(--terra-bg);border-color:#ecc9bd}.callout.warn .lab{color:var(--terra)}
+.callout.green{background:var(--green-bg);border-color:#c5dccf}.callout.green .lab{color:var(--green)}
+.think{margin:30px 0;padding:22px 26px;border-radius:14px;background:var(--navy);color:#fff;font-family:var(--display);font-size:22px;line-height:1.35;font-weight:500}
+.think small{display:block;font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#e3b45a;margin-bottom:8px}
+
+/* texto de apoio */
+.support{margin:34px 0;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.support>header{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--navy);color:#fff;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.support>header i{width:8px;height:8px;border-radius:50%;background:#e3b45a;display:block}
+.support .in{padding:6px 24px 4px;font-size:17px;line-height:1.65}
+.support h5{font:700 17px var(--display);color:var(--navy);margin:16px 0 0}
+.support .src{font:500 12.5px/1.5 var(--sans);color:var(--muted);background:#f5f2ea;border-top:1px solid var(--line);padding:11px 24px}
+.support .src b{color:var(--ink);font-weight:700}
+
+/* fonte histórica */
+figure.doc{margin:30px 0;padding:6px 0 6px 26px;border-left:5px solid var(--gold)}
+figure.doc blockquote{margin:0;font-style:italic;font-size:19.5px;line-height:1.55;color:#2e3b47}
+figure.doc figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:10px}
+figure.doc figcaption b{font-weight:700;color:var(--ink)}
+
+/* números em destaque */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:28px 0}
+.stat{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terra);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--terra)}
+.stat span{display:block;font:500 12.5px/1.35 var(--sans);color:var(--muted);margin-top:7px}
+
+/* cartões e comparativos */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card .n{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.card h6{font:700 18px var(--display);color:var(--navy);margin:4px 0 4px}
+.card p{font-size:15.5px;line-height:1.5;margin:4px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.two .callout{margin:0}
+
+/* linha do tempo */
+.tl{list-style:none;padding:0;margin:30px 0;position:relative}
+.tl:before{content:"";position:absolute;left:96px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--gold),var(--teal));border-radius:2px}
+.tl li{display:grid;grid-template-columns:96px 1fr;gap:0 26px;margin:0 0 20px;position:relative}
+.tl li:before{content:"";position:absolute;left:90px;top:8px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:4px solid var(--navy)}
+.tl .y{font:800 14px var(--sans);color:var(--navy);text-align:right;padding-top:3px;padding-right:22px;font-variant-numeric:tabular-nums}
+.tl .t{padding-left:12px}
+.tl .t b{display:block;font:700 18px var(--display);color:var(--navy)}
+.tl .t span{font-size:16px;color:#3d4a55;line-height:1.5;display:block}
+.tl li.hl:before{background:var(--terra);border-color:var(--terra)}
+.tl li.hl .y{color:var(--terra)}
+
+/* fluxo */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:26px 0;counter-reset:f}
+.flow div{position:relative;background:#fff;border:1px solid var(--line);padding:14px 14px 14px;margin-right:-1px;counter-increment:f}
+.flow div:first-child{border-radius:12px 0 0 12px}.flow div:last-child{border-radius:0 12px 12px 0}
+.flow div:before{content:counter(f);display:block;font:800 11px var(--sans);color:#fff;background:var(--teal);width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;margin-bottom:8px}
+.flow b{display:block;font:700 16px var(--display);color:var(--navy)}
+.flow span{font-size:14px;line-height:1.4;color:var(--muted);display:block;margin-top:3px}
+
+/* tabelas */
+table.tb{width:100%;border-collapse:collapse;margin:22px 0;font:400 15px/1.5 var(--sans);background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tb th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:700;font-size:13px}
+.tb td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+.tb tr:nth-child(even) td{background:#faf8f2}
+.tb td.fill{height:48px}
+.scroll{overflow-x:auto}
+
+/* atividades */
+.act{margin:34px 0;border:2px solid var(--gold);border-radius:14px;background:#fffdf6;padding:0;overflow:hidden}
+.act>header{background:var(--gold);color:#fff;padding:9px 22px;font:800 11px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.act .in{padding:16px 24px 20px;font-size:17px}
+.act h3{margin:6px 0 4px;font-size:22px}
+.lines{margin:12px 0}.lines i{display:block;border-bottom:1px solid #b9b5a6;height:30px}
+.act ol{margin:8px 0}
+.act li::marker{font-weight:700;color:var(--gold)}
+
+/* figura */
+figure.fig{margin:28px 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+figure.fig figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:8px}
+.ch-end{display:flex;justify-content:space-between;gap:12px;padding:16px 64px;background:#f4f1e8;border-top:1px solid var(--line);font:600 12.5px var(--sans);color:var(--muted)}
+
+/* glossário */
+.gl{columns:2;column-gap:36px}
+.gl dt{font:700 17px var(--display);color:var(--navy);break-after:avoid;margin-top:14px}
+.gl dd{margin:2px 0 0;font-size:16px;line-height:1.55;break-inside:avoid}
+
+/* bibliografia */
+.refs{list-style:none;padding:0;counter-reset:r}
+.refs li{counter-increment:r;position:relative;padding-left:38px;margin:0 0 14px;font:400 14.5px/1.55 var(--sans)}
+.refs li:before{content:counter(r);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--teal-bg);color:#14565d;font:800 12px/26px var(--sans);text-align:center}
+.refs em{font-style:italic}
+details.prof{margin:18px 0;border:1px solid var(--line);border-radius:12px;background:#fff}
+details.prof summary{cursor:pointer;padding:14px 20px;font:700 14px var(--sans);color:var(--navy)}
+details.prof .in{padding:0 22px 16px;font-size:16px}
+.colophon{text-align:center;font:500 12px var(--sans);color:var(--muted);padding:26px 0 60px}
+
+
+/* cidadania: imagem + explicação */
+.cid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;margin:30px 0;align-items:start}
+.cid-fig{margin:0}
+.cid-thumb{position:relative;display:block;width:100%;padding:0;border:2px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:0 10px 28px -16px #1d273180}
+.cid-thumb img{display:block;width:100%;height:auto}
+.cid-hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:var(--navy);color:#fff;font:700 12px var(--sans);padding:8px 14px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 14px #0005}
+.cid-thumb:hover .cid-hint,.cid-thumb:focus-visible .cid-hint{background:var(--gold)}
+.cid-thumb:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cid-fig figcaption b{color:var(--ink)}
+.cid-fig figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:8px}
+.cid-txt{background:var(--teal-bg);border:1px solid #c4dede;border-radius:14px;padding:20px 24px;font-size:17px;line-height:1.6}
+.cid-txt .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#14565d}
+.cid-txt h3{margin:4px 0 8px;font-size:26px}
+.cid-txt p{margin:8px 0}.cid-txt ul{margin:8px 0;padding-left:1.2em}.cid-txt li{margin:6px 0}
+.cid-key{background:#fff;border-left:5px solid var(--gold);border-radius:8px;padding:10px 14px}
+.cid-src{font:500 12px/1.5 var(--sans);color:var(--muted)}
+.cid-link{display:flex;gap:12px;align-items:flex-start;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink);font-family:var(--sans);transition:border-color .15s,box-shadow .15s}
+.cid-link:hover,.cid-link:focus-visible{border-color:var(--gold);box-shadow:0 6px 18px -10px #1d273190}
+.cid-link .ic{flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#e3b45a;display:grid;place-items:center;font-size:13px}
+.cid-link .tx{display:block;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.cid-link b{display:block;font-size:13.5px;color:var(--navy);margin-bottom:2px}
+.cid-link em{display:block;font-style:normal;font-weight:700;color:var(--teal);margin-top:4px}
+@media(max-width:760px){.cid{grid-template-columns:1fr}}
+.atv-box{display:flex;align-items:center;gap:18px;margin:0 0 26px;padding:18px 24px;border-radius:14px;background:linear-gradient(100deg,var(--navy),var(--navy2));color:#fff;text-decoration:none;box-shadow:0 12px 28px -16px #12304acc;transition:transform .15s,box-shadow .15s;font-family:var(--sans)}
+.atv-box:hover,.atv-box:focus-visible{transform:translateY(-2px);box-shadow:0 16px 32px -14px #12304a}
+.atv-box:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.atv-ic{flex:none;width:52px;height:52px;border-radius:14px;background:#ffffff1c;border:1px solid #ffffff40;display:grid;place-items:center;font-size:24px;color:#e3b45a}
+.atv-tx{flex:1;display:block;min-width:0}
+.atv-k{display:block;font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#e3b45a}
+.atv-tx b{display:block;font:700 21px/1.25 var(--display);margin:3px 0 4px}
+.atv-d{display:block;font-size:13.5px;line-height:1.5;color:#d3dee7}
+.atv-go{flex:none;background:#e3b45a;color:var(--navy);font:800 13px var(--sans);padding:11px 18px;border-radius:99px;white-space:nowrap}
+.atv-box:hover .atv-go{background:#fff}
+@media(max-width:640px){.atv-box{flex-wrap:wrap;padding:16px}.atv-go{width:100%;text-align:center}}
+/* carrossel */
+.car{position:relative;outline:none}
+.car:focus-visible .car-view{outline:3px solid var(--gold);outline-offset:2px}
+.car-view{overflow:hidden;border-radius:14px}
+.car-track{display:flex;transition:transform .35s ease;touch-action:pan-y}
+.car-slide{flex:0 0 100%;min-width:0}
+.car-slide .cid-thumb{border-radius:14px}
+.car-nav{position:absolute;top:calc(50% - 22px);width:40px;height:40px;border-radius:50%;border:1px solid #ffffff80;background:#12304acc;color:#fff;font:700 24px/1 var(--sans);cursor:pointer;display:grid;place-items:center;padding:0 0 3px;z-index:2;box-shadow:0 4px 14px #0004}
+.car-nav:hover{background:var(--gold)}
+.car-nav.prev{left:8px}.car-nav.next{right:8px}
+.car-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.car-dot{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:#c9c1ac;cursor:pointer}
+.car-dot.on{background:var(--navy);width:26px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.car-track{transition:none}}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:#08121cf8;display:none;flex-direction:column}
+.lb.open{display:flex}
+.lb-bar{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;color:#fff;font:600 13px var(--sans)}
+.lb-bar .grp{display:flex;gap:8px;align-items:center}
+.lb-bar button{background:#ffffff1a;border:1px solid #ffffff44;color:#fff;border-radius:9px;min-width:40px;height:40px;font:700 18px var(--sans);cursor:pointer;padding:0 12px}
+.lb-bar button:hover{background:#ffffff33}
+.lb-bar .pct{min-width:52px;text-align:center}
+.lb-stage{flex:1;overflow:auto;display:flex;padding:8px;cursor:grab;-webkit-overflow-scrolling:touch}
+.lb-stage.drag{cursor:grabbing}
+.lb-stage img{margin:auto;max-width:none;flex:none;user-select:none;-webkit-user-drag:none;background:#fff;border-radius:6px}
+.lb-help{text-align:center;color:#9fb3c3;font:500 12px var(--sans);padding:6px 10px 12px}
+
+/* responsivo */
+@media(max-width:1000px){
+  section.chapter,.cover{margin:14px 0;max-width:none}
+  
+  .ch-head{padding:56px 24px 22px;grid-template-columns:1fr;gap:6px}.ch-num{font-size:64px}
+  .body{padding:24px 22px 38px}.ch-end{padding:14px 22px}
+}
+@media(max-width:640px){
+  body{font-size:17px}
+  .two,.gl{grid-template-columns:1fr;columns:1}
+  .flow{grid-template-columns:1fr}.flow div,.flow div:first-child,.flow div:last-child{border-radius:0;margin:0 0 -1px}
+  .tl:before{left:14px}.tl li{grid-template-columns:1fr;padding-left:40px}.tl li:before{left:7px}.tl .y{text-align:left;padding:0}.tl .t{padding:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer{transition:none}}
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  body{background:#fff;font-size:11.5pt}
+  .toc-tab,.drawer,.toc-ov,#progress,.skip{display:none!important}
+  main{margin:0}
+  section.chapter,.cover{box-shadow:none;margin:0;max-width:none;page-break-after:always}
+  .cover img{max-height:none}
+  .ch-head{padding:0 0 14px;background:none}.body{padding:14px 0}.ch-end{display:none}
+  .callout,.support,.act,figure,.card,.stat,.tl li{break-inside:avoid}
+  .think,.support>header,.act>header,.tb th,.stat,.callout{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  details.prof{display:none}
+}
+
+.cover-art{line-height:1.3;color:#fff;padding:90px 64px 56px;background:radial-gradient(1200px 500px at 85% -10%,#1f6f78 0%,transparent 60%),linear-gradient(160deg,#12304a,#0c2236);position:relative}
+.cv-k{font:700 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#e3b45a;margin:0 0 18px}
+.cover-art h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0;letter-spacing:-.02em;color:#fff}
+.cv-sub{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:500;color:#cfe3e6;margin:14px 0 0}
+.cv-fio{max-width:640px;font:400 18px/1.55 var(--serif);color:#e4ecf0;margin:26px 0 0;border-left:4px solid #e3b45a;padding-left:18px}
+.cv-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:44px 0 30px}
+.cv-steps span{font:700 11px var(--sans);letter-spacing:.08em;color:#9fc4cb;border-top:3px solid #e3b45a;padding-top:10px;display:block}
+.cv-steps b{display:block;font:700 18px var(--display);letter-spacing:0;color:#fff;margin-top:4px}
+.cv-foot{font:500 12px var(--sans);letter-spacing:.06em;color:#9fb3c0;margin:0}
+.perguntas-box{margin:24px 0;border:1px solid #c4dede;border-left:6px solid var(--teal);border-radius:12px;background:var(--teal-bg);padding:16px 22px}
+.perguntas-box .lab,.goias-box .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+.perguntas-box .lab{color:#14565d}
+.perguntas-box ul{margin:6px 0 0;padding-left:20px}
+.goias-box{margin:30px 0;border:1px solid #ecd9ac;border-left:6px solid var(--gold);border-radius:12px;background:var(--gold-bg);padding:18px 24px;font-size:17px;line-height:1.62}
+.goias-box .lab{color:#8a5f12}
+.goias-box h4{font:700 19px var(--display);color:var(--navy);margin:16px 0 4px}
+.goias-box p{margin:6px 0}
+.seq{margin:26px 0;display:grid;gap:12px}
+.seq-row{display:grid;grid-template-columns:150px 1fr 1fr 1fr;gap:8px;align-items:stretch}
+.seq-l{font:700 14px var(--sans);color:var(--navy);align-self:center}
+.seq-l small{font-weight:500;color:var(--muted)}
+.seq-b{font:700 13.5px/1.35 var(--sans);padding:12px;border-radius:10px;text-align:center;display:flex;align-items:center;justify-content:center}
+.seq-b.c1{background:var(--teal-bg);color:#14565d}.seq-b.c2{background:var(--gold-bg);color:#7a5614}.seq-b.c3{background:var(--terra-bg);color:var(--terra)}
+.ch-end{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 64px;border-top:1px solid var(--line);background:#f4f1e8;font:600 12.5px var(--sans);color:var(--muted)}
+.callout ul,.goias-box ul{margin:6px 0 0;padding-left:20px}
+.tb th,.tb td{vertical-align:top}
+@media(max-width:760px){.cover-art{padding:60px 22px 40px}.cv-steps{grid-template-columns:1fr 1fr}.seq-row{grid-template-columns:1fr}.ch-end{padding:14px 22px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<div id="progress" aria-hidden="true"></div>
+<main id="conteudo">
+<section class="cover" id="capa">
+  <img src="img/capa.webp" alt="Capa ilustrada do livro didático digital Poder, Resistência e Cidadania — Brasil e Goiás na República">
+</section>
+
+<section class="chapter" id="habilidades">
+  <header class="ch-head"><div class="ch-num">H</div><div>
+    <p class="eyebrow">Antes de começar</p><h2>Habilidades e objetivos</h2>
+    <p class="deck">O que você vai desenvolver e aprender ao longo deste livro.</p></div></header>
+  <div class="body">
+    <h3 style="margin-top:0">Descritores da trilha</h3>
+    <div class="cards">
+      <div class="card"><span class="n">D1</span><h6>Poder e tutela</h6><p>Identificar e problematizar práticas de paternalismo, autoritarismo e populismo nas diferentes fases da República brasileira e suas configurações específicas na dinâmica sociopolítica e fundiária de Goiás.</p></div>
+      <div class="card"><span class="n">D2</span><h6>Resistência e direitos</h6><p>Analisar as formas de organização e resistência de movimentos sociais, estudantis, sindicais, camponeses, messiânicos e indígenas contra práticas autoritárias e na defesa da liberdade, da terra e dos Direitos Humanos (esferas nacional e regional).</p></div>
+    </div>
+    <h3>Habilidades em foco</h3>
+        <div class="scroll"><table class="tb">
+      <thead><tr><th style="width:55%">Habilidade</th><th>O que você vai fazer</th></tr></thead>
+      <tbody>
+        <tr><td><b>GO-EMCHS602C</b> (DC-GO) e <b>(EM13CHS602)</b> Identificar e caracterizar a presença do paternalismo, do autoritarismo e do populismo na política, na sociedade e nas culturas brasileira e latino-americana, em períodos ditatoriais e democráticos, relacionando-os com as formas de organização e de articulação das sociedades em defesa da autonomia, da liberdade, do diálogo e da promoção da democracia, da cidadania e dos direitos humanos na sociedade atual.</td>
+            <td>Reconhecer como paternalismo, autoritarismo e populismo apareceram na República e como as pessoas se organizaram para defender direitos.</td></tr>
+        <tr><td><b>(EM13CHS601)</b> Identificar e analisar as demandas e os protagonismos políticos, sociais e culturais dos povos indígenas e das populações afrodescendentes (incluindo as quilombolas) no Brasil contemporâneo considerando a história das Américas e o contexto de exclusão e inclusão precária desses grupos na ordem social e econômica atual, promovendo ações para a redução das desigualdades étnico-raciais no país.</td>
+            <td>Analisar a luta de indígenas e quilombolas por terra e reconhecimento, com o exemplo do povo Kalunga, em Goiás.</td></tr>
+        <tr><td><b>(EM13CHS101)</b> Identificar, analisar e comparar diferentes fontes e narrativas expressas em diversas linguagens, com vistas à compreensão de ideias filosóficas e de processos e eventos históricos, geográficos, políticos, econômicos, sociais, ambientais e culturais.</td>
+            <td>Comparar a versão do governo e da imprensa com a memória popular e com a análise de historiadores.</td></tr>
+        <tr><td><b>(EM13CHS503)</b> Identificar diversas formas de violência (física, simbólica, psicológica etc.), suas principais vítimas, suas causas sociais, psicológicas e afetivas, seus significados e usos políticos, sociais e culturais, discutindo e avaliando mecanismos para combatê-las, com base em argumentos éticos.</td>
+            <td>Compreender a repressão como política de Estado e o papel dos mecanismos de denúncia e de proteção de direitos.</td></tr>
+        <tr><td><b>(EM13CHS605)</b> Analisar os princípios da declaração dos Direitos Humanos, recorrendo às noções de justiça, igualdade e fraternidade, identificar os progressos e entraves à concretização desses direitos nas diversas sociedades contemporâneas e promover ações concretas diante da desigualdade e das violações desses direitos em diferentes espaços de vivência, respeitando a identidade de cada grupo e de cada indivíduo.</td>
+            <td>Avaliar o que a Constituição de 1988 garantiu e o que ainda falta para que os direitos sejam vividos na prática.</td></tr>
+      </tbody></table></div>
+    <div class="callout teal"><span class="lab">Neste livro você vai aprender</span>
+      <ul>
+        <li>o que são direitos civis, políticos e sociais e por que a ordem em que eles chegaram ao Brasil importa;</li>
+        <li>como funcionavam o mandonismo, o coronelismo e o clientelismo na Primeira República;</li>
+        <li>por que Canudos, Contestado e Santa Dica foram tratados como ameaça à ordem;</li>
+        <li>o que é paternalismo e populismo e como o trabalhismo deu direitos e, ao mesmo tempo, controlou os sindicatos;</li>
+        <li>como a ditadura reprimiu trabalhadores, camponeses e estudantes e como eles resistiram;</li>
+        <li>o que a Constituição de 1988 mudou e o que ainda falta, no Brasil e em Goiás.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="abertura">
+  <header class="ch-head"><div class="ch-num">0</div><div>
+    <p class="eyebrow">Para começar</p><h2>Por que estudar cidadania?</h2>
+    <div style="display:flex;align-items:center;gap:14px;justify-content:space-between">
+      <p class="deck" style="flex:1">Direitos não nascem prontos: são escritos, disputados, ampliados — e, muitas vezes, ainda precisam ser conquistados na prática.</p>
+      <a href="#" onclick="openIntroCarousel(event)" aria-label="Abrir guias de estudo em carrossel com zoom" title="Abrir guias de estudo" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:var(--navy);color:#e3b45a;text-decoration:none;font:700 20px var(--sans);box-shadow:0 5px 14px #12304a33">↗</a>
+    </div></div></header>
+  <div class="body">
+    <p class="lead">Cidadania não é só o direito de votar. É poder viver com liberdade, participar das decisões e ter o que é necessário para viver com dignidade. No Brasil, essa história foi cheia de avanços, recuos e lutas coletivas — e uma pergunta ajuda a organizar tudo: <b>em que ordem os direitos chegaram?</b></p>
+
+    <h3>Direitos civis, políticos e sociais</h3>
+    <p>Os historiadores costumam dividir a cidadania em três tipos de direito. O historiador José Murilo de Carvalho (1939–2023), que escreveu o livro <em>Cidadania no Brasil: o longo caminho</em>, explica cada um deles. Leia primeiro como ele define os direitos civis.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · Carvalho e os direitos civis</header>
+      <div class="in">
+        <p>Tornou-se costume desdobrar a cidadania em direitos civis, políticos e sociais. O cidadão pleno seria aquele que fosse titular dos três direitos. Cidadãos incompletos seriam os que possuíssem apenas alguns dos direitos. Os que não se beneficiassem de nenhum dos direitos seriam não cidadãos. Esclareço os conceitos. Direitos civis são os direitos fundamentais à vida, à liberdade, à propriedade, à igualdade perante a lei. Eles se desdobram na garantia de ir e vir, de escolher o trabalho, de manifestar o pensamento, de organizar-se, de ter respeitada a inviolabilidade do lar e da correspondência, de não ser preso a não ser pela autoridade competente e de acordo com as leis, de não ser condenado sem processo legal regular. São direitos cuja garantia se baseia na existência de uma justiça independente, eficiente, barata e acessível a todos. São eles que garantem as relações civilizadas entre as pessoas e a própria existência da sociedade civil surgida com o desenvolvimento do capitalismo. Sua pedra de toque é a liberdade individual.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. 13. ed. Rio de Janeiro: Civilização Brasileira, 2010. p. 9. Trecho citado em SM EDUCAÇÃO, <em>Ser protagonista: História</em> (2024), p. 72.</div>
+    </aside>
+
+    <p>Os direitos políticos e os direitos sociais completam o quadro. Observe como o autor mostra que uma coisa não garante a outra.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · Carvalho e os direitos políticos e sociais</header>
+      <div class="in">
+        <p>É possível haver direitos civis sem direitos políticos. Estes se referem à participação do cidadão no governo da sociedade. Seu exercício é limitado à parcela da população e consiste na capacidade de fazer demonstrações políticas, de organizar partidos, de votar, de ser votado. […] Finalmente, há os direitos sociais. Se os direitos civis garantem a vida em sociedade, se os direitos políticos garantem a participação no governo da sociedade, os direitos sociais garantem a participação na riqueza coletiva. Eles incluem o direito à educação, ao trabalho, ao salário justo, à saúde, à aposentadoria. A garantia de sua vigência depende da existência de uma eficiente máquina administrativa do Poder Executivo. Em tese eles podem existir sem direitos civis e certamente sem os direitos políticos. Mas, na ausência de direitos civis e políticos, seu conteúdo e alcance tendem a ser arbitrários. Os direitos sociais permitem às sociedades politicamente organizadas reduzir os excessos de desigualdade produzidos pelo capitalismo e garantir um mínimo de bem-estar para todos. A ideia central [em] que se baseia é a da justiça social.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. Rio de Janeiro: Civilização Brasileira, 2001. p. 14-17. Trecho citado em SM EDUCAÇÃO, <em>Ser protagonista: História</em> (2024), p. 121.</div>
+    </aside>
+
+    <div class="callout concept"><span class="lab">Conceito-chave</span><b>Cidadania plena:</b> situação em que uma pessoa possui direitos civis, políticos e sociais ao mesmo tempo. Quem tem apenas alguns deles é, na expressão de Carvalho, um cidadão incompleto; quem não tem nenhum é um não cidadão.</div>
+
+    <h3>A tese: no Brasil, a ordem foi outra</h3>
+    <p>Carvalho parte de uma ideia do sociólogo inglês T. H. Marshall: na Inglaterra, os direitos teriam chegado em sequência — primeiro os civis, depois os políticos, por último os sociais. No Brasil, sustenta Carvalho, a história foi diferente: nas palavras do livro, <b>“entre nós o social precedeu os outros”</b>. Boa parte dos direitos sociais, como os trabalhistas, chegou nos anos 1930 e 1940, durante um período autoritário, como uma concessão do governo e não como resultado da pressão de uma sociedade com liberdade para se organizar.</p>
+
+    <div class="seq" role="img" aria-label="Comparação da ordem dos direitos: Inglaterra, civis, políticos, sociais; Brasil, segundo Carvalho, sociais antes dos políticos e civis">
+      <div class="seq-row"><span class="seq-l">Modelo inglês<br><small>segundo Marshall</small></span><span class="seq-b c1">1º civis</span><span class="seq-b c2">2º políticos</span><span class="seq-b c3">3º sociais</span></div>
+      <div class="seq-row"><span class="seq-l">Brasil<br><small>segundo Carvalho</small></span><span class="seq-b c3">social antes de tudo</span><span class="seq-b c2">políticos com avanços e recuos</span><span class="seq-b c1">civis ainda incompletos</span></div>
+    </div>
+
+    <aside class="support"><header><i></i>Texto de apoio · A cidadania tem várias dimensões</header>
+      <div class="in">
+        <p>Inicio a discussão dizendo que o fenômeno da cidadania é complexo e historicamente definido. […] O exercício de certos direitos, como a liberdade de pensamento e o voto, não gera automaticamente o gozo de outros, como a segurança e o emprego. O exercício do voto não garante a existência de governos atentos aos problemas básicos da população. Dito de outra maneira: a liberdade e a participação não levam automaticamente, ou rapidamente, à resolução de problemas sociais. Isto quer dizer que a cidadania inclui várias dimensões e que algumas podem estar presentes sem as outras. Uma cidadania plena, que combine liberdade, participação e igualdade para todos, é um ideal desenvolvido no Ocidente e talvez inatingível. Mas ele tem servido de parâmetro para o julgamento da qualidade da cidadania em cada país e em cada momento histórico.</p>
+        <p>O surgimento sequencial dos direitos sugere que a própria ideia de direitos, e, portanto, a própria cidadania, é um fenômeno histórico. O ponto de chegada, o ideal da cidadania plena, pode ser semelhante, pelo menos na tradição ocidental [dentro] da qual nos movemos. Mas os caminhos são distintos e nem sempre seguem linha reta. […]</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. Rio de Janeiro: Civilização Brasileira, 2001. Trechos citados em SM EDUCAÇÃO, <em>Ser protagonista: História</em> (2024), p. 120 e p. 121 (obra original, p. 14-17).</div>
+    </aside>
+
+    <div class="callout concept"><span class="lab">Conceito-chave</span><b>Estadania:</b> termo usado por Carvalho para a atitude de buscar direitos pela aliança com o Estado e com o governante, e não pela participação política independente. No livro, o autor diz que essa atitude “seria mais bem caracterizada como ‘estadania’” (CARVALHO, 2002, 3. ed.). A ideia pode ser resumida assim: uma situação “em que a maior parte da população fica à mercê das políticas pensadas por uma parcela limitada da sociedade que ocupa os postos de governo” (CAMPOS; FERREIRA; SILVA, 2024, p. 303).</div>
+
+    <div class="think"><small>Para pensar</small>Se um direito chega como presente de quem está no poder, ele é um direito ou um favor? E quem garante que ele não será retirado?</div>
+
+    <div class="callout teal"><span class="lab">Outros autores</span>
+      <p>Além de José Murilo de Carvalho, outros estudiosos ajudam a compreender a formação desigual da cidadania no Brasil. <b>Wanderley Guilherme dos Santos</b> analisa a <b>cidadania regulada</b>, vinculando historicamente o acesso a direitos sociais às profissões reconhecidas e regulamentadas pelo Estado. <b>James Holston</b>, por sua vez, discute a <b>cidadania diferenciada e insurgente</b>, mostrando tanto a distribuição desigual de direitos quanto as lutas de grupos populares pela ampliação da cidadania.</p>
+
+      <a class="atv-box" href="#" onclick="openAuthorsCarousel(event)" aria-label="Abrir carrossel com os três autores e suas obras em nova aba" style="margin:18px 0 14px;background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 8px 22px -16px #1d273166">
+        <span class="atv-ic" aria-hidden="true" style="background:var(--teal-bg);border-color:#c4dede;color:var(--teal)">◫</span>
+        <span class="atv-tx"><span class="atv-k" style="color:var(--teal)">1 · Conheça os autores</span><b style="color:var(--navy)">Explore os três autores e suas obras</b><span class="atv-d" style="color:var(--muted)">José Murilo de Carvalho · Wanderley Guilherme dos Santos · James Holston — veja primeiro cada autor separadamente, em carrossel com zoom regulável.</span></span>
+        <span class="atv-go">Abrir carrossel ↗</span>
+      </a>
+
+      <a class="cid-link" href="#" onclick="openCompareCarousel(event)" aria-label="Abrir carrossel comparativo com zoom regulável">
+        <span class="ic">◫</span>
+        <span class="tx"><b>2 · Compare os três olhares sobre a cidadania no Brasil</b>Depois de conhecer os autores, compare José Murilo de Carvalho, Wanderley Guilherme dos Santos e James Holston em duas imagens didáticas.<em>Abrir carrossel comparativo com zoom ↗</em></span>
+      </a>
+    </div>
+
+    <a class="atv-box" href="atv/atv1.html" aria-label="Abrir atividade sobre os três olhares da cidadania no Brasil" style="margin:30px 0 28px">
+      <span class="atv-ic" aria-hidden="true">✎</span>
+      <span class="atv-tx"><span class="atv-k">Atividade</span><b>Três olhares sobre a cidadania no Brasil</b><span class="atv-d">Leia os textos de apoio e responda às questões sobre José Murilo de Carvalho, Wanderley Guilherme dos Santos e James Holston.</span></span>
+      <span class="atv-go">Fazer atividade →</span>
+    </a>
+
+    <a class="atv-box" href="https://drive.google.com/file/d/1KUecNNpaFIW5SmiWctKQvOveJnuLRK7u/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Baixar atividade em PDF" style="margin:-14px 0 28px">
+      <span class="atv-ic" aria-hidden="true">⇩</span>
+      <span class="atv-tx"><span class="atv-k">Versão para impressão</span><b>Baixar atividade em PDF</b><span class="atv-d">Abra a versão em PDF da atividade para impressão.</span></span>
+      <span class="atv-go">Baixar PDF ↓</span>
+    </a>
+
+    <h3>O que vem pela frente</h3>
+    <div class="cards">
+      <div class="card"><span class="n">Capítulo 1 · 1889–1930</span><h6>Coronelismo e sertão</h6><p>Quem mandava no interior e o que acontecia quando o povo se organizava por conta própria. Caso goiano: Santa Dica.</p></div>
+      <div class="card"><span class="n">Capítulo 2 · 1930–1964</span><h6>Paternalismo e Marcha para o Oeste</h6><p>Direitos que chegam “de cima” e a terra em disputa. Caso goiano: Trombas e Formoso.</p></div>
+      <div class="card"><span class="n">Capítulo 3 · 1964–1985</span><h6>Ditadura e direitos humanos</h6><p>Repressão, resistência e denúncia. Caso goiano: CPT e Araguaia.</p></div>
+      <div class="card"><span class="n">Capítulo 4 · 1985–hoje</span><h6>Constituição e novos sujeitos</h6><p>O que mudou em 1988 e o que falta. Caso goiano: os Kalunga.</p></div>
+    </div>
+  </div>
+  <div class="ch-end"><span>Abertura</span><span>Próximo: Mandonismo, coronelismo e sertão →</span></div>
+</section>
+
+<section class="chapter" id="etapa1">
+  <header class="ch-head"><div class="ch-num">1</div><div>
+    <p class="eyebrow">República Velha · 1889–1930</p><h2>Mandonismo, coronelismo e sertão</h2>
+    <p class="deck">Quem mandava no interior e o que acontecia quando o povo se organizava por conta própria.</p></div></header>
+  <div class="body">
+    <div class="chips"><span class="chip">EM13CHS602</span><span class="chip">EM13CHS101</span><span class="chip g">Coronelismo · Canudos · Contestado · Santa Dica</span></div>
+    <p class="lead">Entre 1889 e 1930, a República brasileira foi governada por poucos e para poucos. Quem vivia no interior dependia do dono da terra para trabalhar, para votar e até para ser atendido por um médico — e, quando se organizava por conta própria, costumava ser tratado como inimigo da ordem.</p>
+
+    <div class="perguntas-box"><span class="lab">Perguntas orientadoras</span>
+      <ul>
+        <li>Como o coronelismo sustentava a política republicana?</li>
+        <li>Por que movimentos populares eram tratados como ameaça à ordem?</li>
+        <li>Que cidadania havia na Primeira República?</li>
+      </ul>
+    </div>
+
+    <h3>A República dos poucos</h3>
+    <p>A Proclamação da República, em 1889, prometia ampliar a participação política. Na prática, o direito de votar ficou restrito a uma pequena parcela da população: mulheres e analfabetos estavam excluídos e o voto era aberto, ou seja, não era secreto. Isso criava um regime em que os grupos mais ricos e poderosos controlavam o governo.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · As primeiras eleições e o modelo político</header>
+      <div class="in">
+        <h5>A República Oligárquica</h5>
+        <p>Em março de 1894 ocorreram as primeiras eleições presidenciais diretas da República brasileira. Prudente de Morais, integrante do Partido Republicano Paulista, alcançou a vitória com quase 90% dos cerca de 356 mil votos no total. As principais forças de oposição dividiam-se entre os que desejavam a permanência de Floriano e os grupos que ainda almejavam o retorno da monarquia. Contudo, ambas as forças eram incapazes de produzir uma oposição que criasse problemas para a construção de um regime oligárquico controlado pelas elites de São Paulo e Minas Gerais a partir dos governos civis. Além disso, as vitórias, com tamanha margem eleitoral, eram frutos de uma lógica excludente e exclusivista, haja vista que o número de eleitores significava pouco mais que 2% da população.</p>
+        <h5>O modelo político</h5>
+        <p>Realizada a primeira eleição direta para presidente, a República brasileira apresentava seu modelo político. Nele, a exclusão de mulheres e de analfabetos restringia significativamente as possibilidades de exercício de cidadania. Estabelecia-se, assim, uma estadania, em que a maior parte da população fica à mercê das políticas pensadas por uma parcela limitada da sociedade que ocupa os postos de governo; e em que a votação aberta e não sigilosa, no reduzido universo de aptos ao exercício do voto, refletia costumeiramente a opinião de seus patrões ou coronéis em vez das próprias.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS, Cristiano; FERREIRA, Lier Pires; SILVA, Renata (coord.). <em>História: democracia e protagonismo</em> (Interação). São Paulo: Editora do Brasil, 2024. p. 303 (seção “A República Oligárquica” e “O modelo político”).</div>
+    </aside>
+
+    <h3>O poder dos coronéis</h3>
+    <p>No campo, onde vivia a maioria da população, o poder real estava nas mãos dos <b>coronéis</b>. Eles controlavam a terra, o emprego, a polícia local e, por consequência, os votos. A leitura a seguir descreve esse sistema.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · O poder dos coronéis</header>
+      <div class="in">
+        <p>Ao longo do século XIX e no começo do século XX, a associação entre terra e poder político resultou em um fenômeno conhecido como coronelismo. Os coronéis eram geralmente grandes proprietários de terra e chefes políticos locais que, por meio da troca de favores, conhecida como clientelismo, exerciam sua influência sobre as camadas mais baixas da população, bem como entre os representantes do Poder Judiciário e das forças policiais de sua região.</p>
+        <p>As condições em que viviam as populações do interior eram geralmente de extrema pobreza. A terra era um bem escasso e fora do alcance da maioria dos trabalhadores rurais. Para manter essas pessoas sob seu controle, os coronéis não admitiam que sua autoridade fosse contestada, sendo comuns a prática de ameaças e o uso da violência.</p>
+        <p>Na época das eleições, os coronéis obrigavam as pessoas sob seu comando a votar nos candidatos de seu interesse para cargos nos governos estadual e federal, conforme o caso. Essas pessoas moravam nas terras dos coronéis ou eram seus empregados, vizinhos, parentes, compadres, afilhados ou, simplesmente, beneficiários de seu poder. Recebiam deles proteção e favores, como empregos públicos, remédios em casos de doença, vagas para os filhos em escolas públicas etc. Essas pessoas formavam o que ficou conhecido como “curral” eleitoral dos coronéis.</p>
+        <p>O coronelismo foi uma das características mais marcantes da República Oligárquica, tema estudado nos Anos Finais do Ensino Fundamental. Para o jurista e autor de estudos sobre o assunto Victor Nunes Leal (1914-1985), o coronelismo constituía uma forma de o poder privado se manifestar na política.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO, Gislane; SERIACOPI, Reinaldo. <em>Por toda parte: História</em>. São Paulo: FTD, 2024. p. 179 (“O poder dos coronéis”).</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Voto de cabresto e “eleição a bico de pena”</header>
+      <div class="in">
+        <p>Além disso, havia a expressão voto de cabresto, que designava o controle do voto pelos chefes políticos locais. O cabresto é um tipo de arreio usado para controlar animais como cavalos e burros. Em troca de favores, de cargos ou por coerção, os eleitores votavam em quem o chefe determinava, produzindo uma relação de clientelismo político. O exercício desse tipo de poder estava diretamente ligado a uma lógica que os historiadores chamam de coronelismo. A patente de coronel era uma das mais altas na hierarquia da Guarda Nacional, instituição formada durante o império. Mesmo após o fim do império, os coronéis – a maioria dos quais era proprietária de terras – mantiveram sua influência política nos municípios. O termo coronelismo remete a esse controle político e ao sistema de negociações, muitas vezes fraudulentas, entre os chefes políticos locais, os coronéis, e as esferas estadual e federal do governo.</p>
+        <p>O poder dos coronéis formava a base da estrutura oligárquica republicana. Eles exerciam o poder nas esferas municipais e, para isso, relacionavam-se com as esferas mais amplas, como as estaduais. Por meio de fraudes, de arranjos e da força, um coronel podia, por exemplo, garantir o fornecimento de votos a determinado político para o governo do estado, que, em contrapartida, asseguraria o poder do coronel nos municípios. Além do uso da violência armada, os coronéis utilizavam um sistema de troca de favores para oferecer benefícios ligados ao poder público. Esses favores iam desde acesso a serviços básicos, como atendimento médico ou a construção de uma escola, até a obtenção de cargos públicos, como os de delegado de polícia ou de professor. Em troca, exerciam controle nos municípios, o que envolvia redes de familiares, empregados, agregados e dependentes.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA, Felipe de Paula Góis; BACKX, Isabela; FERNANDES, Luiz Estevam de Oliveira; ABREU, Marcelo. <em>Moderna Plus: História</em>. São Paulo: Moderna, 2024. p. 275.</div>
+    </aside>
+
+    <div class="callout concept"><span class="lab">Conceitos-chave</span>
+      <p><b>Mandonismo:</b> poder pessoal de um chefe local sobre as pessoas que dependem dele.</p>
+      <p><b>Coronelismo:</b> sistema de trocas entre os coronéis, os governos estaduais e o governo federal, típico da Primeira República.</p>
+      <p><b>Clientelismo:</b> troca de favores por apoio político (empregos, remédios, vagas na escola em troca de votos).</p>
+      <p>Carvalho discute a diferença entre esses três termos no artigo “Mandonismo, coronelismo, clientelismo: uma discussão conceitual” (<em>Dados</em>, v. 40, n. 2, 1997).</p></div>
+
+    <figure class="doc"><blockquote>“Passado o entusiasmo inicial provocado pela Proclamação da República, nem mesmo a elite conseguia, no campo das [ideias], chegar a certo acordo quanto à definição de qual deveria ser o relacionamento do cidadão com o Estado. No campo da ação política, fracassaram sistematicamente as tentativas de mobilizar e organizar a população dentro dos padrões conhecidos nos sistemas liberais.”</blockquote>
+      <figcaption><b>José Murilo de Carvalho</b> sobre a cidadania nos primeiros anos da República. CARVALHO, J. M. de. O povo do Rio de Janeiro: bestializados ou bilontras? <em>Revista do Rio de Janeiro</em>, Niterói, n. 8, p. 102, set./dez. 2002. Citado por CAMPOS; FERREIRA; SILVA (2024), p. 316.</figcaption></figure>
+
+    <div class="think"><small>Para pensar</small>Se o voto era aberto e o eleitor dependia do coronel para viver, o voto era uma escolha livre? O que isso diz sobre a cidadania na Primeira República?</div>
+
+    <h3>Quando o povo reage: a Revolta da Vacina</h3>
+    <p>A população das cidades também reagia quando se sentia desrespeitada. Em 1904, no Rio de Janeiro, a vacinação obrigatória contra a varíola foi imposta sem diálogo e provocou uma grande revolta. Em 1910, marinheiros, majoritariamente negros e pobres, se revoltaram contra os castigos físicos na Marinha, na chamada Revolta da Chibata.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · A Revolta da Vacina</header>
+      <div class="in">
+        <p>No dia 9 de novembro de 1904, o governo regulamentou um plano que tornava a vacinação obrigatória. Aqueles que se recusassem a tomar a vacina estariam sujeitos ao pagamento de multas e a demissões. Quando a notícia se espalhou, uma enorme revolta eclodiu no Rio de Janeiro. Além dos receios sobre a vacinação, a população se revoltou contra a forma autoritária como a campanha foi conduzida. A revolta teve início no dia 10 de novembro de 1904 e se estendeu por dias. A população entrou em confronto com a polícia em meio às manifestações pela cidade. O governo reagiu com violência: decretou estado de sítio e prendeu e deportou pessoas para o Acre, estado recém-incorporado à república.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA; BACKX; FERNANDES; ABREU, <em>Moderna Plus: História</em> (2024), p. 286 (“A Revolta da Vacina”).</div>
+    </aside>
+
+    <p>Carvalho analisou essa revolta no livro <em>Os bestializados: o Rio de Janeiro e a República que não foi</em> (1987). Leia a seguir dois trechos em que ele descreve a reação da população.</p>
+
+    <figure class="doc"><blockquote>“A Revolta da Vacina (1904) mostrou claramente o aspecto defensivo, desorganizado, fragmentado da ação popular. Não se negava o Estado, não se reivindicava participação nas decisões políticas; defendiam-se valores e direitos considerados acima da intervenção do Estado.”</blockquote>
+      <figcaption><b>José Murilo de Carvalho</b> sobre a Revolta da Vacina. CARVALHO, José Murilo de. <em>Os bestializados: o Rio de Janeiro e a República que não foi</em>. São Paulo: Cia. das Letras, 1987 (adaptado). Reproduzido em VIEIRA; BACKX; FERNANDES; ABREU (2024), p. 299.</figcaption></figure>
+
+    <figure class="doc"><blockquote>“Chamando o repórter de “cidadão”, em 1904, o preto acapoeirado justificava a revolta: era para “não andarem dizendo que o povo é carneiro. De vez em quando é bom a negrada mostrar que sabe morrer como homem!”. Para ele, a vacinação em si não era importante — embora não admitisse de modo algum deixar os homens da higiene meter o tal ferro em suas virilhas. O mais importante era “mostrar ao governo que ele não põe o pé no pescoço do povo”.”</blockquote>
+      <figcaption><b>José Murilo de Carvalho</b> sobre um participante da revolta. CARVALHO, J. M. <em>Os bestializados: o Rio de Janeiro e a República que não foi</em>. São Paulo: Cia. das Letras, 1987 (adaptado). Reproduzido em CAMPOS; FERREIRA; SILVA (2024), p. 344.</figcaption></figure>
+
+    <h3>Terra, fé e resistência: Canudos e Contestado</h3>
+    <p>No sertão, a resistência tomou outra forma. Em Canudos (Bahia) e no Contestado (divisa entre Paraná e Santa Catarina), famílias pobres sem acesso à terra se reuniram em comunidades próprias, lideradas por figuras religiosas. O Estado respondeu com tropas. Leia a seguir como as duas guerras são descritas.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · A luta pela terra no começo da República</header>
+      <div class="in">
+        <p>Nos primeiros anos da República, quando a maioria da população ainda vivia no campo, a elite agrária ampliou seus poderes por meio do fortalecimento dos chefes políticos locais e da manipulação de votos para a defesa de seus interesses. Isso não impediu que camadas mais baixas da população reivindicassem seus direitos à terra. Em alguns casos, essas reivindicações resultaram em grandes conflitos armados, como os ocorridos na Bahia e na divisa do Paraná com Santa Catarina. No sertão da Bahia, em 1893, camponeses sem acesso à terra formaram, em uma fazenda abandonada na região de Canudos, uma comunidade organizada com base na vida comunitária e na agricultura familiar. O local, contudo, passou a ser alvo de ataques das elites locais e do governo federal. Entre 1896 e 1897, quatro expedições militares foram organizadas para destruir a comunidade. O confronto, conhecido como Guerra de Canudos, só se encerrou após a destruição total do local e a morte de pelo menos 30 mil sertanejos. Cerca de 15 anos depois, em 1912, aconteceu na Região Sul do Brasil outro conflito de grandes proporções: a Guerra do Contestado. Ela ocorreu na divisa entre Paraná e Santa Catarina, onde viviam cerca de 60 mil pessoas cujas terras eram contestadas por ambos os estados. O governo doou essas terras para empresas dos Estados Unidos para que construíssem ali uma estrada de ferro. Milhares de famílias foram expulsas dessas terras, sem indenização.</p>
+        <p>Em meio à miséria, a população buscou refúgio nas palavras de um líder messiânico conhecido como José Maria, que se proclamava eleito por Deus e prometia o advento de um reino de justiça. Após seu assassinato por forças policiais em 1912, a comunidade de camponeses sofreu ataques de tropas estaduais e federais. O confronto se estendeu até 1916 e deixou cerca de 20 mil mortos.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 178.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · O arraial de Belo Monte</header>
+      <div class="in">
+        <p>Em 1893, em uma fazenda abandonada às margens do Rio Vaza-Barris, na Bahia – a Fazenda Canudos –, Antônio Vicente Mendes Maciel, conhecido como Antônio Conselheiro, fundou o arraial de Belo Monte. Antes de fundar o local, ele exerceu diversas profissões e peregrinou pelo Ceará e pela Bahia defendendo uma vida voltada à espiritualidade e à disciplina. Em pouco tempo, a comunidade cresceu. Estima-se que, no final do século XIX, cerca de 20 mil a 30 mil pessoas tenham vivido no povoado. Por que o arraial atraiu tanta gente? A seca, a carestia e a violência dos coronéis afligiam os sertanejos. O estabelecimento de um modo de vida comunitário com base na agricultura pode ter atraído muitos deles. Além disso, havia fatores religiosos vinculados ao messianismo, fenômeno do catolicismo popular que tinha como base a crença no retorno de um messias que libertaria os oprimidos.</p>
+        <p>O crescimento de Belo Monte incomodou o governo, a Igreja e os grandes proprietários de terra, pois o arraial representava uma organização independente. A autoridade religiosa de Antônio Conselheiro não dependia da Igreja, e os habitantes do arraial não estavam submetidos aos coronéis.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA; BACKX; FERNANDES; ABREU, <em>Moderna Plus: História</em> (2024), p. 284 (“O messianismo e a Guerra de Canudos”). Os dados numéricos sobre Canudos são de FAUSTO, Boris. <em>História do Brasil</em>. São Paulo: Edusp, 1995. p. 257-258.</div>
+    </aside>
+
+    <div class="callout concept"><span class="lab">Conceito-chave</span><b>Messianismo:</b> movimento organizado em torno de uma liderança religiosa e da crença em um messias que libertaria os oprimidos. Canudos e Contestado podem ser entendidos como respostas de camponeses pobres à falta de terra, à seca e à violência dos coronéis — e não apenas como “fanatismo”, como disseram os governos da época.</div>
+
+    <h3>Em Goiás: oligarquias em disputa e o arraial de Santa Dica</h3>
+    <div class="goias-box"><span class="lab">Recorte regional · Goiás</span>
+      <h4>Caiado e Bulhões</h4>
+      <p>Em Goiás, a política era dominada por grupos familiares que disputavam o poder. Antônio Ramos Caiado, o Totó Caiado, foi deputado federal de 1909 a 1920 e senador de 1921 a 1930, e esteve entre os fundadores do Partido Democrata, em 1909, com aliados como Leopoldo de Bulhões e Eugênio Jardim (as alianças mudaram com o tempo). Seu irmão Brasil Ramos Caiado presidiu o estado de 1925 a 1929.</p>
+      <p>Em 1909, um movimento armado na Cidade de Goiás, então capital do estado, sob o comando de Eugênio Jardim, derrubou o presidente do estado, Miguel da Rocha Lima. O episódio mostra que a disputa entre grupos oligárquicos podia chegar às armas, sem que isso significasse maior participação popular.</p>
+      <h4>O arraial de Santa Dica (Lagoinha, Pirenópolis)</h4>
+      <p>Benedita Cipriano Gomes (1905–1970), conhecida como Santa Dica, tornou-se referência religiosa e de cura para uma comunidade que se formou em torno dela, em Lagoinha, entre 1923 e 1925. Os relatos falam em trabalho coletivo, uso comum da terra, restrição ao uso do dinheiro e crítica aos impostos. Parte do que se sabe sobre o arraial vem da tradição oral; por isso, esses relatos são interpretações.</p>
+      <p>Em 1925, o governo estadual enviou tropa ao arraial. Os relatos divergem sobre o número de mortos e sobre quanto tempo ela ficou presa, mas concordam que acabou solta. O jornalista Mário Mendes teve papel na sua defesa, e os dois se casaram em 1928. Como em Belo Monte, em Canudos, o poder público tratou uma comunidade pobre, organizada em torno de uma liderança religiosa, como caso de polícia. A diferença está na escala e nas circunstâncias.</p>
+      <h4>A Coluna Prestes em Goiás</h4>
+      <p>O tenentismo foi um movimento de jovens militares contra as oligarquias e as fraudes eleitorais. A Coluna Prestes, sua expressão mais radical, atravessou o norte e o nordeste de Goiás em 1925 e 1926, passando por Natividade e São José do Duro em outubro de 1925. Contra ela atuaram sobretudo os chamados batalhões patrióticos, organizados por chefes regionais, como o do coronel Abílio Wolney, no nordeste do estado.</p>
+    </div>
+
+    <aside class="support"><header><i></i>Texto de apoio · Tenentismo e Coluna Prestes</header>
+      <div class="in">
+        <p>Já no Exército, jovens militares participaram de movimentos contra o fim das oligarquias, a centralização do poder, a expansão do sistema de ensino e a moralização da política, como o fim das fraudes eleitorais e a implantação do voto secreto. Esses movimentos ficaram conhecidos como tenentismo, e uma de suas expressões mais radicais foi a Coluna Prestes, liderada pelo capitão Luís Carlos Prestes (1898-1990). Entre 1925 e 1927, a Coluna percorreu cerca de 25 mil quilômetros pelo interior do país enfrentando as forças governamentais, ganhando o apoio da população e influenciando a política brasileira.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 244.</div>
+    </aside>
+
+    <ul class="tl">
+      <li><div class="y">1889</div><div class="t"><b>Proclamação da República</b><span>Voto restrito: mulheres e analfabetos excluídos.</span></div></li>
+      <li><div class="y">1893–97</div><div class="t"><b>Arraial de Belo Monte e Guerra de Canudos</b><span>Quatro expedições militares contra a comunidade.</span></div></li>
+      <li class="hl"><div class="y">1904</div><div class="t"><b>Revolta da Vacina</b><span>Revolta urbana contra a imposição autoritária da vacinação.</span></div></li>
+      <li><div class="y">1909</div><div class="t"><b>Movimento armado na Cidade de Goiás</b><span>Disputa entre grupos oligárquicos goianos.</span></div></li>
+      <li><div class="y">1912–16</div><div class="t"><b>Guerra do Contestado</b><span>Conflito entre camponeses e forças estaduais e federais.</span></div></li>
+      <li class="hl"><div class="y">1923–25</div><div class="t"><b>Arraial de Santa Dica</b><span>Em 1925, tropa estadual é enviada a Lagoinha.</span></div></li>
+      <li><div class="y">1925–26</div><div class="t"><b>Coluna Prestes em Goiás</b><span>Tenentismo e desgaste do modelo oligárquico.</span></div></li>
+    </ul>
+  </div>
+  <div class="ch-end"><span>Capítulo 1 de 4</span><span>Próximo: Marcha para o Oeste e paternalismo →</span></div>
+</section>
+
+<section class="chapter" id="etapa2">
+  <header class="ch-head"><div class="ch-num">2</div><div>
+    <p class="eyebrow">Era Vargas e República Populista · 1930–1964</p><h2>Paternalismo, populismo e Marcha para o Oeste</h2>
+    <p class="deck">Direitos que chegam “de cima”, trabalhadores que também lutam por eles e a terra do interior em disputa.</p></div></header>
+  <div class="body">
+    <div class="chips"><span class="chip">EM13CHS601</span><span class="chip">EM13CHS503</span><span class="chip">EM13CHS605</span><span class="chip g">Era Vargas · CLT · Trombas e Formoso · CANG</span></div>
+    <p class="lead">A partir de 1930, o Estado brasileiro passou a reconhecer direitos de quem trabalhava. Isso foi uma conquista real, mas veio acompanhado de controle, propaganda e de uma imagem: a de que os direitos eram um presente do governante. Neste capítulo você vai aprender a separar o que foi benefício, o que foi luta e o que foi controle.</p>
+
+    <div class="perguntas-box"><span class="lab">Perguntas orientadoras</span>
+      <ul>
+        <li>Os direitos trabalhistas foram uma dádiva do governo ou uma conquista dos trabalhadores?</li>
+        <li>O que é paternalismo? E o que se entende por populismo?</li>
+        <li>O que acontecia com os trabalhadores do campo e com os povos indígenas nesse período?</li>
+      </ul>
+    </div>
+
+    <h3>Direitos de cima para baixo: o trabalhismo</h3>
+    <p>Antes de 1930, os operários já se organizavam, faziam greves e eram reprimidos. Depois da Revolução de 1930, Vargas percebeu que os trabalhadores das cidades se tornavam uma força política importante e procurou atraí-los. Os textos a seguir mostram os dois lados dessa política: ela reconheceu direitos e, ao mesmo tempo, colocou os sindicatos sob a vigilância do Estado.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · O trabalhismo e a tutela dos sindicatos</header>
+      <div class="in">
+        <p>A existência de um movimento operário forte e organizado no Brasil é anterior à chegada de Getúlio Vargas ao poder, que se deu em 1930. Nas primeiras décadas do século XX, os operários brasileiros realizaram diversas mobilizações em prol da luta por direitos. Em contrapartida, o Estado brasileiro agia reprimindo e prendendo trabalhadores. A chegada de Vargas ao poder após a Revolução de 1930 trouxe novidades a esse cenário. Desde cedo, Vargas percebeu que os trabalhadores eram atores políticos cada vez mais relevantes, sobretudo nas grandes cidades do país. Ele procurou, então, construir uma política capaz de atraí-los a fim de transformá-los em uma de suas bases de apoio, sem, no entanto, renunciar à vigilância e, quando necessário, à repressão. Na prática, esmagava com mão de ferro a estrutura autônoma pacientemente montada pelos sindicalistas revolucionários, muitos de orientação anarquista, no período anterior ao seu governo. Essa política ficou conhecida como trabalhismo e baseava-se em alguns aspectos fundamentais. Um desses aspectos era o controle do Estado sobre os sindicatos, exercido por meio da aprovação, ainda em 1931, da Lei de Sindicalização, segundo a qual cada categoria profissional poderia ter um único sindicato, cujo funcionamento deveria ser aprovado pelo recém-criado Ministério do Trabalho, Indústria e Comércio. Além disso, os trabalhadores que quisessem desfrutar das leis trabalhistas deveriam necessariamente ser filiados ao sindicato oficial. Tal legislação, consagrada na Constituição de 1937, buscava reduzir a autonomia das organizações operárias, colocando-as sob o controle do Estado, com o objetivo de estabelecer a “colaboração de classes”, ou seja, a supressão dos enfrentamentos entre trabalhadores e patrões. Havia também a defesa de uma ética de valorização do trabalho, disseminada entre a juventude e os trabalhadores por meio da máquina de propaganda do governo. Valendo-se de um discurso segundo o qual o trabalho disciplinado era um valor a ser perseguido por todos os brasileiros, o DIP alimentava um sentimento de patriotismo vinculado ao trabalho. Por fim, houve o reconhecimento de direitos trabalhistas promulgados por Vargas por intermédio de uma série de leis trabalhistas, como veremos a seguir. Tais direitos, reivindicados pelos trabalhadores ao longo de décadas por meio de uma série de lutas, foram apresentados pela propaganda oficial como dádivas de Vargas, o “pai dos pobres”.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS, Cristiano; FERREIRA, Lier Pires; SILVA, Renata (coord.). <em>História: democracia e protagonismo</em> (Interação). São Paulo: Editora do Brasil, 2024. p. 338.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · A CLT em 1943</header>
+      <div class="in">
+        <p>No dia 1º de maio de 1943, em meio às comemorações promovidas pelo governo para celebrar o Dia do Trabalhador, foi criada a Consolidação das Leis do Trabalho (CLT), legislação que reunia diversos direitos trabalhistas previamente reconhecidos pelo Estado brasileiro. Entre esses direitos estavam: salário mínimo; férias remuneradas; jornada diária máxima de oito horas; proibição do trabalho de menores de 14 anos; proibição do trabalho de mulheres grávidas por seis semanas antes e seis semanas após o parto; e pagamento de valor adicional ao salário pelo exercício de atividades laborais consideradas insalubres. Vale lembrar que, a despeito de sua formalização, na prática, a CLT não alcançou os trabalhadores rurais, que permaneceram, em sua maioria, alijados dos direitos trabalhistas básicos.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (2024), p. 338.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Legislação trabalhista e controle sindical</header>
+      <div class="in">
+        <p>Com o início da Era Vargas, a partir de 1930, a legislação trabalhista foi usada de forma estratégica para legitimar o novo regime. Entre os anos 1930 e 1945, o Estado brasileiro combinou uma política centralizadora e repressora com a ampliação da regulação dos hoje considerados direitos sociais. Usando uma lógica paternalista, Getúlio Vargas articulou o autoritarismo político com o estabelecimento de leis de proteção aos trabalhadores. Essa foi uma maneira de controlar o movimento operário independente e fundar um sindicalismo atrelado aos interesses do Estado.</p>
+        <p>Em 1931, foi instituída a Lei de Sindicalização, estabelecendo o modelo corporativo a ser adotado por sindicatos patronais e de trabalhadores. Tanto os sindicatos de trabalhadores quanto os patronais tornaram-se órgãos de colaboração com o Estado, sendo vedadas suas manifestações políticas ou ideológicas. Com essas medidas, o governo buscava, ao mesmo tempo, garantir direitos básicos e controlar as associações autônomas.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA, Felipe de Paula Góis; BACKX, Isabela; FERNANDES, Luiz Estevam de Oliveira; ABREU, Marcelo. <em>Moderna Plus: História</em>. São Paulo: Moderna, 2024. p. 295.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Propaganda e o mito do “pai dos pobres”</header>
+      <div class="in">
+        <p>O Estado Novo tentou legitimar o poder autoritário usando propaganda política, que foi intensificada com a criação do Departamento de Imprensa e Propaganda, em 1939. Esse departamento exercia censura prévia à imprensa e alimentava os meios de comunicação com publicidade centrada na figura de Getúlio Vargas. A propaganda política e ideológica era promovida para consolidar a imagem de Vargas como líder carismático. A sistematização das leis trabalhistas na Consolidação das Leis do Trabalho, em 1943, também foi usada para fomentar essa imagem e criar o mito de Vargas como “pai dos pobres” e “protetor dos trabalhadores”.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA; BACKX; FERNANDES; ABREU, <em>Moderna Plus: História</em> (2024), p. 294.</div>
+    </aside>
+
+    <div class="callout concept"><span class="lab">Conceitos-chave</span>
+      <p><b>Paternalismo:</b> relação em que quem governa trata os governados como filhos a serem protegidos, e não como cidadãos com direitos que podem exigir. O benefício aparece como favor, e a gratidão passa a ser esperada.</p>
+      <p><b>Trabalhismo:</b> conjunto de ideias e de leis que ligou o reconhecimento de direitos do trabalho ao Estado e à figura do presidente. Neste período, os sindicatos precisavam do aval do Ministério do Trabalho.</p>
+      <p><b>Populismo:</b> nome dado, por alguns autores, ao estilo de governo que fala diretamente às massas urbanas, em especial entre 1930 e 1964. O termo é debatido pelos historiadores, como mostram os dois autores a seguir.</p>
+    </div>
+
+    <h3>Manipulação ou troca? O debate sobre o populismo</h3>
+    <p>Por muito tempo se explicou esse período dizendo que Vargas e seus sucessores simplesmente enganaram os trabalhadores. Pesquisadores posteriores discordaram: os trabalhadores teriam escolhido, negociado e pressionado. As duas citações a seguir mostram o debate com as palavras dos próprios autores.</p>
+
+    <figure class="doc"><blockquote>[…] O populismo foi, sem dúvida, manipulação de massas, mas a manipulação nunca foi absoluta. Se o fosse, estaríamos obrigados a aceitar a visão liberal elitista que, em última instância, vê no populismo uma espécie de aberração da história, alimentada pela emocionalidade das massas e pela falta de princípio dos líderes. [...] O populismo foi um modo determinado e concreto de manipulação das classes populares mas foi também um modo de expressão de suas insatisfações. Foi, ao mesmo tempo, uma forma de estruturação do poder para os grupos dominantes e a principal forma de expressão política da emergência popular no processo de desenvolvimento industrial e urbano.</blockquote>
+      <figcaption><b>WEFFORT, Francisco.</b> <em>O populismo na política brasileira</em>. Rio de Janeiro: Paz e Terra, 1980. p. 62-63, citado em CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (Interação), São Paulo: Editora do Brasil, 2024, p. 341.</figcaption></figure>
+
+    <figure class="doc"><blockquote>[O texto] A invenção do trabalhismo [...] [teve o objetivo de] investigar a história da constituição da classe trabalhadora no Brasil, atribuindo a ela, durante todos os “tempos”, um papel de sujeito que realiza escolhas segundo o horizonte de um campo de possibilidades. A abordagem se recusava a atribuir aos trabalhadores uma posição política passiva, não importando se mais ou menos completa. Aqui residia a grande dificuldade, teórica e histórica, de utilização do conceito de populismo que, como foi visto, remetia à ideia de manipulação política, ainda que se reconhecessem todas as suas ambiguidades. Por razões que se prendiam a seu próprio uso compartilhado, tudo o que estivesse qualificado como populista enfatizava a dimensão de controle/ação do Estado sobre as massas, pois inclusive uma das questões mais complexas desta formulação era a própria negação do estatuto de classe (por falta de organização e consciência) aos trabalhadores inclusos nestas massas que, sem dúvida, os extrapolavam.</blockquote>
+      <figcaption><b>GOMES, Angela de Castro.</b> Resenha sobre <em>A invenção do trabalhismo</em>. <em>Tempo</em>, v. 1, n. 2, p. 14, 1996, citada em CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (Interação), São Paulo: Editora do Brasil, 2024, p. 341.</figcaption></figure>
+
+    <div class="callout teal"><span class="lab">Cidadania segundo José Murilo de Carvalho</span>
+      <p>Na tese de José Murilo de Carvalho, o Brasil seguiu um caminho diferente do modelo clássico: os direitos sociais chegaram primeiro, nos anos 1930, em um período em que os direitos políticos eram limitados. Carvalho chama a atenção para a consequência disso: os direitos passaram a ser vistos como favor do Estado, e não como resultado da ação dos cidadãos. Ele chama essa postura de “estadania”. Em <em>Cidadania no Brasil: o longo caminho</em>, o autor desenvolve o argumento com mais detalhes e vale a leitura na íntegra.</p>
+    </div>
+
+    <h3>E o campo? A cidadania que não chegou</h3>
+    <p>A legislação trabalhista da época foi pensada para as cidades. Quem trabalhava na terra ficou, em geral, de fora, como o texto sobre a CLT já indicou: os trabalhadores rurais permaneceram, em sua maioria, sem os direitos básicos. Isso é decisivo para o que vem a seguir, porque o interior era justamente a região para onde o governo queria levar gente, estradas e cidades.</p>
+
+    <h3>A Marcha para o Oeste e os povos indígenas</h3>
+    <p>A Marcha para o Oeste foi a principal iniciativa de Vargas voltada ao interior do Brasil. O governo queria estimular a ocupação do território, o desenvolvimento econômico e a defesa das fronteiras. A leitura abaixo mostra que ela envolveu também os povos indígenas, e que esses povos reagiram de formas diferentes.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · A política indigenista na Era Vargas</header>
+      <div class="in">
+        <p>A política indigenista na Era Vargas caracterizou-se por certa ambivalência. Por um lado, havia uma exaltação da figura do “índio” e de sua importância na formação do Brasil e do povo brasileiro, em mais uma das investidas do varguismo na identidade nacional. Por outro, o apego a uma visão genérica de “índio” deixava evidente o etnocentrismo de uma política que desconsiderava a diversidade e os interesses dos povos indígenas e cujo objetivo último era a integração dos indígenas à sociedade brasileira na qualidade de agricultores ou sentinelas da pátria, responsáveis pela guarda de suas fronteiras distantes. Foi essa visão ambivalente que orientou a principal iniciativa de Vargas voltada para o interior do Brasil: a Marcha para o Oeste. Nesse contexto, cerca de 90% da população brasileira ocupava apenas 1/3 do território nacional, sobretudo a sua faixa litorânea. Interessado em promover o desenvolvimento econômico, a ocupação, a integração e a defesa do interior do território, o governo decidiu incentivar a migração de brasileiros para os sertões do país. Na visão disseminada pela campanha, os indígenas se integrariam aos migrantes de maneira harmoniosa e ambos contribuiriam para o sucesso da ambiciosa empreitada. Na prática, porém, não foi bem isso que ocorreu. Os povos indígenas reagiram de maneiras diferentes à investida governamental. Na região hoje ocupada pelos estados de Mato Grosso, Mato Grosso do Sul, Goiás e Tocantins, alguns povos indígenas – como os karajás e os xerentes –, que já viviam acossados pela presença dos não indígenas, aproximaram-se do governo, interessados na proteção e na assistência oferecidas pelo Estado. Por outro lado, os xavantes – que até então dominavam um extenso território ao norte de Mato Grosso – reagiram com violência à tentativa de contato de uma expedição do Serviço de Proteção ao Índio (SPI) enviada pelo governo, recusando o contato. As diferentes reações à ambígua política do Governo Vargas reforçam que a história dos povos indígenas não pode ser escrita sem levar em consideração as escolhas e as ações dos próprios indígenas.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (2024), p. 340.</div>
+    </aside>
+
+    <div class="goias-box"><span class="lab">Recorte regional · Goiás</span>
+      <h4>Goiânia, a CANG e o Estado Novo</h4>
+      <p>Goiás foi um dos palcos centrais da Marcha para o Oeste. A construção de Goiânia, planejada como nova capital durante o governo do interventor Pedro Ludovico Teixeira, simbolizou a ideia de um interior “moderno”. A Colônia Agrícola Nacional de Goiás (CANG), criada em 1941 na região onde hoje fica Ceres, foi pensada como um projeto de colonização dirigida: o governo federal distribuía lotes a famílias de lavradores. Esses projetos atraíram migrantes de vários estados e abriram a região norte-central de Goiás à ocupação.</p>
+      <p>O mesmo texto sobre o Estado Novo vale aqui: a propaganda mostrava a conquista do interior como obra do governo. Para os povos que já viviam ali, como os Karajá e os Xerente, a chegada de colonos e de estradas significou mais pressão sobre o território, e algumas aproximações com o governo foram uma estratégia de proteção, como a leitura anterior explica.</p>
+      <h4>Trombas e Formoso: posseiros que se organizam</h4>
+      <p>Nas décadas de 1940 e 1950, a região de Trombas e Formoso, no norte de Goiás, recebeu muitas famílias de posseiros, isto é, lavradores que ocupavam terras sem título formal. Quando grileiros (pessoas que forjavam documentos de propriedade) passaram a reivindicar as mesmas terras, os posseiros se organizaram. Formaram uma associação de lavradores, criaram uma estrutura própria de decisão coletiva e, em alguns momentos, resistiram com armas a tentativas de expulsão. Entre as lideranças esteve José Porfírio de Souza, que depois foi eleito deputado estadual, em 1962.</p>
+      <p>O caso é importante porque mostra camponeses que se organizam por conta própria para defender sua terra, num momento em que a lei trabalhista não alcançava o campo. Você vai ver mais adiante o que aconteceu com essa liderança durante a ditadura.</p>
+    </div>
+
+    <div class="scroll"><table class="tb">
+      <thead><tr><th style="width:24%"></th><th>CANG (colonização dirigida)</th><th>Trombas e Formoso (ocupação pelos posseiros)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Quem comandou</b></td><td>O governo federal, por meio de um projeto oficial.</td><td>Os próprios lavradores, organizados em associação.</td></tr>
+        <tr><td><b>Como a terra foi obtida</b></td><td>Distribuição de lotes pelo Estado.</td><td>Ocupação, seguida de disputa com grileiros.</td></tr>
+        <tr><td><b>Imagem pública</b></td><td>Obra do governo na Marcha para o Oeste.</td><td>Luta camponesa por conta própria.</td></tr>
+      </tbody></table></div>
+
+    <h3>As Ligas Camponesas e as reformas de base</h3>
+    <p>Enquanto no Centro-Oeste os posseiros resistiam, no Nordeste surgiam as Ligas Camponesas. Elas defendiam direitos para os trabalhadores rurais e tornaram a reforma agrária um tema nacional. No governo de João Goulart (1961–1964), a reforma agrária fez parte do pacote das reformas de base.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · As Ligas Camponesas</header>
+      <div class="in">
+        <p>No Brasil, a mobilização de trabalhadores rurais começou a ganhar força a partir da década de 1950 com a atuação das Ligas Camponesas na Região Nordeste. As ligas surgiram no contexto do início da modernização do campo, quando a mecanização da produção agrária começou a substituir o trabalho humano. Essas organizações se espalharam para outras regiões do país, mobilizando os trabalhadores na defesa da distribuição de terras e da necessidade de reformas que melhorassem sua condição de vida.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO, Gislane; SERIACOPI, Reinaldo. <em>Por toda parte: História</em>. São Paulo: FTD, 2024. p. 184.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Direitos no campo e reformas de base</header>
+      <div class="in">
+        <p>A partir de 1955, formaram-se grupos como as Ligas Camponesas, que defendiam os direitos de posseiros, a sindicalização dos trabalhadores rurais e a implementação de direitos trabalhistas no campo.</p>
+        <p>Uma das propostas mais ousadas de Jango foi a das reformas de base, um conjunto de medidas que atacavam problemas estruturais da sociedade brasileira. Entre as reformas propostas estavam a tributária, habitacional, educacional, bancária e a reforma agrária, que pretendia promover a redistribuição da terra a milhares de trabalhadores rurais que trabalhavam em terras arrendadas de grandes proprietários e viviam sob o risco de expulsão.</p>
+      </div>
+      <div class="src"><b>Fontes:</b> VIEIRA; BACKX; FERNANDES; ABREU, <em>Moderna Plus: História</em> (2024), p. 337; CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (2024), p. 373.</div>
+    </aside>
+
+    <ul class="tl">
+      <li><div class="y">1930</div><div class="t"><b>Revolução de 1930</b><span>Vargas chega ao poder.</span></div></li>
+      <li><div class="y">1931</div><div class="t"><b>Lei de Sindicalização</b><span>Um sindicato por categoria, aprovado pelo Ministério do Trabalho.</span></div></li>
+      <li><div class="y">1937</div><div class="t"><b>Estado Novo</b><span>Regime autoritário, com censura e propaganda.</span></div></li>
+      <li class="hl"><div class="y">1941</div><div class="t"><b>CANG</b><span>Colônia Agrícola Nacional de Goiás, na região de Ceres.</span></div></li>
+      <li><div class="y">1943</div><div class="t"><b>CLT</b><span>Direitos trabalhistas reunidos em 1º de maio.</span></div></li>
+      <li class="hl"><div class="y">1950s</div><div class="t"><b>Trombas e Formoso</b><span>Posseiros se organizam contra grileiros no norte de Goiás.</span></div></li>
+      <li><div class="y">1955</div><div class="t"><b>Ligas Camponesas</b><span>Defendem posseiros, sindicalização e direitos no campo.</span></div></li>
+      <li><div class="y">1961–64</div><div class="t"><b>Governo Goulart e reformas de base</b><span>A reforma agrária entra na pauta nacional.</span></div></li>
+    </ul>
+  </div>
+  <div class="ch-end"><span>Capítulo 2 de 4</span><span>Próximo: Ditadura, repressão e direitos humanos →</span></div>
+</section>
+
+<section class="chapter" id="etapa3">
+  <header class="ch-head"><div class="ch-num">3</div><div>
+    <p class="eyebrow">Ditadura Civil-Militar · 1964–1985</p><h2>Repressão, resistência e direitos humanos</h2>
+    <p class="deck">O que acontece com a cidadania quando o Estado suspende garantias, e como a sociedade resiste e denuncia.</p></div></header>
+  <div class="body">
+    <div class="chips"><span class="chip">EM13CHS601</span><span class="chip">EM13CHS101</span><span class="chip">EM13CHS605</span><span class="chip g">AI-5 · Araguaia · CPT · Mauro Borges</span></div>
+    <p class="lead">Em 1964, um golpe depôs o presidente João Goulart e instalou um regime militar que durou até 1985. Nesses vinte e um anos, os direitos civis e políticos foram reduzidos e opositores foram perseguidos. Mesmo assim, houve resistência: na cidade, no campo, na Igreja e entre estudantes. Neste capítulo você vai ver o que a lei autorizava, quem resistiu e como o interior de Goiás aparece nessa história.</p>
+
+    <div class="perguntas-box"><span class="lab">Perguntas orientadoras</span>
+      <ul>
+        <li>Que instrumentos legais o regime usou para concentrar poder?</li>
+        <li>Como a repressão atingiu o campo e as comunidades rurais?</li>
+        <li>Que papel tiveram os movimentos de denúncia, como a Igreja e a CPT?</li>
+      </ul>
+    </div>
+
+    <h3>Os atos institucionais e a suspensão de direitos</h3>
+    <p>Os governos militares governaram por meio de atos institucionais, normas que valiam acima da própria Constituição. O primeiro deles, o AI-1, foi assinado em abril de 1964. O mais duro foi o AI-5, de 1968. A leitura a seguir resume os primeiros atos; logo depois você lê o AI-5 nas palavras da própria lei.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · Da instalação da ditadura ao endurecimento</header>
+      <div class="in">
+        <p>O ato institucional no 1 (AI-1), assinado em abril de 1964, foi o primeiro passo para consolidar a ditadura no Brasil. Ele centralizou o poder no presidente, suspendeu garantias individuais e permitiu a cassação de mandatos políticos. A oposição foi severamente reprimida, com censura à imprensa e a criação de um sistema bipartidário que dividia o país entre a Aliança Renovadora Nacional (Arena), partido de apoio ao regime, e o Movimento Democrático Brasileiro (MDB), de oposição. A repressão aumentou em 1966, com o AI-3, que estabeleceu eleições indiretas para governadores e prefeitos das capitais. Em 1967, a promulgação da nova Constituição e a aprovação das Leis de Imprensa e de Segurança Nacional ampliaram os poderes do Executivo e restringiram ainda mais as liberdades civis. A ascensão do general Arthur da Costa e Silva (1899-1969) à presidência, no mesmo ano, intensificou a perseguição aos opositores. A resistência popular cresceu, incluindo protestos de estudantes, de trabalhadores e de setores da Igreja Católica que anteriormente haviam apoiado o golpe. Grandes manifestações, como a de junho de 1968, no Rio de Janeiro (RJ), destacaram a crescente demanda por democracia. O governo respondeu com mais prisões e censuras. O ápice da repressão foi o AI-5, decretado em dezembro de 1968. Esse ato concedeu poderes quase absolutos ao presidente, permitindo a suspensão de garantias individuais, o fechamento do Congresso e a intervenção nos estados. O AI-5 representou um retrocesso sem precedentes para a democracia brasileira, marcando um dos momentos mais autoritários e repressivos da ditadura civil-militar no Brasil.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO, Gislane; SERIACOPI, Reinaldo. <em>Por toda parte: História</em>. São Paulo: FTD, 2024. p. 329.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · O AI-5</header>
+      <div class="in">
+        <p>Como resposta, o presidente Costa e Silva decretou o Ato Institucional nº 5 (AI-5), símbolo maior do autoritarismo militar. O AI-5 deu aos militares o poder de fechar o Congresso Nacional, cassar mandatos parlamentares, demitir juízes, intervir em estados e municípios e decretar o estado de sítio. O novo ato também suspendeu o direito ao habeas corpus. Com a perda de direitos, milhares de pessoas foram presas e perseguidas de forma arbitrária por serem consideradas inimigas do governo.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS, Cristiano; FERREIRA, Lier Pires; SILVA, Renata (coord.). <em>História: democracia e protagonismo</em> (Interação). São Paulo: Editora do Brasil, 2024. p. 381.</div>
+    </aside>
+
+    <figure class="doc"><blockquote>Art. 10 – Fica suspensa a garantia de habeas corpus, nos casos de crimes políticos, contra a segurança nacional, a ordem econômica e social e a economia popular. Art. 11 – Excluem-se de qualquer apreciação judicial todos os atos praticados de acordo com este Ato Institucional e seus Atos Complementares, bem como os respectivos efeitos.</blockquote>
+      <figcaption><b>BRASIL. Ato Institucional n. 5, de 13 de dezembro de 1968</b>, arts. 10 e 11, reproduzidos em SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 257.</figcaption></figure>
+
+    <div class="callout warn"><span class="lab">Em foco</span>
+      <p>Releia os dois artigos. O artigo 10 suspendia o habeas corpus, que protege a pessoa presa de ficar sem explicação. O artigo 11 impedia a Justiça de examinar os atos do governo ligados ao AI-5. Veja como esses dois dispositivos retiram do cidadão a defesa mais básica: saber por que foi preso e poder contestar isso diante de um juiz.</p>
+    </div>
+
+    <h3>O campo na ditadura: um paradoxo</h3>
+    <p>A ditadura reprimiu o movimento camponês: as Ligas Camponesas foram divididas, criminalizadas e fortemente reprimidas, como a leitura abaixo registra. Ao mesmo tempo, a ditadura criou, no início dos anos 1970, o FUNRURAL, programa que levou algum benefício previdenciário ao trabalhador rural. Isso se encaixa no que José Murilo de Carvalho descreve para o Brasil: direitos sociais concedidos em um período em que os direitos políticos estavam suspensos. Mas é preciso cuidado: o benefício existiu, mas os trabalhadores não podiam se organizar livremente para reivindicá-lo.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · A criminalização dos movimentos do campo</header>
+      <div class="in">
+        <p>No decorrer dos anos, grupos dominantes procuraram dividir e criminalizar esses movimentos, que sofreram forte repressão durante a ditadura civil-militar (1964-1985). Durante a década de 1980, a reivindicação pela distribuição de terras no Brasil foi retomada, e pode-se considerar o MST como herdeiro da luta iniciada pelas Ligas Camponesas.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 184.</div>
+    </aside>
+
+    <h3>A guerrilha do Araguaia</h3>
+    <p>Outra face da repressão no interior foi a Guerrilha do Araguaia. Ela envolveu militantes do PCdoB, na região do Rio Araguaia, na divisa entre os atuais Pará, Tocantins (até 1988, parte de Goiás) e Maranhão. A resposta militar foi violenta e atingiu também moradores da região.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · A Guerrilha do Araguaia</header>
+      <div class="in">
+        <p>No espaço rural, foi organizada pelo Partido Comunista do Brasil (PCdoB) a Guerrilha do Araguaia, na região do Rio Araguaia, na divisa dos estados do Pará, Goiás (na região que hoje pertence a Tocantins) e Maranhão. Os guerrilheiros procuraram desenvolver focos revolucionários e mobilizar a população camponesa para lutar pela reforma agrária. Eles estocavam armas e munições, além de abrigar pessoas perseguidas pela Ditadura Civil-Militar. Pretendiam que a guerrilha fosse o ponto de partida para iniciar a revolução socialista no Brasil. O governo militar enviou para a região uma grande tropa de soldados, que assassinou 59 militantes e moradores que supostamente apoiavam a guerrilha.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> CAMPOS; FERREIRA; SILVA (coord.), <em>História: democracia e protagonismo</em> (2024), p. 382.</div>
+    </aside>
+
+    <div class="goias-box"><span class="lab">Recorte regional · Goiás</span>
+      <h4>Mauro Borges, o governo estadual e o golpe</h4>
+      <p>Goiás também foi atingido pela instalação do regime. O governador Mauro Borges, que governava o estado desde 1961, foi afastado em 1964, após uma intervenção federal. O episódio mostra que a disputa do poder não ficou restrita às capitais do país: os estados também foram reorganizados pelos militares.</p>
+      <h4>José Porfírio, Trombas e a repressão</h4>
+      <p>A liderança camponesa de José Porfírio de Souza, que você conheceu no capítulo anterior, foi atingida pela repressão após 1964. Ele foi preso e acabou desaparecido durante o regime. A data exata é incerta, e o caso permanece como um dos exemplos de desaparecimento político ligados ao campo goiano. A Comissão Especial sobre Mortos e Desaparecidos Políticos registra o caso.</p>
+      <h4>O Araguaia e Goiás</h4>
+      <p>O território da guerrilha, no norte do que era então o estado de Goiás, hoje pertence ao Tocantins. Por isso o episódio aparece na história regional goiana, mesmo que a fronteira política tenha mudado com a Constituição de 1988, que criou o novo estado.</p>
+      <h4>A Comissão Pastoral da Terra (CPT)</h4>
+      <p>A CPT foi criada em 1975, em Goiânia, ligada à Igreja Católica, para acompanhar e denunciar a violência contra trabalhadores rurais e povos do campo. Num período em que a imprensa e os sindicatos estavam sob vigilância, a Igreja foi um dos poucos espaços de denúncia. A CPT segue ativa, e você vai ver no capítulo seguinte dados atuais produzidos por ela.</p>
+    </div>
+
+    <div class="callout concept"><span class="lab">Conceitos-chave</span>
+      <p><b>Ato institucional:</b> norma baixada pelo governo militar com força superior à da Constituição, usada para suspender direitos e punir opositores.</p>
+      <p><b>Habeas corpus:</b> garantia que permite a quem está preso pedir a um juiz que examine se a prisão é legal.</p>
+      <p><b>Desaparecimento político:</b> prisão ou sequestro de opositores, seguidos da negação do paradeiro, sem processo público.</p>
+      <p><b>Direitos humanos:</b> direitos de todas as pessoas, pelo simples fato de serem pessoas, e que o Estado deve proteger, e não violar.</p>
+    </div>
+
+    <div class="think"><small>Para pensar</small>Se os direitos sociais chegam, mas os direitos civis e políticos são suspensos, a pessoa é cidadã plena? Releia o argumento de Carvalho sobre os caminhos distintos da cidadania.</div>
+
+    <ul class="tl">
+      <li><div class="y">1964</div><div class="t"><b>Golpe civil-militar e AI-1</b><span>Poder centralizado no presidente; cassações.</span></div></li>
+      <li class="hl"><div class="y">1964</div><div class="t"><b>Intervenção em Goiás</b><span>O governador Mauro Borges é afastado.</span></div></li>
+      <li><div class="y">1968</div><div class="t"><b>AI-5</b><span>Suspensão do habeas corpus e fechamento do Congresso.</span></div></li>
+      <li><div class="y">Anos 1970</div><div class="t"><b>Guerrilha do Araguaia</b><span>Repressão militar no norte de Goiás (hoje Tocantins).</span></div></li>
+      <li class="hl"><div class="y">1975</div><div class="t"><b>Criação da CPT</b><span>Em Goiânia, para denunciar a violência no campo.</span></div></li>
+      <li><div class="y">1985</div><div class="t"><b>Fim do regime militar</b><span>Início da Nova República.</span></div></li>
+    </ul>
+  </div>
+  <div class="ch-end"><span>Capítulo 3 de 4</span><span>Próximo: Constituição de 1988 e novos sujeitos →</span></div>
+</section>
+
+<section class="chapter" id="etapa4">
+  <header class="ch-head"><div class="ch-num">4</div><div>
+    <p class="eyebrow">Nova República · 1985 até hoje</p><h2>A Constituição de 1988 e os novos sujeitos de direitos</h2>
+    <p class="deck">O que mudou com a Constituição Cidadã, quem passou a ser reconhecido e o que ainda falta.</p></div></header>
+  <div class="body">
+    <div class="chips"><span class="chip">EM13CHS601</span><span class="chip">EM13CHS503</span><span class="chip">EM13CHS605</span><span class="chip g">Constituição Cidadã · terra · Kalunga · CPT</span></div>
+    <p class="lead">Em 5 de outubro de 1988, o Brasil promulgou a Constituição que está em vigor até hoje. Ela foi chamada de Constituição Cidadã porque ampliou direitos e foi escrita com participação popular. Mas direitos escritos na lei precisam ser garantidos na prática, e é aí que entram os movimentos sociais, a terra e a situação de povos como os indígenas e os quilombolas.</p>
+
+    <div class="perguntas-box"><span class="lab">Perguntas orientadoras</span>
+      <ul>
+        <li>Por que a Constituição de 1988 é chamada de “Cidadã”?</li>
+        <li>Que direitos ela reconheceu a indígenas e quilombolas?</li>
+        <li>Por que, ainda hoje, há conflitos por terra e violência no campo?</li>
+      </ul>
+    </div>
+
+    <h3>Uma Constituição escrita com participação</h3>
+    <aside class="support"><header><i></i>Texto de apoio · A Assembleia Constituinte</header>
+      <div class="in">
+        <p>A reorganização política do Brasil pós-ditadura aconteceu paralelamente às tentativas de acabar com a crise econômica. Em 1986, foram convocadas eleições para escolher os deputados federais e os senadores que, em fevereiro de 1987, formaram a Assembleia Constituinte responsável por elaborar uma nova constituição para o país. Em 5 de outubro de 1988, o conjunto de leis definido pela assembleia ficou pronto. Embora o texto tenha recebido emendas e sofrido modificações, essa é a constituição que continua em vigor no Brasil. Comprometida com os direitos humanos e com a garantia de direitos políticos e sociais, a Constituição de 1988 ficou conhecida como Constituição Cidadã. Além das discussões dos representantes eleitos, reunidos na assembleia, sua criação envolveu a participação da sociedade civil: a população enviou pelo correio cerca de 72 mil sugestões que deram origem às emendas populares propostas pelos cidadãos.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA, Felipe de Paula Góis; BACKX, Isabela; FERNANDES, Luiz Estevam de Oliveira; ABREU, Marcelo. <em>Moderna Plus: História</em>. São Paulo: Moderna, 2024. p. 386.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Direitos reconhecidos</header>
+      <div class="in">
+        <p>A Constituição Cidadã foi fundamental para a redemocratização do Brasil. A Carta Magna estabeleceu o fim da censura e da tortura, garantiu a liberdade sindical e os direitos de greve e de livre associação política, estabeleceu a separação do Estado em três poderes autônomos – Executivo, Legislativo e Judiciário – e a realização de eleições diretas para os cargos do Executivo e do Legislativo, bem como determinou critérios para a indicação de autoridades do Judiciário e para a contratação de funcionários públicos por meio de processos seletivos, para garantir a independência dos órgãos públicos nas disputas políticas, entre outras deliberações.</p>
+        <p>Entre os direitos políticos, a Constituição estabeleceu o voto obrigatório para todos os cidadãos entre 18 e 70 anos e o voto facultativo para os jovens entre 16 e 18 anos e os idosos acima de 70. No campo dos direitos sociais, criminalizou o racismo e reconheceu juridicamente a igualdade entre homens e mulheres.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> VIEIRA; BACKX; FERNANDES; ABREU, <em>Moderna Plus: História</em> (2024), p. 386.</div>
+    </aside>
+
+    <div class="callout teal"><span class="lab">Cidadania segundo José Murilo de Carvalho</span>
+      <p>Para Carvalho, a cidadania plena combina direitos civis, políticos e sociais, e cada país chega a ela por um caminho próprio. Depois do longo período de direitos concedidos “de cima”, a Constituição de 1988 aparece como um marco em que os direitos políticos e civis foram reafirmados e a participação da sociedade ganhou força. Como mostra o próprio autor, a cidadania é um processo histórico que continua em construção.</p>
+    </div>
+
+    <h3>Povos indígenas e comunidades quilombolas</h3>
+    <p>Dois artigos da Constituição tratam especificamente de povos que, por muito tempo, foram tratados como se não fossem sujeitos de direitos: o artigo 231, sobre os indígenas, e o artigo 68 do Ato das Disposições Constitucionais Transitórias, sobre os quilombolas.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · Indígenas na Constituição</header>
+      <div class="in">
+        <p>Assim, a Constituição Cidadã, como é chamada a Constituição de 1988, estabeleceu leis de proteção que romperam com a perspectiva constitucional anterior, que entendia os indígenas como categoria social transitória, que desapareceria em meio à forma de vida atual. Desse modo, a nova Constituição definiu que os direitos dos indígenas sobre suas terras passariam a ser um direito originário, ou seja, anterior à criação do próprio Estado, reconhecendo o fato histórico de que eles foram os primeiros povos a ocupar o território brasileiro.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 227.</div>
+    </aside>
+
+    <figure class="doc"><blockquote>Art. 231. São reconhecidos aos índios sua organização social, costumes, línguas, crenças e tradições, e os direitos originários sobre as terras que tradicionalmente ocupam, competindo à União demarcá-las, proteger e fazer respeitar todos os seus bens. § 1o São terras tradicionalmente ocupadas pelos índios as por eles habitadas em caráter permanente, as utilizadas para suas atividades produtivas, as imprescindíveis à preservação dos recursos ambientais necessários a seu bem-estar e as necessárias à sua reprodução física e cultural, segundo seus usos, costumes e tradições.</blockquote>
+      <figcaption><b>BRASIL. Constituição da República Federativa do Brasil, 1988</b>, art. 231, reproduzido em SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 227.</figcaption></figure>
+
+    <figure class="doc"><blockquote>Art. 68. Aos remanescentes das comunidades dos quilombos que estejam ocupando suas terras é reconhecida a propriedade definitiva, devendo o Estado emitir-lhes os títulos respectivos.</blockquote>
+      <figcaption><b>BRASIL. Constituição da República Federativa do Brasil, 1988</b>, Ato das Disposições Constitucionais Transitórias, art. 68, reproduzido em SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 231.</figcaption></figure>
+
+    <div class="goias-box"><span class="lab">Recorte regional · Goiás</span>
+      <h4>Os Kalunga</h4>
+      <p>Os Kalunga vivem na região da Chapada dos Veadeiros, no nordeste de Goiás, em territórios que incluem o município de Cavalcante. Formam uma comunidade quilombola, isto é, descendente de pessoas escravizadas que fugiram ou se estabeleceram em áreas distantes, e são considerados um dos maiores quilombos do país. A leitura abaixo descreve a comunidade e o modo como ela se relaciona com o ambiente. A seguir, uma antropóloga explica por que comunidades tradicionais passaram a afirmar publicamente sua identidade.</p>
+    </div>
+
+    <aside class="support"><header><i></i>Texto de apoio · Os Kalunga</header>
+      <div class="in">
+        <p>Os Kalunga são um dos povos que se autointitulam quilombolas. Eles vivem no estado de Goiás há cerca de trezentos anos, criando gado, produzindo arroz, feijão, milho, mandioca, farinha e extraindo produtos da biodiversidade. Apesar de viverem há muitos anos no mesmo local, imagens de satélite da região mostram a integridade da natureza, apontando para o baixo impacto de suas atividades e para a importância dessa comunidade para a preservação ambiental.</p>
+        <p>“A partir do momento em que eles se sentem ameaçados na sua forma de existência, eles falam para o mundo, ‘olha, a gente está aqui, a gente existe’”, explica ela […].</p>
+      </div>
+      <div class="src"><b>Fonte:</b> SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 232. A fala da antropóloga Katia Favilla é citada a partir de: PAULO, Paula Paiva. 650 mil famílias se declaram “povos tradicionais” no Brasil; conheça os kalungas, do maior quilombo do país. <em>G1</em>, Rio de Janeiro, 29 out. 2019.</div>
+    </aside>
+
+    <h3>A terra: concentração, reforma agrária e conflitos</h3>
+    <p>A Constituição prevê a reforma agrária, mas o acesso à terra continua desigual. Os dados abaixo, de pesquisas oficiais e da CPT, mostram a dimensão do problema.</p>
+
+    <aside class="support"><header><i></i>Texto de apoio · Concentração de terras</header>
+      <div class="in">
+        <p>Segundo o Censo Agropecuário de 2017 do Instituto Brasileiro de Geografia e Estatística (IBGE), propriedades rurais com até 50 hectares compunham 81,5% do total de estabelecimentos e ocupavam 12,8% de toda a área rural. As propriedades com mais de 500 hectares representavam 2% do total de estabelecimentos e ocupavam 58,4% da área. Em resumo: há muitas pessoas sem acesso à terra ou com pouca terra, enquanto uma pequena parcela da população controla uma grande área.</p>
+        <p>Um dos fatores que agravaram a concentração fundiária no país foi a falta de atenção de sucessivos governos com a reforma agrária, garantida pela Constituição Federal de 1988. De acordo com a Constituição, tanto as propriedades urbanas como as rurais devem cumprir sua função social. Ela é cumprida quando a propriedade rural é produtiva e atende aos seguintes critérios: aproveita a terra de forma adequada, utiliza os recursos naturais disponíveis sem causar impactos ambientais, cumpre as legislações trabalhistas e favorece o bem-estar de proprietários e trabalhadores. A lei afirma que as propriedades rurais que não cumprirem sua função social podem sofrer desapropriação para fins de reforma agrária, e os proprietários das terras devem ser indenizados por isso.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO, Gislane; SERIACOPI, Reinaldo. <em>Por toda parte: História</em>. São Paulo: FTD, 2024. p. 182. Dados do IBGE, Censo Agropecuário 2017.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Reforma agrária</header>
+      <div class="in">
+        <p>A reforma agrária não se resume à distribuição de terras e deve atender também a princípios como justiça social, desenvolvimento rural sustentável, entre outros. Assim, é necessário que, além do acesso à terra, os agricultores tenham acesso à infraestrutura (energia elétrica, água, estradas, entre outras), ao crédito rural e à assistência técnica para que tenham condição de comercializar seus produtos e consigam se manter no campo.</p>
+        <p>Uma pesquisa feita pelo Incra em 2021, intitulada Estabelecimentos da reforma agrária no Censo Agropecuário 2017, identificou que existiam, no Brasil, mais de 557 mil estabelecimentos agropecuários decorrentes da reforma agrária, onde trabalhavam cerca de 1,6 milhões de pessoas. O estudo mostrou também que, nesses estabelecimentos, a produtividade de algumas culturas, como milho, mandioca, feijão, entre outras, foi superior à média nacional. Além disso, nas terras assentadas, podem ser observadas iniciativas como construção de escolas, aplicação de técnicas da agricultura familiar e cursos de formação política. A pesquisa também apontou que 86,5% das famílias assentadas vivem em municípios com baixo ou muito baixo Índice de Desenvolvimento Humano (IDH), o que redobra a importância da geração de emprego e de renda proporcionadas pela reforma agrária.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 183. Pesquisa do Incra (2021).</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Movimentos sociais</header>
+      <div class="in">
+        <p>Movimentos sociais são aqueles que reúnem parte da sociedade em defesa de uma causa. Além de ter um projeto definido, usam várias estratégias para lutar por suas demandas, como manifestações, denúncias, mobilizações e negociações. Os movimentos sociais rurais têm papel importante na luta pelos direitos dos grupos excluídos. Fazem parte de sua pauta a defesa do acesso à terra, o reconhecimento da diversidade cultural do país e a sustentabilidade.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 184.</div>
+    </aside>
+
+    <aside class="support"><header><i></i>Texto de apoio · Violência no campo</header>
+      <div class="in">
+        <p>A violência no campo é um grave problema do Brasil. Segundo a publicação Conflitos no campo Brasil 2023, da Comissão Pastoral da Terra (CPT), em 2023, foram registrados 2 203 conflitos, o maior número desde 1985, e mais de 950 mil pessoas estiveram envolvidas nesses confrontos. Os principais responsáveis pelas violências são fazendeiros, empresários e grileiros, que responderam por 60% das ocorrências. Nesse ano, 31 pessoas foram assassinadas, entre elas, a líder quilombola baiana Maria Bernardete Pacífico Moreira (1951-2023), conhecida como Mãe Bernadete, cuja morte teve grande repercussão nacional. Entre as causas dos conflitos, estão o direito de permanecer na terra, o acesso à água, as questões trabalhistas e a perseguição política. Os conflitos no campo vitimam principalmente trabalhadores rurais, indígenas e quilombolas. É consenso entre muitos pesquisadores que esses conflitos decorrem da ausência de um poder público que promova o cumprimento das leis. O poder público precisaria garantir o direito desses trabalhadores de viver e produzir na terra e assegurar aos povos e comunidades tradicionais, como indígenas e quilombolas, a demarcação definitiva de suas propriedades rurais, sem ameaças nem invasões de grileiros, mineradoras e garimpeiros e a salvo de grandes obras, como estradas e hidrelétricas.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> AZEVEDO; SERIACOPI, <em>Por toda parte: História</em> (2024), p. 185. Dados da Comissão Pastoral da Terra, <em>Conflitos no campo Brasil 2023</em>.</div>
+    </aside>
+
+    <div class="goias-box"><span class="lab">Recorte regional · Goiás</span>
+      <h4>Trabalho análogo à escravidão e a CPT</h4>
+      <p>A Comissão Pastoral da Terra, que nasceu em Goiânia em 1975, continua produzindo relatórios anuais. A leitura a seguir apresenta dados do relatório de 2023 e coloca Goiás no topo da lista de resgates. Ele é um exemplo de como uma entidade que surgiu na ditadura continua atuando na democracia.</p>
+    </div>
+
+    <aside class="support"><header><i></i>Texto de apoio · Trabalho análogo à escravidão em 2023</header>
+      <div class="in">
+        <p>O número de pessoas resgatadas em condição de trabalho análoga à escravidão foi o maior dos últimos dez anos, segundo a CPT [Comissão Pastoral da Terra]. O relatório compilou que, em 2023, 2 663 pessoas foram resgatadas nessa circunstância. O Estado com o maior número de ocorrências do gênero foi Goiás, com 699 pessoas resgatadas, seguido por Minas Gerais, com 472, e Rio Grande do Sul, com 323. No total, houve resgate de trabalhadores em condição análoga à escravidão em 207 municípios de 23 Estados do País. A produção de cana-de-açúcar foi a atividade com a maior incidência de resgates, com 618 ocorrências, seguida por lavouras permanentes, com 598, e lavouras temporárias, com 477.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. São Paulo: Edições SM, 2024, p. 159. O texto se baseia em reportagem de GALISI, <em>O Estado de S. Paulo</em>, 24 abr. 2024.</div>
+    </aside>
+
+    <ul class="tl">
+      <li><div class="y">1985</div><div class="t"><b>Fim do regime militar</b><span>Retorno de um presidente civil.</span></div></li>
+      <li><div class="y">1987</div><div class="t"><b>Assembleia Constituinte</b><span>Instalada em fevereiro.</span></div></li>
+      <li class="hl"><div class="y">1988</div><div class="t"><b>Constituição Cidadã</b><span>Promulgada em 5 de outubro.</span></div></li>
+      <li><div class="y">2017</div><div class="t"><b>Censo Agropecuário</b><span>Revela a concentração de terras.</span></div></li>
+      <li class="hl"><div class="y">2023</div><div class="t"><b>Relatórios da CPT</b><span>Maior número de conflitos no campo desde 1985; Goiás lidera os resgates de trabalhadores escravizados.</span></div></li>
+    </ul>
+  </div>
+  <div class="ch-end"><span>Capítulo 4 de 4</span><span>Próximo: Síntese →</span></div>
+</section>
+
+<section class="chapter" id="sintese">
+  <header class="ch-head"><div class="ch-num">S</div><div>
+    <p class="eyebrow">Para fechar</p><h2>Síntese: poder, resistência e cidadania</h2>
+    <p class="deck">Os quatro períodos lado a lado.</p></div></header>
+  <div class="body">
+    <p class="lead">Ao longo da República, o poder se apresentou de formas diferentes: o coronel, o presidente que “dá” direitos, o regime que suspende garantias e a Constituição que as reconhece. A resistência também mudou de forma: do arraial ao sindicato, da associação de posseiros à denúncia pela Igreja e à luta pelo reconhecimento de povos tradicionais.</p>
+    <div class="scroll"><table class="tb">
+      <thead><tr><th>Período</th><th>Forma de poder</th><th>Resistência</th><th>Caso em Goiás</th></tr></thead>
+      <tbody>
+        <tr><td><b>1889–1930</b></td><td>Coronelismo e mandonismo</td><td>Comunidades messiânicas, revoltas, tenentismo</td><td>Santa Dica; Coluna Prestes</td></tr>
+        <tr><td><b>1930–1964</b></td><td>Paternalismo e populismo; Estado Novo</td><td>Sindicatos, Ligas Camponesas, posseiros</td><td>Trombas e Formoso; CANG</td></tr>
+        <tr><td><b>1964–1985</b></td><td>Ditadura civil-militar e atos institucionais</td><td>Denúncia, guerrilha, Igreja</td><td>CPT; Araguaia; Mauro Borges</td></tr>
+        <tr><td><b>1985–hoje</b></td><td>Constituição Cidadã e conflitos por terra</td><td>Movimentos sociais, reconhecimento de povos tradicionais</td><td>Kalunga; relatório da CPT</td></tr>
+      </tbody></table></div>
+    <div class="think"><small>Para pensar</small>Carvalho defende que cada país chega à cidadania por um caminho próprio. Que direitos, no seu entendimento, chegaram ao Brasil “de cima” e quais foram conquistados por quem lutou por eles?</div>
+  </div>
+</section>
+
+<section class="chapter" id="glossario">
+  <header class="ch-head"><div class="ch-num">A</div><div><p class="eyebrow">Para consultar</p><h2>Glossário</h2><p class="deck">Os conceitos centrais da trilha em linguagem direta.</p></div></header>
+  <div class="body"><dl class="gl">
+    <dt>AI-5</dt><dd>Ato Institucional n. 5, de 1968, que ampliou os poderes do regime militar e suspendeu garantias como o habeas corpus em casos políticos.</dd>
+    <dt>Ato institucional</dt><dd>Norma baixada pelos governos militares com força superior à da Constituição.</dd>
+    <dt>Autoritarismo</dt><dd>Forma de poder que concentra decisões em poucas mãos e limita a participação, a crítica e as liberdades.</dd>
+    <dt>CANG</dt><dd>Colônia Agrícola Nacional de Goiás, projeto federal de colonização dirigida criado em 1941, na região de Ceres.</dd>
+    <dt>Cidadania</dt><dd>Condição de quem exerce direitos civis, políticos e sociais e participa da vida pública.</dd>
+    <dt>CLT</dt><dd>Consolidação das Leis do Trabalho, de 1943, que reuniu direitos trabalhistas em uma só legislação.</dd>
+    <dt>Clientelismo</dt><dd>Troca de favores entre quem tem poder e quem precisa de proteção, emprego ou benefício, em geral em troca de apoio político.</dd>
+    <dt>Constituição Cidadã</dt><dd>Nome dado à Constituição de 1988, por ampliar direitos e ter contado com participação popular.</dd>
+    <dt>Coronelismo</dt><dd>Sistema político da Primeira República em que grandes proprietários, os coronéis, controlavam votos e autoridades locais em troca de favores.</dd>
+    <dt>CPT</dt><dd>Comissão Pastoral da Terra, criada em 1975 em Goiânia, que acompanha e denuncia conflitos no campo.</dd>
+    <dt>Direitos civis</dt><dd>Liberdades individuais e igualdade perante a lei.</dd>
+    <dt>Direitos políticos</dt><dd>Direitos de votar, ser votado e participar das decisões do país.</dd>
+    <dt>Direitos sociais</dt><dd>Direitos ligados às condições de vida, como trabalho, saúde e educação.</dd>
+    <dt>Estadania</dt><dd>Termo usado por José Murilo de Carvalho para a cidadania vista como favor do Estado, e não como resultado da ação dos cidadãos.</dd>
+    <dt>Grileiro</dt><dd>Pessoa que obtém terras por meio de documentos falsos ou irregulares.</dd>
+    <dt>Habeas corpus</dt><dd>Garantia que permite a quem está preso pedir que um juiz examine se a prisão é legal.</dd>
+    <dt>Mandonismo</dt><dd>Domínio de uma pessoa ou grupo sobre a vida política de um lugar, baseado em poder local.</dd>
+    <dt>Messianismo</dt><dd>Movimento religioso em torno de um líder visto como enviado para guiar e proteger a comunidade.</dd>
+    <dt>Paternalismo</dt><dd>Relação em que o poder trata os governados como tutelados, apresentando direitos como favores.</dd>
+    <dt>Populismo</dt><dd>Termo usado para o estilo de governo que se dirige às massas urbanas, em especial entre 1930 e 1964; é um conceito debatido pelos historiadores.</dd>
+    <dt>Posseiro</dt><dd>Lavrador que ocupa e cultiva terra sem título formal de propriedade.</dd>
+    <dt>Quilombola</dt><dd>Pessoa de comunidade de origem africana formada por descendentes de escravizados.</dd>
+    <dt>Reforma agrária</dt><dd>Política de redistribuição de terras e de apoio a quem passa a trabalhá-las.</dd>
+    <dt>Trabalhismo</dt><dd>Conjunto de ideias e leis que ligou o reconhecimento de direitos do trabalho ao Estado, a partir de 1930.</dd>
+  </dl></div>
+</section>
+
+<section class="chapter" id="fontes">
+  <header class="ch-head"><div class="ch-num">§</div><div><p class="eyebrow">Referências</p><h2>Bibliografia e fontes</h2><p class="deck">De onde vêm os textos de apoio, as citações e os recortes regionais.</p></div></header>
+  <div class="body">
+    <h4>Obras-base</h4>
+    <ol class="refs">
+      <li>CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. Rio de Janeiro: Civilização Brasileira, 2001 e 13. ed., 2010 (trechos citados em SM EDUCAÇÃO, 2024).</li>
+      <li>CARVALHO, José Murilo de. <em>Os bestializados: o Rio de Janeiro e a República que não foi</em>. São Paulo: Companhia das Letras, 1987 (trechos adaptados).</li>
+      <li>CARVALHO, José Murilo de. O povo do Rio de Janeiro: bestializados ou bilontras? <em>Revista do Rio de Janeiro</em>, Niterói, n. 8, p. 102, set./dez. 2002.</li>
+    </ol>
+    <h4>Livros didáticos</h4>
+    <ol class="refs" start="4">
+      <li>AZEVEDO, Gislane; SERIACOPI, Reinaldo. <em>Por toda parte: História</em>. São Paulo: FTD, 2024.</li>
+      <li>CAMPOS, Cristiano; FERREIRA, Lier Pires; SILVA, Renata (coord.). <em>História: democracia e protagonismo</em> (Interação). São Paulo: Editora do Brasil, 2024.</li>
+      <li>SM EDUCAÇÃO (org.). <em>Ser protagonista: Ciências Humanas e Sociais Aplicadas — História</em>. 1. ed. São Paulo: Edições SM, 2024.</li>
+      <li>VIEIRA, Felipe de Paula Góis; BACKX, Isabela; FERNANDES, Luiz Estevam de Oliveira; ABREU, Marcelo. <em>Moderna Plus: História</em>. São Paulo: Moderna, 2024.</li>
+    </ol>
+    <h4>Obras e fontes citadas nos textos</h4>
+    <ol class="refs" start="8">
+      <li>WEFFORT, Francisco. <em>O populismo na política brasileira</em>. Rio de Janeiro: Paz e Terra, 1980. p. 62-63.</li>
+      <li>GOMES, Angela de Castro. Resenha sobre <em>A invenção do trabalhismo</em>. <em>Tempo</em>, v. 1, n. 2, p. 14, 1996.</li>
+      <li>FAUSTO, Boris. <em>História do Brasil</em>. São Paulo: Edusp, 1995. p. 257-258.</li>
+      <li>BRASIL. Ato Institucional n. 5, de 13 de dezembro de 1968, arts. 10 e 11.</li>
+      <li>BRASIL. Constituição da República Federativa do Brasil, 1988: art. 231 e Ato das Disposições Constitucionais Transitórias, art. 68.</li>
+      <li>PAULO, Paula Paiva. 650 mil famílias se declaram “povos tradicionais” no Brasil; conheça os kalungas, do maior quilombo do país. <em>G1</em>, Rio de Janeiro, 29 out. 2019.</li>
+      <li>GALISI. Reportagem sobre o relatório da CPT. <em>O Estado de S. Paulo</em>, 24 abr. 2024 (citado em SM EDUCAÇÃO, 2024).</li>
+      <li>COMISSÃO PASTORAL DA TERRA. <em>Conflitos no campo Brasil 2023</em> (citado em AZEVEDO; SERIACOPI, 2024).</li>
+      <li>IBGE. <em>Censo Agropecuário 2017</em>; INCRA. <em>Estabelecimentos da reforma agrária no Censo Agropecuário 2017</em>, 2021 (citados em AZEVEDO; SERIACOPI, 2024).</li>
+    </ol>
+    <h4>Para saber mais</h4>
+    <ol class="refs" start="16">
+      <li>CPDOC/FGV, verbetes biográficos e históricos (Caiado, Coluna Prestes, Goiás na Primeira República).</li>
+      <li>Comissão Especial sobre Mortos e Desaparecidos Políticos (CEMDP), registro do caso José Porfírio de Souza.</li>
+      <li>Acervo da UFG, MST e CPT, materiais sobre Trombas e Formoso e sobre a criação da CPT.</li>
+      <li>Páginas locais e de divulgação sobre Santa Dica e os Kalunga.</li>
+    </ol>
+  </div>
+</section>
+<div class="colophon">HISTÓRIA · 1ª SÉRIE · PODER, RESISTÊNCIA E CIDADANIA · CERO · 2026<br>Colégio Estadual Rodolfo de Oliveira · CERO · 2026</div>
+
+</main>
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.width=(p*100)+'%'}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var tab=document.createElement('button');tab.className='toc-tab';tab.setAttribute('aria-label','Abrir sumário');tab.setAttribute('aria-expanded','false');tab.innerHTML='<b>\u2630</b> Sumário';
+  var ov=document.createElement('div');ov.className='toc-ov';
+  var dr=document.createElement('aside');dr.className='drawer';dr.setAttribute('aria-label','Sumário');dr.setAttribute('aria-hidden','true');
+  dr.innerHTML='<div class="dr-head"><div><div class="k">História \u00b7 1\u00aa série</div><div class="t">Poder, Resistência e Cidadania</div></div><button class="dr-close" aria-label="Fechar sumário">\u00d7</button></div><div class="dr-prog"><span id="drLbl">Capa</span><i><span id="drBar"></span></i></div><div class="dr-body" id="drBody"></div>';
+  document.body.append(tab,ov,dr);
+  var body=dr.querySelector('#drBody');
+  function slug(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+  function sec(id){return document.getElementById(id)}
+  function title(id){var h=sec(id).querySelector('h2');return h?h.textContent:'Capa'}
+  function num(id){var n=sec(id).querySelector('.ch-num');return n?n.textContent:'\u00b7'}
+  function subs(id){var out=[];sec(id).querySelectorAll('.body h3').forEach(function(h){if(!h.id)h.id=id+'-'+slug(h.textContent);out.push(h)});return out}
+  var links={};
+  function link(id,cls){var a=document.createElement('a');a.href='#'+id;a.className=cls;links[id]=a;return a}
+  [['capa','Capa'],['habilidades','Habilidades e objetivos'],['abertura','Para começar']].forEach(function(p){var a=link(p[0],'dr-link');a.textContent=p[1];body.appendChild(a)});
+  function group(label,ids,open){
+    var g=document.createElement('div');g.className='acc'+(open?' open':'');
+    var b=document.createElement('button');b.textContent=label;b.setAttribute('aria-expanded',open?'true':'false');
+    var pn=document.createElement('div');pn.className='panel';
+    ids.forEach(function(id){
+      var it=document.createElement('div');it.className='item';
+      var row=document.createElement('div');row.className='row';
+      var a=link(id,'');a.innerHTML='<b>'+num(id)+'</b><span>'+title(id)+'</span>';row.appendChild(a);
+      var ss=subs(id);
+      if(ss.length){
+        var tb=document.createElement('button');tb.setAttribute('aria-label','Mostrar tópicos');tb.setAttribute('aria-expanded','false');
+        tb.addEventListener('click',function(e){e.stopPropagation();var o=it.classList.toggle('open');tb.setAttribute('aria-expanded',o)});
+        row.appendChild(tb);
+        var sb=document.createElement('div');sb.className='subs';
+        ss.forEach(function(h){var s=document.createElement('a');s.href='#'+h.id;s.textContent=h.textContent;sb.appendChild(s)});
+        it.append(row,sb);
+      } else it.appendChild(row);
+      pn.appendChild(it);
+    });
+    b.addEventListener('click',function(){var o=!g.classList.contains('open');
+      body.querySelectorAll('.acc').forEach(function(x){x.classList.remove('open');x.firstChild.setAttribute('aria-expanded','false')});
+      if(o){g.classList.add('open');b.setAttribute('aria-expanded','true')}});
+    g.append(b,pn);body.appendChild(g);return g;
+  }
+  var chIds=['etapa1','etapa2','etapa3','etapa4','sintese'];
+  var g1=group('Capítulos',chIds,true);
+  var g2=group('Para consultar',['glossario','fontes'],false);
+  function open(){dr.classList.add('open');ov.classList.add('open');tab.setAttribute('aria-expanded','true');dr.setAttribute('aria-hidden','false')}
+  function close(){dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded','false');dr.setAttribute('aria-hidden','true')}
+  tab.addEventListener('click',open);ov.addEventListener('click',close);dr.querySelector('.dr-close').addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  body.addEventListener('click',function(e){if(e.target.closest('a'))close()});
+  var order=['capa','habilidades','abertura'].concat(chIds,['glossario','fontes']);
+  var lbl=dr.querySelector('#drLbl'),pbar=dr.querySelector('#drBar');
+  function setActive(id){
+    Object.keys(links).forEach(function(k){links[k].classList.remove('on')});
+    if(links[id])links[id].classList.add('on');
+    var ci=chIds.indexOf(id);
+    lbl.textContent=(ci>=0&&ci<4)?'Capítulo '+(ci+1)+' de 4 \u00b7 '+title(id):title(id)||'Capa';
+    pbar.style.width=((order.indexOf(id)+1)/order.length*100)+'%';
+    var grp=ci>=0?g1:(['glossario','fontes'].indexOf(id)>=0?g2:null);
+    if(grp&&!grp.classList.contains('open')&&!dr.classList.contains('open')){body.querySelectorAll('.acc').forEach(function(x){x.classList.remove('open')});grp.classList.add('open')}
+  }
+  setActive('capa');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id)})},{rootMargin:'-30% 0px -60% 0px'});
+    order.forEach(function(k){io.observe(sec(k))});
+  }
+})();
+</script>
+<script>
+function openAuthorsCarousel(e){
+  if(e) e.preventDefault();
+  const imgs=['img/cidadania1.webp','img/cidadania2.webp','img/cidadania3.webp'].map(x=>new URL(x,location.href).href);
+  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
+  const data=JSON.stringify(imgs);
+  w.document.open();
+  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Três obras sobre cidadania no Brasil</title><style>
+  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
+  </style></head><body><div class="bar"><div class="title">Três obras sobre cidadania no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Infográfico didático sobre cidadania"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
+  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
+  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.onclick=()=>show(i);dots.appendChild(b)});
+  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
+  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
+  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
+  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
+  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
+  <\/script></body></html>`);
+  w.document.close();
+}
+</script>
+<script>
+function openCompareCarousel(e){
+  if(e) e.preventDefault();
+  const imgs=['img/cidadania4.webp','img/cidadania5.webp'].map(x=>new URL(x,location.href).href);
+  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
+  const data=JSON.stringify(imgs);
+  w.document.open();
+  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparando os três olhares sobre a cidadania no Brasil</title><style>
+  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
+  </style></head><body><div class="bar"><div class="title">Comparando os três olhares sobre a cidadania no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Comparação didática entre três interpretações da cidadania no Brasil"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
+  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
+  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
+  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
+  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
+  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
+  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
+  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
+  <\/script></body></html>`);
+  w.document.close();
+}
+</script>
+
+<script>
+function openIntroCarousel(e){
+  if(e) e.preventDefault();
+  const imgs=['img/cidadania6.webp','img/cidadania7.webp'].map(x=>new URL(x,location.href).href);
+  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
+  const data=JSON.stringify(imgs);
+  w.document.open();
+  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guias de estudo · Cidadania</title><style>
+  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
+  </style></head><body><div class="bar"><div class="title">Guias de estudo · Cidadania</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Guias de estudo sobre cidadania"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
+  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
+  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
+  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
+  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
+  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
+  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
+  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
+  <\/script></body></html>`);
+  w.document.close();
+}
+</script>
+</body>
+</html>

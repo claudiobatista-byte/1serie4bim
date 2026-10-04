@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texto de Apoio — Três olhares sobre a cidadania no Brasil | CERO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#f4efe3;
+    --bg-alt:#ece1c8;
+    --paper:#fffdfa;
+    --ink:#2c2a27;
+    --ink-soft:#665f57;
+    --verde:#1d3c47;
+    --verde-dark:#152b33;
+    --verde-2:#2f5c6b;
+    --gold:#a9762f;
+    --gold-light:#ddc9a3;
+    --line:#e6dcc8;
+    --shadow:0 10px 30px rgba(29,60,71,.16);
+    --radius:14px;
+    --font-title:'Playfair Display', serif;
+    --font-body:'Source Serif 4', serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.7;
+    -webkit-touch-callout:none;
+    user-select:none;
+  }
+  .selecionavel, main{user-select:text;}
+  .campo-resposta{user-select:text;}
+
+  /* ===== CAPA / GATE ===== */
+  #capa{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(to bottom, #10262e, #1d3c47, #3d6b78);
+    padding:24px;
+  }
+  #capa .grade-centralizada{
+    position:absolute;
+    top:0; bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:896px;
+    pointer-events:none;
+    z-index:0;
+    opacity:.08;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.5) 39px, rgba(255,255,255,.5) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.5) 39px, rgba(255,255,255,.5) 40px);
+    background-size:40px 40px;
+  }
+  .capa-card{
+    position:relative;
+    z-index:1;
+    background:var(--paper);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    max-width:480px;
+    width:100%;
+    padding:36px 32px;
+    text-align:center;
+  }
+  .capa-card .tag{
+    display:inline-block; font-family:var(--font-mono); font-size:.7rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--verde-dark);
+    background:rgba(29,60,71,.1); padding:5px 12px; border-radius:999px; margin-bottom:14px;
+  }
+  .capa-card h1{font-family:var(--font-title); font-size:1.6rem; margin:0 0 10px; color:var(--verde-dark);}
+  .capa-card p.desc{color:var(--ink-soft); font-size:.94rem; margin:0 0 22px;}
+  .capa-card input{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:8px;
+    font-family:var(--font-body); font-size:1rem; margin-bottom:14px;
+  }
+  .capa-card button{
+    width:100%; padding:13px; border:none; border-radius:8px;
+    background:var(--verde); color:#fff; font-weight:600; font-size:1rem; cursor:pointer;
+    font-family:var(--font-body); transition:filter .15s ease;
+  }
+  .capa-card button:hover{filter:brightness(1.15);}
+  .capa-aviso{font-size:.78rem; color:#a33; margin-top:8px; display:none;}
+
+  /* ===== APP ===== */
+  #app{display:none;}
+  .sticky-header{
+    position:sticky; top:0; z-index:50;
+    background:var(--verde-dark); color:#eaf3f5;
+    padding:12px 20px; display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:8px;
+    font-family:var(--font-mono); font-size:.82rem;
+  }
+  .sticky-header .aluno{font-family:var(--font-body); font-weight:600; font-size:.92rem;}
+  .barra-progresso-trilho{
+    flex:1; min-width:120px; height:8px; background:rgba(255,255,255,.2); border-radius:6px; overflow:hidden; margin:0 14px;
+  }
+  .barra-progresso-fill{height:100%; background:var(--gold); width:0%; transition:width .3s ease;}
+
+  .wrap{max-width:800px; margin:0 auto; padding:32px 24px 60px;}
+
+  header.topo{margin-bottom:28px;}
+  header.topo .hero-tag{
+    display:inline-block; font-family:var(--font-mono); font-size:.72rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--verde-dark);
+    background:rgba(29,60,71,.1); padding:5px 12px; border-radius:999px; margin-bottom:12px;
+  }
+  header.topo h1{font-family:var(--font-title); font-size:clamp(1.5rem,4vw,2rem); margin:0 0 8px; color:var(--ink);}
+  header.topo p.sub{color:var(--ink-soft); margin:0; font-size:.98rem;}
+  header.topo .aluno-info{
+    font-family:var(--font-mono); font-size:.82rem; color:var(--verde-dark);
+    background:var(--bg-alt); display:inline-block; padding:6px 12px; border-radius:8px; margin-top:12px;
+  }
+  .descritor-bar{
+    font-family:var(--font-mono); font-size:.76rem; color:var(--ink-soft);
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    padding:8px 14px; margin-bottom:14px; display:inline-block;
+  }
+  .ficha-id{
+    display:flex; flex-wrap:wrap; gap:10px 26px;
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:12px 16px; margin-top:12px; font-family:var(--font-mono); font-size:.84rem; color:var(--ink);
+  }
+  .ficha-id span b{color:var(--verde-dark);}
+
+  /* ===== TEXTO DE APOIO ===== */
+  .texto-apoio{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:28px 30px; margin-bottom:30px;
+  }
+  .texto-apoio h2{font-family:var(--font-title); font-size:1.25rem; color:var(--verde-dark); margin:0 0 4px;}
+  .texto-apoio .fonte-tag{font-family:var(--font-mono); font-size:.72rem; color:var(--ink-soft); margin-bottom:16px; display:block;}
+  .texto-apoio p{margin:0 0 14px; color:var(--ink);}
+  .texto-apoio p:last-of-type{margin-bottom:0;}
+  .texto-apoio .destaque{
+    background:var(--bg-alt); border-left:4px solid var(--gold); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:0 0 14px; font-size:.95rem;
+  }
+  .texto-apoio .mito{
+    background:#fbf8f0; border:1px solid var(--line); border-top:4px solid var(--verde-2);
+    border-radius:10px; padding:16px 18px; margin:0 0 14px;
+  }
+  .texto-apoio .mito .rot{
+    font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--gold); display:block; margin-bottom:6px;
+  }
+  .texto-apoio .mito p{font-size:.93rem;}
+
+  .referencia-box{
+    margin-top:20px; padding:14px 16px;
+    background:var(--bg-alt); border-left:3px solid var(--gold); border-radius:0 8px 8px 0;
+  }
+  .referencia-box .rot{
+    font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--verde-dark); display:block; margin-bottom:6px;
+  }
+  .referencia-box p{margin:0 0 6px; font-size:.86rem; color:var(--ink-soft); font-family:var(--font-mono); line-height:1.6;}
+  .referencia-box p:last-child{margin-bottom:0;}
+
+  /* ===== QUESTOES ===== */
+  .questoes-titulo{
+    font-family:var(--font-title); font-size:1.2rem; color:var(--verde-dark);
+    margin:0 0 18px; display:flex; align-items:center; gap:10px;
+  }
+  .questao{
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:20px 22px; margin-bottom:18px;
+  }
+  .questao .num-q{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%; background:var(--verde);
+    color:#fff; font-family:var(--font-mono); font-size:.78rem; margin-right:8px; flex-shrink:0;
+  }
+  .questao .enunciado{font-weight:600; color:var(--ink); margin-bottom:12px; display:flex; align-items:flex-start;}
+  .questao textarea{
+    width:100%; min-height:100px; padding:12px 14px; border:1px solid var(--line); border-radius:8px;
+    font-family:var(--font-body); font-size:.96rem; resize:vertical; color:var(--ink);
+  }
+  .questao textarea:focus{outline:2px solid var(--verde-2); outline-offset:1px;}
+  .contador-chars{font-family:var(--font-mono); font-size:.72rem; color:var(--ink-soft); margin-top:6px; text-align:right;}
+
+  .comentario-prof{
+    display:none; margin-top:14px; padding:14px 16px;
+    background:#eaf1ee; border:1px solid #bfd8c8; border-radius:8px; font-size:.9rem; color:var(--verde-dark);
+  }
+  .comentario-prof.show{display:block;}
+  .comentario-prof b{display:block; margin-bottom:4px; font-family:var(--font-title); font-size:.92rem;}
+
+  /* ===== ALERTA / FINALIZAR ===== */
+  .alerta-incompleto{
+    display:none; background:#fdf3e2; border:1px solid #f1d9a6; color:#8a5a10;
+    padding:12px 16px; border-radius:8px; font-size:.9rem; margin-bottom:16px;
+  }
+  .alerta-incompleto.show{display:block;}
+
+  .acoes-finais{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;}
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:.94rem; padding:12px 22px;
+    border-radius:8px; border:none; cursor:pointer; transition:filter .15s ease;
+  }
+  .btn:hover{filter:brightness(1.1);}
+  .btn-primario{background:var(--verde); color:#fff;}
+  .btn-secundario{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-pdf{background:var(--gold); color:#fff;}
+  .btn[disabled]{opacity:.5; cursor:not-allowed;}
+
+  /* ===== POPUP ===== */
+  .popup-overlay{
+    display:none; position:fixed; inset:0; background:rgba(16,38,46,.6);
+    align-items:center; justify-content:center; z-index:200; padding:20px;
+  }
+  .popup-overlay.show{display:flex;}
+  .popup-card{
+    background:var(--paper); border-radius:var(--radius); box-shadow:var(--shadow);
+    max-width:420px; width:100%; padding:32px 28px; text-align:center;
+  }
+  .popup-card .emoji{font-size:2.4rem; margin-bottom:10px;}
+  .popup-card h3{font-family:var(--font-title); margin:0 0 8px; color:var(--verde-dark);}
+  .popup-card p{color:var(--ink-soft); font-size:.94rem; margin:0 0 20px;}
+
+  footer.rodape{text-align:center; padding:24px; color:var(--ink-soft); font-family:var(--font-mono); font-size:.8rem;}
+
+  @media (max-width:600px){
+    .wrap{padding:24px 16px 50px;}
+    .texto-apoio, .questao{padding:18px 18px;}
+  }
+  .texto-apoio ul{margin:0 0 14px; padding-left:22px;}
+  .texto-apoio li{margin-bottom:8px;}
+  .tabela-wrap{overflow-x:auto; margin:0 0 14px;}
+  .texto-apoio table{border-collapse:collapse; width:100%; font-size:.88rem; line-height:1.5;}
+  .texto-apoio th{background:var(--verde); color:#fff; text-align:left; padding:9px 12px; font-family:var(--font-mono); font-size:.74rem; font-weight:500;}
+  .texto-apoio td{border:1px solid var(--line); padding:9px 12px; vertical-align:top;}
+  .texto-apoio td:first-child{font-weight:600; color:var(--verde-dark);}
+</style>
+</head>
+<body>
+
+<!-- ===== CAPA ===== -->
+<div id="capa">
+  <div class="grade-centralizada"></div>
+  <div class="capa-card">
+    <span class="tag">Ensino Médio · Ciências Humanas e Sociais Aplicadas · CERO</span>
+    <h1>Três olhares sobre a cidadania no Brasil</h1>
+    <p class="desc">Cinco textos de apoio e sete questões dissertativas. Preencha os dados para começar.</p>
+    <input type="text" id="nome-aluno" placeholder="Seu nome completo">
+    <input type="text" id="turma-aluno" placeholder="Turma (ex.: 3º A)">
+    <button onclick="iniciarAtividade()">Iniciar atividade</button>
+    <div class="capa-aviso" id="capa-aviso">Por favor, digite seu nome para continuar.</div>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<div id="app">
+  <div class="sticky-header">
+    <span class="aluno" id="header-nome"></span>
+    <div class="barra-progresso-trilho"><div class="barra-progresso-fill" id="barra-fill"></div></div>
+    <span id="contador-geral">Respondidas: 0/7</span>
+  </div>
+
+  <div class="wrap">
+    <header class="topo selecionavel">
+      <span class="descritor-bar">Ciências Humanas e Sociais Aplicadas / Ensino Médio &nbsp;|&nbsp; Cidadania e direitos no Brasil</span>
+      <span class="hero-tag" style="display:block; margin-top:10px;">Texto de Apoio</span>
+      <h1>Três olhares sobre a cidadania no Brasil</h1>
+      <p class="sub">Leia cada texto com atenção e responda às questões que o acompanham.</p>
+      <div class="ficha-id" id="ficha-id">
+        <span><b>NOME:</b> <span id="ficha-nome"></span></span>
+        <span><b>DATA:</b> <span id="ficha-data"></span></span>
+        <span><b>TURMA:</b> <span id="ficha-turma"></span></span>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="texto-apoio selecionavel">
+        <h2>Três olhares sobre a cidadania no Brasil</h2>
+        <span class="fonte-tag">Texto adaptado para o Ensino Médio</span>
+        <p>Ser cidadão não é apenas ter um documento ou votar de dois em dois anos: é ter direitos garantidos e poder exercê-los de fato. Este texto apresenta, de forma resumida, o que três importantes pensadores brasileiros e estrangeiros dizem sobre como a cidadania se formou no Brasil e por que ela ainda é desigual.</p>
+        <div class="destaque">
+          <strong>Antes de começar: os três tipos de direitos.</strong> Os autores partem de uma ideia clássica, do sociólogo inglês T. H. Marshall, que divide a cidadania em três conjuntos de direitos.
+        </div>
+        <ul>
+          <li><b>Direitos civis:</b> liberdade de ir e vir, de pensar e se expressar, direito à vida, à propriedade e a ser tratado com igualdade perante a lei e a justiça.</li>
+          <li><b>Direitos políticos:</b> direito de votar, de ser votado e de participar do governo e das decisões do país.</li>
+          <li><b>Direitos sociais:</b> direito à educação, ao trabalho, à saúde, à aposentadoria e a um mínimo de bem-estar.</li>
+        </ul>
+        <p>Na Inglaterra, esses direitos chegaram nesta ordem: primeiro os civis, depois os políticos, por fim os sociais. Será que no Brasil foi assim? Cada autor a seguir ajuda a responder.</p>
+      </section>
+
+      <h2 class="questoes-titulo">&#9997;&#65039; Questão sobre a introdução</h2>
+
+      <div class="questao" data-questao="1">
+        <div class="enunciado"><span class="num-q">1</span> Diferencie direitos civis, políticos e sociais, dando um exemplo de cada um, e indique em que ordem eles chegaram à Inglaterra, segundo o texto.</div>
+        <textarea id="resp-1" class="campo-resposta dissertativa" data-min="60" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 60)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Direitos civis garantem as liberdades individuais e a igualdade perante a lei (por exemplo, a liberdade de ir e vir ou de se expressar). Direitos políticos garantem a participação no governo (por exemplo, votar e ser votado). Direitos sociais garantem um mínimo de bem-estar (por exemplo, educação, saúde, aposentadoria). Na Inglaterra, segundo o texto, chegaram primeiro os civis, depois os políticos e por fim os sociais. Aceitar outros exemplos, desde que coerentes com cada tipo de direito.
+        </div>
+      </div>
+
+      <section class="texto-apoio selecionavel">
+        <div class="destaque">
+          <strong>Texto I &middot; José Murilo de Carvalho.</strong> <i>Cidadania no Brasil: o longo caminho</i> (2001). A tese central é que, no Brasil, os direitos chegaram numa ordem diferente da inglesa, e essa inversão explica muitos dos nossos problemas. Aqui vieram primeiro os direitos sociais, depois os políticos, e os direitos civis ficaram para trás.
+        </div>
+        <p><strong>Como o autor conta essa história.</strong></p>
+        <ul>
+          <li><b>Até 1930:</b> quase não havia cidadãos. A escravidão, as grandes fazendas, o analfabetismo e o poder dos coronéis deixaram a maioria sem direitos civis e sem vida política real.</li>
+          <li><b>1930 a 1945 (era Vargas):</b> surgem os direitos sociais, como a legislação trabalhista (CLT). Eles foram concedidos pelo governo, às vezes em períodos autoritários, e não conquistados pela luta da população.</li>
+          <li><b>1945 a 1964:</b> os direitos políticos se ampliam, com eleições e partidos, mas de forma instável.</li>
+          <li><b>1964 a 1985 (ditadura militar):</b> os direitos políticos e civis são cortados, enquanto alguns direitos sociais continuam avançando.</li>
+          <li><b>1988 em diante:</b> a Constituição Cidadã garante os três tipos de direitos no papel. Os direitos políticos se consolidam, mas os civis (segurança, igualdade perante a justiça) continuam frágeis.</li>
+        </ul>
+        <p><strong>Consequência da inversão.</strong> Como os direitos sociais vieram &ldquo;de cima&rdquo;, muita gente passou a ver o direito como um favor do Estado e a esperar tudo do Poder Executivo, mais do que de sua própria participação política. Carvalho chama essa cultura de <b>estadania</b>, em vez de cidadania.</p>
+        <p><strong>Conclusão do autor.</strong> A cidadania brasileira avançou, mas é incompleta. Ele fala em cidadãos de &ldquo;primeira, segunda e terceira classe&rdquo;, conforme a pessoa seja ou não tratada de fato com igualdade pela lei. Por isso o caminho é &ldquo;longo&rdquo;.</p>
+      </section>
+
+      <h2 class="questoes-titulo">&#9997;&#65039; Questões sobre o Texto I</h2>
+
+      <div class="questao" data-questao="2">
+        <div class="enunciado"><span class="num-q">2</span> Explique o que Carvalho quer dizer ao afirmar que a ordem dos direitos foi invertida no Brasil.</div>
+        <textarea id="resp-2" class="campo-resposta dissertativa" data-min="60" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 60)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Na Inglaterra, os direitos vieram na sequência civis, políticos e sociais. No Brasil, segundo Carvalho, vieram primeiro os direitos sociais (sobretudo na era Vargas, com a legislação trabalhista), depois os políticos, e os direitos civis ficaram para trás. Essa inversão ajuda a explicar por que a cidadania brasileira ainda é incompleta. Espera-se que o estudante mencione pelo menos a ordem em que os direitos chegaram e o exemplo da era Vargas.
+        </div>
+      </div>
+
+      <div class="questao" data-questao="3">
+        <div class="enunciado"><span class="num-q">3</span> O que o autor chama de estadania e como esse conceito se relaciona com o fato de os direitos sociais terem sido concedidos pelo governo?</div>
+        <textarea id="resp-3" class="campo-resposta dissertativa" data-min="60" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 60)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Estadania é a cultura de esperar tudo do Estado, sobretudo do Poder Executivo, em vez de valorizar a participação política e a representação. Como os direitos sociais vieram de cima, concedidos pelo governo e não conquistados pela luta da população, muita gente passou a ver o direito como um favor do Estado, e não como algo a ser exigido. Por isso Carvalho contrapõe estadania e cidadania.
+        </div>
+      </div>
+
+      <section class="texto-apoio selecionavel">
+        <div class="destaque">
+          <strong>Texto II &middot; Wanderley Guilherme dos Santos.</strong> <i>Cidadania e Justiça: a política social na ordem brasileira</i> (1979). A partir de 1930, o Estado brasileiro criou uma <b>cidadania regulada</b>, isto é, uma cidadania que não vale para todos, mas apenas para quem tem uma profissão reconhecida e regulamentada por lei.
+        </div>
+        <p><strong>Como funciona essa ideia.</strong></p>
+        <ul>
+          <li>Os direitos (férias, aposentadoria, assistência médica, sindicato) passam a depender do <b>ofício</b> da pessoa, e não do simples fato de ser brasileiro.</li>
+          <li>A <b>carteira de trabalho</b> vira uma espécie de &ldquo;certidão de nascimento cívica&rdquo;: quem a tem, entra no sistema de direitos.</li>
+          <li>Quem não tem profissão regulamentada fica de fora: trabalhadores rurais, empregadas domésticas, autônomos e quem vive na informalidade. O autor os chama de <b>pré-cidadãos</b>.</li>
+          <li>Os sindicatos eram controlados pelo Estado, e as categorias profissionais recebiam benefícios diferentes entre si.</li>
+        </ul>
+        <p><strong>Consequência.</strong> O direito deixa de ser algo que pertence a todos e passa a ser uma concessão do governo, distribuída por categorias. O Estado decide quem é cidadão, e a política social serve também para manter a ordem e controlar os trabalhadores.</p>
+        <p><strong>Conclusão do autor.</strong> A desigualdade de direitos não é um acidente nem atraso a ser corrigido sozinho com o tempo: foi construída pelas próprias leis. Os direitos, nessa visão, foram distribuídos como privilégio de categorias, e não como garantia de todos.</p>
+      </section>
+
+      <h2 class="questoes-titulo">&#9997;&#65039; Questão sobre o Texto II</h2>
+
+      <div class="questao" data-questao="4">
+        <div class="enunciado"><span class="num-q">4</span> Explique o conceito de cidadania regulada e diga por que a carteira de trabalho foi descrita como uma espécie de certidão de nascimento cívica.</div>
+        <textarea id="resp-4" class="campo-resposta dissertativa" data-min="60" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 60)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Cidadania regulada é aquela que só vale para quem tem uma profissão reconhecida e regulamentada em lei: os direitos (férias, aposentadoria, assistência médica, sindicato) dependem do ofício, e não do simples fato de ser brasileiro. A carteira de trabalho funcionava como a prova de que a pessoa estava dentro desse sistema: quem a tinha entrava no mundo dos direitos; quem não a tinha, como trabalhadores rurais, empregadas domésticas e autônomos, ficava de fora, na condição de pré-cidadão.
+        </div>
+      </div>
+
+      <section class="texto-apoio selecionavel">
+        <div class="destaque">
+          <strong>Texto III &middot; James Holston.</strong> <i>Cidadania insurgente: disjunções da democracia e da modernidade no Brasil</i> (2008). O autor é antropólogo norte-americano e estudou por décadas as periferias de São Paulo. Para ele, a cidadania brasileira é <b>diferenciada</b>: todos são formalmente membros da nação, mas os direitos são distribuídos de modo desigual, conforme a classe social, a cor, o lugar onde se mora e o poder de cada um.
+        </div>
+        <p><strong>Como funciona essa ideia.</strong></p>
+        <ul>
+          <li><b>Cidadania diferenciada:</b> a lei e a prática social tratam as pessoas de formas distintas. As leis de terra, por exemplo, tornaram &ldquo;irregular&rdquo; a casa de quem não tinha dinheiro para comprar um lote legalizado.</li>
+          <li><b>Democracia disjuntiva:</b> o Brasil tem eleições livres e uma Constituição avançada, mas continua com violência policial e com uma justiça que não chega a todos. A democracia política avançou mais do que os direitos civis.</li>
+          <li><b>Insurgência:</b> nas periferias, moradores construíram as próprias casas (a autoconstrução), se organizaram, disputaram a terra e foram à justiça. Nesse processo aprenderam a falar a linguagem dos direitos e a exigir moradia, infraestrutura e respeito. É a <b>cidadania insurgente</b>, que desafia a desigualdade a partir de baixo.</li>
+        </ul>
+        <p><strong>Consequência.</strong> A cidadania não é só algo que o Estado concede, como nos outros dois autores: ela também é construída na luta cotidiana de quem foi deixado de fora, e essa luta muda a vida nas cidades.</p>
+        <p><strong>Conclusão do autor.</strong> A insurgência dos moradores das periferias não acaba com a desigualdade, mas abala a ordem antiga e abre caminho para uma cidadania mais ampla, que amplia o &ldquo;direito a ter direitos&rdquo;.</p>
+      </section>
+
+      <h2 class="questoes-titulo">&#9997;&#65039; Questão sobre o Texto III</h2>
+
+      <div class="questao" data-questao="5">
+        <div class="enunciado"><span class="num-q">5</span> Diferencie cidadania diferenciada e cidadania insurgente, segundo Holston, usando o exemplo das periferias das cidades.</div>
+        <textarea id="resp-5" class="campo-resposta dissertativa" data-min="60" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 60)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Cidadania diferenciada é a situação em que todos são formalmente cidadãos, mas os direitos são distribuídos de modo desigual, conforme classe, cor, local de moradia e poder; as leis de terra, por exemplo, tornaram irregular a casa de quem não podia comprar um lote legalizado. Cidadania insurgente é a resposta dos moradores das periferias, que construíram as próprias casas, se organizaram, disputaram a terra e foram à justiça, aprendendo assim a exigir moradia, infraestrutura e respeito. Ela nasce de baixo e desafia a desigualdade.
+        </div>
+      </div>
+
+      <section class="texto-apoio selecionavel">
+        <div class="destaque">
+          <strong>Texto IV &middot; Comparando os três autores.</strong> Os três concordam que a cidadania brasileira é desigual, mas explicam essa desigualdade por caminhos diferentes.
+        </div>
+        <div class="tabela-wrap">
+          <table>
+            <thead><tr><th>Autor</th><th>Ideia-chave</th><th>De onde vem a desigualdade</th><th>Quem constrói a cidadania</th></tr></thead>
+            <tbody>
+              <tr><td>José Murilo de Carvalho</td><td>Inversão da ordem dos direitos</td><td>Direitos sociais vieram antes dos civis e políticos</td><td>Em boa parte o Estado, &ldquo;de cima&rdquo;</td></tr>
+              <tr><td>Wanderley Guilherme dos Santos</td><td>Cidadania regulada</td><td>Direitos ligados à profissão reconhecida em lei</td><td>O Estado, que define quem é cidadão</td></tr>
+              <tr><td>James Holston</td><td>Cidadania diferenciada e insurgente</td><td>Leis e práticas que tratam as pessoas de modo desigual</td><td>Também os moradores, &ldquo;de baixo&rdquo;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <h2 class="questoes-titulo">&#9997;&#65039; Questões sobre o Texto IV</h2>
+
+      <div class="questao" data-questao="6">
+        <div class="enunciado"><span class="num-q">6</span> Compare como Carvalho e Santos, de um lado, e Holston, de outro, explicam quem constrói a cidadania: o Estado, a população, ou os dois?</div>
+        <textarea id="resp-6" class="campo-resposta dissertativa" data-min="80" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 80)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Em Carvalho e em Santos, o Estado tem papel central: os direitos sociais vieram de cima, concedidos pelo governo (Carvalho), e o Estado definiu quem era cidadão a partir da profissão (Santos). Holston reconhece a desigualdade criada pelas leis, mas acrescenta que a cidadania também é construída de baixo, pela luta cotidiana dos moradores das periferias. Respostas que percebam que as três leituras se complementam, e não se excluem, devem ser valorizadas.
+        </div>
+      </div>
+
+      <div class="questao" data-questao="7">
+        <div class="enunciado"><span class="num-q">7</span> Com base nos textos e na sua própria experiência, escreva sua percepção sobre a cidadania e os direitos no Brasil atualmente. Cite um direito que você considera bem garantido, um que ainda é desrespeitado e diga a quem cabe mudar essa situação.</div>
+        <textarea id="resp-7" class="campo-resposta dissertativa" data-min="100" placeholder="Escreva sua resposta aqui..."></textarea>
+        <div class="contador-chars">0 caracteres (mínimo 100)</div>
+        <div class="comentario-prof">
+          <b>Comentário do professor</b>
+          Esta questão não tem resposta única: o objetivo é que o estudante relacione sua vivência com os conceitos estudados. Observe se a resposta usa pelo menos uma ideia dos autores (por exemplo, a diferença entre direitos civis, políticos e sociais, a cidadania regulada ou a insurgência das periferias), se apresenta exemplos concretos e se justifica o ponto de vista com argumentos, e não apenas opinião. Valorize respostas que reconheçam tanto o papel do Estado quanto o da população.
+        </div>
+      </div>
+
+
+      <div class="referencia-box">
+        <span class="rot">Referências (ABNT NBR 6023)</span>
+        <p>CARVALHO, José Murilo de. Cidadania no Brasil: o longo caminho. Rio de Janeiro: Civilização Brasileira, 2001.</p>
+        <p>SANTOS, Wanderley Guilherme dos. Cidadania e justiça: a política social na ordem brasileira. Rio de Janeiro: Campus, 1979.</p>
+        <p>HOLSTON, James. Cidadania insurgente: disjunções da democracia e da modernidade no Brasil. São Paulo: Companhia das Letras, 2013.</p>
+      </div>
+
+      <div class="alerta-incompleto" id="alerta-incompleto">
+        ⚠️ Ainda há questões incompletas (confira o mínimo de caracteres de cada resposta). Revise antes de finalizar.
+      </div>
+
+      <div class="acoes-finais">
+        <button class="btn btn-primario" onclick="finalizarAtividade()">Finalizar e ver comentários</button>
+        <button class="btn btn-secundario" onclick="refazerAtividade()">Refazer</button>
+        <button class="btn btn-pdf" onclick="exportarPDF()">Exportar em PDF</button>
+      </div>
+    </main>
+  </div>
+
+  <footer class="rodape">Colégio Estadual Rodolfo de Oliveira · CERO · 2026</footer>
+</div>
+
+<!-- ===== POPUP ===== -->
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup-card">
+    <div class="emoji">🎉</div>
+    <h3>Atividade concluída!</h3>
+    <p>Suas sete respostas foram registradas. Os comentários do professor já estão disponíveis abaixo de cada questão para você comparar com o que escreveu.</p>
+    <button class="btn btn-primario" onclick="fecharPopup()">Continuar</button>
+  </div>
+</div>
+
+<script>
+/* ===== GATE DE NOME ===== */
+function iniciarAtividade(){
+  const nome = document.getElementById('nome-aluno').value.trim();
+  const turma = document.getElementById('turma-aluno').value.trim();
+  const aviso = document.getElementById('capa-aviso');
+  if(!nome){
+    aviso.style.display = 'block';
+    return;
+  }
+  aviso.style.display = 'none';
+  const hoje = new Date();
+  const dataFormatada = String(hoje.getDate()).padStart(2,'0') + '/' + String(hoje.getMonth()+1).padStart(2,'0') + '/' + hoje.getFullYear();
+  document.getElementById('header-nome').textContent = nome;
+  document.getElementById('ficha-nome').textContent = nome;
+  document.getElementById('ficha-data').textContent = dataFormatada;
+  document.getElementById('ficha-turma').textContent = turma || '—';
+  document.getElementById('capa').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+/* ===== CONTADOR DE CARACTERES E PROGRESSO ===== */
+const textareas = document.querySelectorAll('textarea.dissertativa');
+
+function atualizarProgresso(){
+  let respondidas = 0;
+  textareas.forEach(function(t){
+    const min = parseInt(t.dataset.min, 10);
+    if(t.value.trim().length >= min) respondidas++;
+  });
+  document.getElementById('contador-geral').textContent = 'Respondidas: ' + respondidas + '/' + textareas.length;
+  document.getElementById('barra-fill').style.width = (respondidas / textareas.length * 100) + '%';
+}
+
+textareas.forEach(function(t){
+  const contadorEl = t.parentElement.querySelector('.contador-chars');
+  const min = parseInt(t.dataset.min, 10);
+  t.addEventListener('input', function(){
+    contadorEl.textContent = t.value.length + ' caracteres (mínimo ' + min + ')';
+    atualizarProgresso();
+  });
+});
+
+/* ===== FINALIZAR ===== */
+function finalizarAtividade(){
+  let completo = true;
+  textareas.forEach(function(t){
+    const min = parseInt(t.dataset.min, 10);
+    if(t.value.trim().length < min) completo = false;
+  });
+
+  const alerta = document.getElementById('alerta-incompleto');
+  if(!completo){
+    alerta.classList.add('show');
+    alerta.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  alerta.classList.remove('show');
+
+  document.querySelectorAll('.comentario-prof').forEach(function(c){
+    c.classList.add('show');
+  });
+
+  document.getElementById('popup-overlay').classList.add('show');
+}
+
+function fecharPopup(){
+  document.getElementById('popup-overlay').classList.remove('show');
+}
+
+function refazerAtividade(){
+  textareas.forEach(function(t){
+    t.value = '';
+    t.parentElement.querySelector('.contador-chars').textContent = '0 caracteres (mínimo ' + t.dataset.min + ')';
+  });
+  document.querySelectorAll('.comentario-prof').forEach(function(c){
+    c.classList.remove('show');
+  });
+  document.getElementById('alerta-incompleto').classList.remove('show');
+  atualizarProgresso();
+  window.scrollTo(0,0);
+}
+
+const PDF_TEXTOS = ["<b>INTRODUÇÃO.</b> Os autores partem da ideia de T. H. Marshall: a cidadania reúne direitos <b>civis</b> (liberdades e igualdade perante a lei), <b>políticos</b> (participar do governo) e <b>sociais</b> (educação, saúde, trabalho, aposentadoria). Na Inglaterra chegaram nessa ordem. E no Brasil?", "<b>TEXTO I &middot; José Murilo de Carvalho.</b> No Brasil a ordem dos direitos foi invertida: vieram primeiro os sociais (era Vargas), depois os políticos, e os civis ficaram para trás. Como os direitos vieram &ldquo;de cima&rdquo;, formou-se a cultura da <b>estadania</b>. A cidadania avançou, mas é incompleta.", "<b>TEXTO II &middot; Wanderley Guilherme dos Santos.</b> A partir de 1930 o Estado criou a <b>cidadania regulada</b>: só tem direitos quem exerce uma profissão reconhecida em lei, e a carteira de trabalho é a &ldquo;certidão de nascimento cívica&rdquo;. Quem fica de fora é &ldquo;pré-cidadão&rdquo;.", "<b>TEXTO III &middot; James Holston.</b> A cidadania brasileira é <b>diferenciada</b>: formalmente universal, mas distribuída de modo desigual. Nas periferias, porém, os moradores constroem uma <b>cidadania insurgente</b>: autoconstrução, luta pela terra e pelo &ldquo;direito a ter direitos&rdquo;.", "<b>TEXTO IV &middot; Comparação.</b> Carvalho e Santos destacam o papel do Estado na distribuição dos direitos; Holston acrescenta a ação dos moradores, &ldquo;de baixo&rdquo;. As três leituras se complementam."];
+
+/* ===== EXPORTAR PDF ===== */
+function sleep(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+
+function esc(str){
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML.replace(/\n/g, '<br>');
+}
+
+async function exportarPDF(){
+  const overlay = document.createElement('div');
+  overlay.id = 'pdf-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(16,38,46,.6);display:flex;align-items:center;justify-content:center;z-index:999;';
+  overlay.innerHTML =
+    '<div style="background:#fff;border-radius:14px;padding:32px 36px;text-align:center;max-width:300px;box-shadow:0 10px 30px rgba(29,60,71,.3);font-family:\'Source Serif 4\',serif;">' +
+      '<div style="font-size:2rem;margin-bottom:8px;">📄</div>' +
+      '<h4 style="margin:0 0 4px;color:#152b33;font-family:\'Playfair Display\',serif;">Gerando PDF…</h4>' +
+      '<p style="margin:0 0 14px;color:#665f57;font-size:.86rem;">Aguarde alguns instantes.</p>' +
+      '<div style="background:#ece1c8;border-radius:6px;overflow:hidden;height:8px;">' +
+        '<div id="pdf-prog" style="height:100%;width:0%;background:#1d3c47;transition:width .2s ease;"></div>' +
+      '</div>' +
+      '<div id="pdf-prog-txt" style="margin-top:8px;font-family:\'JetBrains Mono\',monospace;font-size:.74rem;color:#665f57;">0%</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  await sleep(80);
+  function setP(pct, msg){
+    const pp = document.getElementById('pdf-prog'), pt = document.getElementById('pdf-prog-txt');
+    if(pp) pp.style.width = pct + '%';
+    if(pt) pt.textContent = msg || (pct + '%');
+  }
+
+  try{
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({orientation:'portrait', unit:'px', format:'a4', hotfixes:['px_scaling']});
+    const PW = pdf.internal.pageSize.getWidth(), PH = pdf.internal.pageSize.getHeight();
+    const ML = 28, CW = PW - ML*2;
+    let y = ML;
+
+    async function addImg(el){
+      const canvas = await html2canvas(el, {scale:2, useCORS:true, logging:false, backgroundColor:'#ffffff', scrollX:0, scrollY:0, windowWidth:860});
+      const imgW = CW, imgH = (canvas.height / canvas.width) * imgW;
+      const dataUrl = canvas.toDataURL('image/jpeg', .92), avail = PH - ML*2;
+      if(imgH <= avail){
+        if(y + imgH > PH - ML){ pdf.addPage(); y = ML; }
+        pdf.addImage(dataUrl, 'JPEG', ML, y, imgW, imgH);
+        y += imgH + 8;
+      } else {
+        const pxPerPdfPt = canvas.width / imgW;
+        let srcY = 0;
+        while(srcY < canvas.height){
+          const availPt = PH - y - ML, sliceH_pt = Math.min(availPt, avail);
+          const sliceH_px = Math.round(sliceH_pt * pxPerPdfPt), actualH_px = Math.min(sliceH_px, canvas.height - srcY);
+          const tmp = document.createElement('canvas');
+          tmp.width = canvas.width; tmp.height = actualH_px;
+          tmp.getContext('2d').drawImage(canvas, 0, srcY, canvas.width, actualH_px, 0, 0, canvas.width, actualH_px);
+          const sliceUrl = tmp.toDataURL('image/jpeg', .92), slicePt = (actualH_px / canvas.width) * imgW;
+          pdf.addImage(sliceUrl, 'JPEG', ML, y, imgW, slicePt);
+          srcY += actualH_px; y += slicePt;
+          if(srcY < canvas.height){ pdf.addPage(); y = ML; }
+        }
+        y += 8;
+      }
+    }
+
+    async function band(tag, txt){
+      const b = document.createElement('div');
+      b.style.cssText = 'width:860px;font-family:Arial,sans-serif;position:absolute;left:-9999px;top:0';
+      b.innerHTML = '<div style="background:linear-gradient(90deg,#1d3c47,#152b33);border-radius:8px;padding:12px 22px;display:flex;align-items:center;gap:12px">' +
+        '<span style="background:rgba(255,255,255,.2);color:#fff;font-weight:700;font-size:12px;letter-spacing:1px;border-radius:20px;padding:3px 12px">' + tag + '</span>' +
+        '<span style="color:#fff;font-size:15px;font-weight:700">' + txt + '</span></div>';
+      document.body.appendChild(b);
+      await sleep(20);
+      await addImg(b);
+      document.body.removeChild(b);
+    }
+
+    const nome = document.getElementById('header-nome').textContent || 'Aluno(a)';
+    const turma = document.getElementById('ficha-turma').textContent || '—';
+    const now = new Date();
+    const dtStr = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+
+    setP(5, 'Preparando capa…'); await sleep(40);
+    const coverEl = document.createElement('div');
+    coverEl.style.cssText = 'width:860px;font-family:Arial,sans-serif;overflow:hidden;position:absolute;left:-9999px;top:0';
+    coverEl.innerHTML =
+      '<div style="background:linear-gradient(135deg,#10262e 0%,#1d3c47 60%,#3d6b78 100%);padding:32px 48px 28px;color:white">' +
+        '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:.7;font-weight:700;margin-bottom:6px">Ciências Humanas e Sociais Aplicadas · Ensino Médio</div>' +
+        '<div style="font-size:26px;font-weight:900;line-height:1.2;margin-bottom:5px">Três olhares sobre a cidadania no Brasil</div>' +
+        '<div style="font-size:13px;opacity:.8;font-style:italic">Carvalho · Santos · Holston · 7 questões dissertativas</div>' +
+      '</div>' +
+      '<div style="background:#f4efe3;padding:22px 48px 26px;border-bottom:3px solid #ddc9a3">' +
+        '<div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#1d3c47;font-weight:700;margin-bottom:5px">Aluno(a)</div>' +
+        '<div style="font-size:20px;font-weight:700;color:#2c2a27;border-bottom:2.5px solid #1d3c47;padding-bottom:6px;display:inline-block;margin-bottom:16px">' + esc(nome) + '</div>' +
+        '<div style="display:flex;gap:12px;flex-wrap:wrap">' +
+          '<div style="background:white;border-radius:8px;padding:12px 18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);min-width:84px">' +
+            '<div style="font-size:22px;font-weight:900;color:#1d3c47">' + esc(turma) + '</div>' +
+            '<div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-top:2px">Turma</div></div>' +
+          '<div style="background:white;border-radius:8px;padding:12px 18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);min-width:84px">' +
+            '<div style="font-size:22px;font-weight:900;color:#a9762f">7</div>' +
+            '<div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-top:2px">Dissertativas</div></div>' +
+          '<div style="background:white;border-radius:8px;padding:12px 18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);min-width:140px">' +
+            '<div style="font-size:13px;font-weight:700;color:#333">' + dtStr + '</div>' +
+            '<div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-top:2px">Gerado em</div></div>' +
+        '</div>' +
+        '<div style="font-size:9px;color:#bbb;margin-top:14px">Colégio Estadual Rodolfo de Oliveira · Goiás · 2026</div>' +
+      '</div>';
+    document.body.appendChild(coverEl); await sleep(60); await addImg(coverEl); document.body.removeChild(coverEl);
+
+    setP(15, 'Preparando textos…'); await sleep(20);
+    await band('TEXTOS DE APOIO', 'Cidadania no Brasil: Carvalho, Santos e Holston');
+    const textoEl = document.createElement('div');
+    textoEl.style.cssText = 'width:860px;font-family:Arial,sans-serif;background:white;overflow:hidden;border:1px solid #e6dcc8;border-radius:10px;position:absolute;left:-9999px;top:0';
+    textoEl.innerHTML = '<div style="padding:18px 24px;background:#fdfdfa">' +
+      PDF_TEXTOS.map(function(t){ return '<p style="font-size:12.5px;color:#2c2a27;line-height:1.8;margin:0 0 12px">' + t + '</p>'; }).join('') +
+      '<div style="font-size:10px;color:#665f57;font-family:monospace;border-top:1px solid #eee;padding-top:10px">CARVALHO, José Murilo de. Cidadania no Brasil: o longo caminho. Rio de Janeiro: Civilização Brasileira, 2001. &middot; SANTOS, Wanderley Guilherme dos. Cidadania e justiça: a política social na ordem brasileira. Rio de Janeiro: Campus, 1979. &middot; HOLSTON, James. Cidadania insurgente: disjunções da democracia e da modernidade no Brasil. São Paulo: Companhia das Letras, 2013.</div>' +
+      '</div>';
+    document.body.appendChild(textoEl); await sleep(20); await addImg(textoEl); document.body.removeChild(textoEl);
+
+    await band('QUESTÕES', 'Questões Dissertativas — Respostas e Orientações');
+
+    const QUESTOES = [{"num": "1", "enunc": "Diferencie direitos civis, políticos e sociais, dando um exemplo de cada um, e indique em que ordem eles chegaram à Inglaterra, segundo o texto.", "id": "resp-1", "coment": "Direitos civis garantem as liberdades individuais e a igualdade perante a lei (por exemplo, a liberdade de ir e vir ou de se expressar). Direitos políticos garantem a participação no governo (por exemplo, votar e ser votado). Direitos sociais garantem um mínimo de bem-estar (por exemplo, educação, saúde, aposentadoria). Na Inglaterra, segundo o texto, chegaram primeiro os civis, depois os políticos e por fim os sociais. Aceitar outros exemplos, desde que coerentes com cada tipo de direito."}, {"num": "2", "enunc": "Explique o que Carvalho quer dizer ao afirmar que a ordem dos direitos foi invertida no Brasil.", "id": "resp-2", "coment": "Na Inglaterra, os direitos vieram na sequência civis, políticos e sociais. No Brasil, segundo Carvalho, vieram primeiro os direitos sociais (sobretudo na era Vargas, com a legislação trabalhista), depois os políticos, e os direitos civis ficaram para trás. Essa inversão ajuda a explicar por que a cidadania brasileira ainda é incompleta. Espera-se que o estudante mencione pelo menos a ordem em que os direitos chegaram e o exemplo da era Vargas."}, {"num": "3", "enunc": "O que o autor chama de estadania e como esse conceito se relaciona com o fato de os direitos sociais terem sido concedidos pelo governo?", "id": "resp-3", "coment": "Estadania é a cultura de esperar tudo do Estado, sobretudo do Poder Executivo, em vez de valorizar a participação política e a representação. Como os direitos sociais vieram de cima, concedidos pelo governo e não conquistados pela luta da população, muita gente passou a ver o direito como um favor do Estado, e não como algo a ser exigido. Por isso Carvalho contrapõe estadania e cidadania."}, {"num": "4", "enunc": "Explique o conceito de cidadania regulada e diga por que a carteira de trabalho foi descrita como uma espécie de certidão de nascimento cívica.", "id": "resp-4", "coment": "Cidadania regulada é aquela que só vale para quem tem uma profissão reconhecida e regulamentada em lei: os direitos (férias, aposentadoria, assistência médica, sindicato) dependem do ofício, e não do simples fato de ser brasileiro. A carteira de trabalho funcionava como a prova de que a pessoa estava dentro desse sistema: quem a tinha entrava no mundo dos direitos; quem não a tinha, como trabalhadores rurais, empregadas domésticas e autônomos, ficava de fora, na condição de pré-cidadão."}, {"num": "5", "enunc": "Diferencie cidadania diferenciada e cidadania insurgente, segundo Holston, usando o exemplo das periferias das cidades.", "id": "resp-5", "coment": "Cidadania diferenciada é a situação em que todos são formalmente cidadãos, mas os direitos são distribuídos de modo desigual, conforme classe, cor, local de moradia e poder; as leis de terra, por exemplo, tornaram irregular a casa de quem não podia comprar um lote legalizado. Cidadania insurgente é a resposta dos moradores das periferias, que construíram as próprias casas, se organizaram, disputaram a terra e foram à justiça, aprendendo assim a exigir moradia, infraestrutura e respeito. Ela nasce de baixo e desafia a desigualdade."}, {"num": "6", "enunc": "Compare como Carvalho e Santos, de um lado, e Holston, de outro, explicam quem constrói a cidadania: o Estado, a população, ou os dois?", "id": "resp-6", "coment": "Em Carvalho e em Santos, o Estado tem papel central: os direitos sociais vieram de cima, concedidos pelo governo (Carvalho), e o Estado definiu quem era cidadão a partir da profissão (Santos). Holston reconhece a desigualdade criada pelas leis, mas acrescenta que a cidadania também é construída de baixo, pela luta cotidiana dos moradores das periferias. Respostas que percebam que as três leituras se complementam, e não se excluem, devem ser valorizadas."}, {"num": "7", "enunc": "Com base nos textos e na sua própria experiência, escreva sua percepção sobre a cidadania e os direitos no Brasil atualmente. Cite um direito que você considera bem garantido, um que ainda é desrespeitado e diga a quem cabe mudar essa situação.", "id": "resp-7", "coment": "Esta questão não tem resposta única: o objetivo é que o estudante relacione sua vivência com os conceitos estudados. Observe se a resposta usa pelo menos uma ideia dos autores (por exemplo, a diferença entre direitos civis, políticos e sociais, a cidadania regulada ou a insurgência das periferias), se apresenta exemplos concretos e se justifica o ponto de vista com argumentos, e não apenas opinião. Valorize respostas que reconheçam tanto o papel do Estado quanto o da população."}];
+
+    for(let i=0; i<QUESTOES.length; i++){
+      const q = QUESTOES[i];
+      setP(20 + Math.round(i/QUESTOES.length*65), 'Questão ' + q.num + '/7…'); await sleep(12);
+
+      const valor = document.getElementById(q.id) ? document.getElementById(q.id).value : '';
+      const qEl = document.createElement('div');
+      qEl.style.cssText = 'width:860px;font-family:Arial,sans-serif;background:white;overflow:hidden;border:1px solid #e6dcc8;border-radius:10px;position:absolute;left:-9999px;top:0';
+      qEl.innerHTML =
+        '<div style="background:linear-gradient(90deg,#1d3c47,#152b33);padding:10px 22px;display:flex;justify-content:space-between;align-items:center">' +
+          '<span style="color:white;font-weight:700;font-size:13px;letter-spacing:.8px">QUESTÃO ' + q.num + '</span>' +
+          '<span style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:11px;padding:3px 12px;border-radius:20px;font-weight:600">Dissertativa</span></div>' +
+        '<div style="padding:18px 24px 16px;background:#fdfdfa">' +
+          '<div style="font-size:13px;font-weight:700;color:#2c2a27;line-height:1.6;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #eee">' + esc(q.enunc) + '</div>' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
+            '<div style="width:4px;height:15px;background:#1d3c47;border-radius:2px"></div>' +
+            '<div style="font-size:10px;font-weight:700;color:#1d3c47;text-transform:uppercase;letter-spacing:1.5px">Resposta do Aluno(a)</div></div>' +
+          '<div style="background:#eef4f5;border:1.5px solid #a9c3ca;border-radius:8px;padding:13px 16px;min-height:50px;margin-bottom:12px">' +
+            '<div style="font-size:12.5px;color:#2c2a27;line-height:1.8;white-space:pre-wrap">' + (esc(valor) || '<span style=\"color:#aaa\">(sem resposta)</span>') + '</div></div>' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">' +
+            '<div style="width:4px;height:15px;background:#a9762f;border-radius:2px"></div>' +
+            '<div style="font-size:10px;font-weight:700;color:#8a6a2f;text-transform:uppercase;letter-spacing:1.5px">Comentário do Professor</div></div>' +
+          '<div style="background:#f7f1e3;border:1.5px solid #ddc9a3;border-radius:8px;padding:13px 16px">' +
+            '<div style="font-size:12px;color:#4a3a10;line-height:1.8">' + esc(q.coment) + '</div></div>' +
+        '</div>';
+      document.body.appendChild(qEl); await sleep(12); await addImg(qEl); document.body.removeChild(qEl);
+    }
+
+    // RODAPÉ EM TODAS AS PÁGINAS
+    setP(92, 'Finalizando…'); await sleep(30);
+    const totalPages = pdf.getNumberOfPages();
+    for(let p=1; p<=totalPages; p++){
+      pdf.setPage(p);
+      const fEl = document.createElement('div');
+      fEl.style.cssText = 'width:' + Math.round(CW) + 'px;height:22px;background:#f4efe3;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-size:10px;color:#888;font-family:Arial,sans-serif;position:absolute;left:-9999px;top:0';
+      fEl.innerHTML = '<span>Cidadania no Brasil · ' + esc(nome) + '</span><span>Página ' + p + ' de ' + totalPages + '</span>';
+      document.body.appendChild(fEl);
+      const fc = await html2canvas(fEl, {scale:2, logging:false, backgroundColor:'#f4efe3'});
+      document.body.removeChild(fEl);
+      const fUrl = fc.toDataURL('image/jpeg', .9), fH = (fc.height / fc.width) * CW;
+      pdf.setFillColor(244,239,227); pdf.rect(ML, PH-fH, CW, fH, 'F');
+      pdf.addImage(fUrl, 'JPEG', ML, PH-fH, CW, fH);
+    }
+
+    setP(100, 'Salvando…'); await sleep(200);
+    const safeName = nome.replace(/[^a-zA-Z0-9_\-]/g, '_');
+    pdf.save('Cidadania_no_Brasil_' + safeName + '.pdf');
+
+  } catch(err){
+    console.error(err);
+    alert('Erro ao gerar PDF: ' + err.message);
+  } finally {
+    const ov = document.getElementById('pdf-overlay');
+    if(ov) document.body.removeChild(ov);
+  }
+}
+
+</script>
+
+</body>
+</html>
