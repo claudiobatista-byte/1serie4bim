@@ -305,6 +305,28 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
 .callout ul,.goias-box ul{margin:6px 0 0;padding-left:20px}
 .tb th,.tb td{vertical-align:top}
 @media(max-width:760px){.cover-art{padding:60px 22px 40px}.cv-steps{grid-template-columns:1fr 1fr}.seq-row{grid-template-columns:1fr}.ch-end{padding:14px 22px}}
+
+/* Guia visual dos direitos civis: miniatura 3D com texto contornando */
+.ge1-float{float:right;width:clamp(135px,29%,205px);margin:5px 0 14px 22px;perspective:900px}
+.ge1-float a{display:block;transform:rotateY(-7deg) rotateZ(1deg);transform-origin:center;transition:transform .25s,box-shadow .25s;border-radius:9px;box-shadow:10px 13px 20px #102c3450,3px 3px 0 #b6cbbf;border:3px solid #f8f9f5;overflow:hidden;background:#fff}
+.ge1-float a:hover,.ge1-float a:focus-visible{transform:rotateY(0) rotateZ(0) scale(1.035);outline:2px solid #b8842b}
+.ge1-float img{display:block;width:100%;height:auto}
+.ge1-float figcaption{text-align:center;font:600 11px/1.4 var(--sans);color:var(--green);margin-top:9px}
+.support .in:after{content:"";display:block;clear:both}
+@media(max-width:480px){.ge1-float{width:42%;margin-left:12px}}
+
+/* Imagem dos quatro capítulos substitui os cartões */
+.capitulos-visual{margin:22px 0 28px;text-align:center}
+.capitulos-visual a{display:block;border-radius:12px;overflow:hidden;box-shadow:0 8px 22px #12304a22;transition:transform .2s}
+.capitulos-visual a:hover{transform:translateY(-2px)}
+.capitulos-visual img{display:block;width:100%;height:auto}
+.capitulos-visual figcaption{font:500 12px var(--sans);color:var(--muted);margin-top:9px}
+/* Ícone de abertura do carrossel de slides, à direita do texto introdutório */
+.lead-slides-row{display:flex;align-items:center;gap:18px}
+.lead-slides-row .lead{flex:1;min-width:0}
+.slides1-icon{flex:none;width:56px;height:56px;display:grid;place-items:center;border-radius:13px;background:var(--navy);color:#e3b45a;box-shadow:0 6px 16px #12304a30;transition:transform .2s,background .2s}
+.slides1-icon:hover,.slides1-icon:focus-visible{background:var(--teal);transform:translateY(-2px);outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:480px){.lead-slides-row{gap:10px}.slides1-icon{width:46px;height:46px}.slides1-icon svg{width:24px;height:24px}}
 </style>
 </head>
 <body>
@@ -361,13 +383,15 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
       <a href="#" onclick="openIntroCarousel(event)" aria-label="Abrir guias de estudo em carrossel com zoom" title="Abrir guias de estudo" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:var(--navy);color:#e3b45a;text-decoration:none;font:700 20px var(--sans);box-shadow:0 5px 14px #12304a33">↗</a>
     </div></div></header>
   <div class="body">
-    <p class="lead">Cidadania não é só o direito de votar. É poder viver com liberdade, participar das decisões e ter o que é necessário para viver com dignidade. No Brasil, essa história foi cheia de avanços, recuos e lutas coletivas — e uma pergunta ajuda a organizar tudo: <b>em que ordem os direitos chegaram?</b></p>
+    <div class="lead-slides-row"><p class="lead">Cidadania não é só o direito de votar. É poder viver com liberdade, participar das decisões e ter o que é necessário para viver com dignidade. No Brasil, essa história foi cheia de avanços, recuos e lutas coletivas — e uma pergunta ajuda a organizar tudo: <b>em que ordem os direitos chegaram?</b></p><a class="slides1-icon" href="slides1/sd.webp" target="_blank" onclick="openSlides1Carousel(event)" aria-label="Abrir oito slides sobre cidadania em nova aba, em carrossel" title="Abrir slides em carrossel (nova aba)"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="18" height="18" rx="2"/><rect x="10" y="10" width="18" height="18" rx="2"/></svg></a></div>
 
     <h3>Direitos civis, políticos e sociais</h3>
     <p>Os historiadores costumam dividir a cidadania em três tipos de direito. O historiador José Murilo de Carvalho (1939–2023), que escreveu o livro <em>Cidadania no Brasil: o longo caminho</em>, explica cada um deles. Leia primeiro como ele define os direitos civis.</p>
 
     <aside class="support"><header><i></i>Texto de apoio · Carvalho e os direitos civis</header>
       <div class="in">
+        <figure class="ge1-float"><a href="img/ge1.webp" target="_blank" rel="noopener noreferrer" title="Abrir guia de estudo em tamanho original"><img src="img/ge1.webp" alt="Guia de estudo: Carvalho e os Direitos Civis" loading="lazy"></a><figcaption>Clique para ampliar ↗</figcaption></figure>
+        
         <p>Tornou-se costume desdobrar a cidadania em direitos civis, políticos e sociais. O cidadão pleno seria aquele que fosse titular dos três direitos. Cidadãos incompletos seriam os que possuíssem apenas alguns dos direitos. Os que não se beneficiassem de nenhum dos direitos seriam não cidadãos. Esclareço os conceitos. Direitos civis são os direitos fundamentais à vida, à liberdade, à propriedade, à igualdade perante a lei. Eles se desdobram na garantia de ir e vir, de escolher o trabalho, de manifestar o pensamento, de organizar-se, de ter respeitada a inviolabilidade do lar e da correspondência, de não ser preso a não ser pela autoridade competente e de acordo com as leis, de não ser condenado sem processo legal regular. São direitos cuja garantia se baseia na existência de uma justiça independente, eficiente, barata e acessível a todos. São eles que garantem as relações civilizadas entre as pessoas e a própria existência da sociedade civil surgida com o desenvolvimento do capitalismo. Sua pedra de toque é a liberdade individual.</p>
       </div>
       <div class="src"><b>Fonte:</b> CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. 13. ed. Rio de Janeiro: Civilização Brasileira, 2010. p. 9. Trecho citado em SM EDUCAÇÃO, <em>Ser protagonista: História</em> (2024), p. 72.</div>
@@ -377,6 +401,7 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
 
     <aside class="support"><header><i></i>Texto de apoio · Carvalho e os direitos políticos e sociais</header>
       <div class="in">
+        <figure class="ge1-float"><a href="img/ge2.webp" target="_blank" rel="noopener noreferrer" title="Abrir guia de estudo em tamanho original"><img src="img/ge2.webp" alt="Guia de estudo: Carvalho e os Direitos Políticos e Sociais" loading="lazy"></a><figcaption>Clique para ampliar ↗</figcaption></figure>
         <p>É possível haver direitos civis sem direitos políticos. Estes se referem à participação do cidadão no governo da sociedade. Seu exercício é limitado à parcela da população e consiste na capacidade de fazer demonstrações políticas, de organizar partidos, de votar, de ser votado. […] Finalmente, há os direitos sociais. Se os direitos civis garantem a vida em sociedade, se os direitos políticos garantem a participação no governo da sociedade, os direitos sociais garantem a participação na riqueza coletiva. Eles incluem o direito à educação, ao trabalho, ao salário justo, à saúde, à aposentadoria. A garantia de sua vigência depende da existência de uma eficiente máquina administrativa do Poder Executivo. Em tese eles podem existir sem direitos civis e certamente sem os direitos políticos. Mas, na ausência de direitos civis e políticos, seu conteúdo e alcance tendem a ser arbitrários. Os direitos sociais permitem às sociedades politicamente organizadas reduzir os excessos de desigualdade produzidos pelo capitalismo e garantir um mínimo de bem-estar para todos. A ideia central [em] que se baseia é a da justiça social.</p>
       </div>
       <div class="src"><b>Fonte:</b> CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. Rio de Janeiro: Civilização Brasileira, 2001. p. 14-17. Trecho citado em SM EDUCAÇÃO, <em>Ser protagonista: História</em> (2024), p. 121.</div>
@@ -385,8 +410,10 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
     <div class="callout concept"><span class="lab">Conceito-chave</span><b>Cidadania plena:</b> situação em que uma pessoa possui direitos civis, políticos e sociais ao mesmo tempo. Quem tem apenas alguns deles é, na expressão de Carvalho, um cidadão incompleto; quem não tem nenhum é um não cidadão.</div>
 
     <h3>A tese: no Brasil, a ordem foi outra</h3>
+    <figure class="ge1-float"><a href="img/cidadania8.webp" target="_blank" rel="noopener noreferrer" title="Abrir comparação em tamanho original"><img src="img/cidadania8.webp" alt="Comparação entre a cidadania na Inglaterra e no Brasil segundo Marshall e Carvalho" loading="lazy"></a><figcaption>Clique para ampliar ↗</figcaption></figure>
     <p>Carvalho parte de uma ideia do sociólogo inglês T. H. Marshall: na Inglaterra, os direitos teriam chegado em sequência — primeiro os civis, depois os políticos, por último os sociais. No Brasil, sustenta Carvalho, a história foi diferente: nas palavras do livro, <b>“entre nós o social precedeu os outros”</b>. Boa parte dos direitos sociais, como os trabalhistas, chegou nos anos 1930 e 1940, durante um período autoritário, como uma concessão do governo e não como resultado da pressão de uma sociedade com liberdade para se organizar.</p>
 
+    <div style="clear:both"></div>
     <div class="seq" role="img" aria-label="Comparação da ordem dos direitos: Inglaterra, civis, políticos, sociais; Brasil, segundo Carvalho, sociais antes dos políticos e civis">
       <div class="seq-row"><span class="seq-l">Modelo inglês<br><small>segundo Marshall</small></span><span class="seq-b c1">1º civis</span><span class="seq-b c2">2º políticos</span><span class="seq-b c3">3º sociais</span></div>
       <div class="seq-row"><span class="seq-l">Brasil<br><small>segundo Carvalho</small></span><span class="seq-b c3">social antes de tudo</span><span class="seq-b c2">políticos com avanços e recuos</span><span class="seq-b c1">civis ainda incompletos</span></div>
@@ -394,6 +421,7 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
 
     <aside class="support"><header><i></i>Texto de apoio · A cidadania tem várias dimensões</header>
       <div class="in">
+        <figure class="ge1-float"><a href="img/ge3.webp" target="_blank" rel="noopener noreferrer" title="Abrir guia de estudo em tamanho original"><img src="img/ge3.webp" alt="Guia de estudo: Cidadania em suas várias dimensões" loading="lazy"></a><figcaption>Clique para ampliar ↗</figcaption></figure>
         <p>Inicio a discussão dizendo que o fenômeno da cidadania é complexo e historicamente definido. […] O exercício de certos direitos, como a liberdade de pensamento e o voto, não gera automaticamente o gozo de outros, como a segurança e o emprego. O exercício do voto não garante a existência de governos atentos aos problemas básicos da população. Dito de outra maneira: a liberdade e a participação não levam automaticamente, ou rapidamente, à resolução de problemas sociais. Isto quer dizer que a cidadania inclui várias dimensões e que algumas podem estar presentes sem as outras. Uma cidadania plena, que combine liberdade, participação e igualdade para todos, é um ideal desenvolvido no Ocidente e talvez inatingível. Mas ele tem servido de parâmetro para o julgamento da qualidade da cidadania em cada país e em cada momento histórico.</p>
         <p>O surgimento sequencial dos direitos sugere que a própria ideia de direitos, e, portanto, a própria cidadania, é um fenômeno histórico. O ponto de chegada, o ideal da cidadania plena, pode ser semelhante, pelo menos na tradição ocidental [dentro] da qual nos movemos. Mas os caminhos são distintos e nem sempre seguem linha reta. […]</p>
       </div>
@@ -432,12 +460,7 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
     </a>
 
     <h3>O que vem pela frente</h3>
-    <div class="cards">
-      <div class="card"><span class="n">Capítulo 1 · 1889–1930</span><h6>Coronelismo e sertão</h6><p>Quem mandava no interior e o que acontecia quando o povo se organizava por conta própria. Caso goiano: Santa Dica.</p></div>
-      <div class="card"><span class="n">Capítulo 2 · 1930–1964</span><h6>Paternalismo e Marcha para o Oeste</h6><p>Direitos que chegam “de cima” e a terra em disputa. Caso goiano: Trombas e Formoso.</p></div>
-      <div class="card"><span class="n">Capítulo 3 · 1964–1985</span><h6>Ditadura e direitos humanos</h6><p>Repressão, resistência e denúncia. Caso goiano: CPT e Araguaia.</p></div>
-      <div class="card"><span class="n">Capítulo 4 · 1985–hoje</span><h6>Constituição e novos sujeitos</h6><p>O que mudou em 1988 e o que falta. Caso goiano: os Kalunga.</p></div>
-    </div>
+    <figure class="capitulos-visual"><a href="img/capitulos.webp" target="_blank" rel="noopener noreferrer" title="Abrir capítulos em tamanho original"><img src="img/capitulos.webp" alt="Visão geral dos quatro capítulos: coronelismo, paternalismo, ditadura e Constituição de 1988" loading="lazy"></a><figcaption>Clique na imagem para ampliar ↗</figcaption></figure>
   </div>
   <div class="ch-end"><span>Abertura</span><span>Próximo: Mandonismo, coronelismo e sertão →</span></div>
 </section>
@@ -1126,6 +1149,27 @@ function openIntroCarousel(e){
   w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guias de estudo · Cidadania</title><style>
   *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
   </style></head><body><div class="bar"><div class="title">Guias de estudo · Cidadania</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Guias de estudo sobre cidadania"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
+  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
+  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
+  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
+  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
+  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
+  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
+  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
+  <\/script></body></html>`);
+  w.document.close();
+}
+</script>
+<script>
+function openSlides1Carousel(e){
+  if(e) e.preventDefault();
+  const imgs=['slides1/sd.webp','slides1/sd2.webp','slides1/sd3.webp','slides1/sd4.webp','slides1/sd5.webp','slides1/sd6.webp','slides1/sd7.webp','slides1/sd8.webp'].map(x=>new URL(x,location.href).href);
+  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
+  const data=JSON.stringify(imgs);
+  w.document.open();
+  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Slides · Cidadania e direitos no Brasil</title><style>
+  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
+  </style></head><body><div class="bar"><div class="title">Slides · Cidadania e direitos no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Slides sobre cidadania e direitos no Brasil"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
   const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
   imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
   function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
