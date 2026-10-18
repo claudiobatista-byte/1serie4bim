@@ -2,10 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12304a">
 <title>Poder, Resistência e Cidadania: Brasil e Goiás na República — História, 1ª série</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
 <style>
 :root{
   --navy:#12304a;--navy2:#1c4a6b;--teal:#1f6f78;--teal-bg:#e6f1f1;
@@ -361,6 +364,46 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
 .repertorio-arrow:hover{background:#12304a;color:#fff}
 .civil-question-icon{display:inline-grid;place-items:center;vertical-align:middle;margin-left:9px;width:30px;height:30px;border:0;border-radius:8px;background:#1f6f78;color:#fff;font:800 19px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 9px #12304a33}.civil-question-icon:hover,.civil-question-icon:focus-visible{background:#12304a;outline:2px solid #b8842b;outline-offset:2px}
 .favor-actions{display:inline-flex;align-items:center;gap:8px;margin:0 0 0 12px;vertical-align:middle;flex-wrap:nowrap;white-space:nowrap}.favor-arrow-btn{display:inline-flex;align-items:center;gap:5px;background:#1768b3;color:#fff;border:1px solid #ffffff66;border-radius:7px;padding:5px 8px;font:700 12px Arial,sans-serif;line-height:1.2;cursor:pointer}.favor-arrow-btn:hover,.favor-arrow-btn:focus-visible{background:#0d4b85;outline:2px solid #e3b45a;outline-offset:2px}.favor-actions .civil-question-icon{margin-left:0;background:#1f6f78;border:1px solid #ffffff66;width:28px;height:28px;font-size:18px}
+
+/* ---------- otimizações para celular (Android/iOS) ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;overflow-wrap:break-word}
+a,button,[onclick]{touch-action:manipulation}
+#progress{width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+html.no-scroll{overflow:hidden}
+.drawer{height:100vh;height:100dvh;padding-bottom:env(safe-area-inset-bottom)}
+.dr-body{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.scroll{-webkit-overflow-scrolling:touch}
+@media(hover:none){
+  .ge1-float a,.ge1-float a:hover{transform:none}
+  .atv-box:hover,.capitulos-visual a:hover,.slides1-icon:hover{transform:none}
+}
+@media(max-width:640px){
+  .toc-tab{top:auto;bottom:calc(16px + env(safe-area-inset-bottom));right:12px;transform:none;writing-mode:horizontal-tb;border-radius:999px;padding:12px 18px;letter-spacing:.1em;box-shadow:0 6px 18px #0006}
+  .dr-close{width:44px;height:44px}
+  .dr-link,.item>.row a,.subs a{padding-top:12px;padding-bottom:12px}
+  .item .row>button{padding:12px 16px}
+  .slides1-icon{width:40px;height:40px}
+  .civil-question-icon,.repertorio-arrow{min-width:38px;min-height:38px}
+  .wrap{padding:0 16px}
+  .ch-end{font-size:12px}
+}
+/* capa: em telas pequenas o texto deixa de depender de cqw (ficava ilegível) */
+@media(max-width:600px){
+  .cover{aspect-ratio:auto}
+  .cover img.cover-image{background:var(--navy)}
+  .cover-art{position:relative;inset:auto;display:block;padding:58px 20px 28px}
+  .cover-art .cv-k{font-size:11px;margin-bottom:14px}
+  .cover-art h1{font-size:clamp(34px,11vw,48px)}
+  .cover-art .cv-sub{font-size:19px;margin-top:10px}
+  .cover-art .cv-fio{font-size:15px;max-width:none;margin-top:18px;padding-left:14px;border-left-width:3px}
+  .cover-art .cv-steps{grid-template-columns:1fr 1fr;margin:26px 0 16px;gap:12px}
+  .cover-art .cv-steps span{font-size:11px;padding-top:8px;border-top-width:3px}
+  .cover-art .cv-steps b{font-size:16px;margin-top:3px}
+  .cover-art .cv-foot{font-size:11px}
+  .cover-toggle{top:10px;right:10px;font-size:12px;padding:10px 14px;min-height:40px}
+  .cover.show-image{aspect-ratio:1672/941}
+}
 </style>
 </head>
 <body>
@@ -369,7 +412,7 @@ details.prof .in{padding:0 22px 16px;font-size:16px}
 <main id="conteudo">
 <section class="cover" id="capa" aria-labelledby="titulo-capa">
 <button class="cover-toggle" type="button" aria-pressed="false" onclick="toggleCover(this)">Revelar imagem ↔</button>
-<img class="cover-image" src="img/capa.webp" alt="Capa ilustrada: Poder, Resistência e Cidadania — Brasil e Goiás na República">
+<img class="cover-image" decoding="async" src="img/capa.webp" alt="Capa ilustrada: Poder, Resistência e Cidadania — Brasil e Goiás na República">
 <div class="cover-art">
 <p class="cv-k">História · 1ª série do Ensino Médio</p>
 <h1 id="titulo-capa">Poder, Resistência<br><span style="color:#e3b45a">e Cidadania</span></h1>
@@ -429,7 +472,7 @@ function toggleCover(button){const cover=document.getElementById("capa");const s
       <a href="#" onclick="openIntroCarousel(event)" aria-label="Abrir guias de estudo em carrossel com zoom" title="Abrir guias de estudo" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:var(--navy);color:#e3b45a;text-decoration:none;font:700 20px var(--sans);box-shadow:0 5px 14px #12304a33">↗</a>
     </div></div></header>
   <div class="body">
-    <div class="lead-slides-row"><p class="lead">Cidadania não é só o direito de votar. É poder viver com liberdade, participar das decisões e ter o que é necessário para viver com dignidade. No Brasil, essa história foi cheia de avanços, recuos e lutas coletivas — e uma pergunta ajuda a organizar tudo: <b>em que ordem os direitos chegaram?</b></p><a class="slides1-icon" href="slides1/sd.webp" target="_blank" onclick="openSlides1Carousel(event)" aria-label="Abrir oito slides sobre cidadania em nova aba, em carrossel" title="Abrir slides em carrossel (nova aba)"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="18" height="18" rx="2"/><rect x="10" y="10" width="18" height="18" rx="2"/></svg></a><button class="slides1-icon question-icon" type="button" onclick="openCidadaniaQuestion()" aria-label="Abrir proposta de produção textual em janela popup" title="Pergunta: cidadania na prática">?</button></div>
+    <div class="lead-slides-row"><p class="lead">Cidadania não é só o direito de votar. É poder viver com liberdade, participar das decisões e ter o que é necessário para viver com dignidade. No Brasil, essa história foi cheia de avanços, recuos e lutas coletivas — e uma pergunta ajuda a organizar tudo: <b>em que ordem os direitos chegaram?</b></p><a class="slides1-icon" href="slides1/sd.webp" target="_blank" onclick="openSlides1Carousel(event)" aria-label="Abrir oito slides sobre cidadania em nova aba, em carrossel" title="Abrir slides em carrossel (nova aba)"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="18" height="18" rx="2"/><rect x="10" y="10" width="18" height="18" rx="2"/></svg></a><button class="slides1-icon question-icon" type="button" onclick="openCidadaniaQuestion()" aria-label="Abrir proposta de produção textual em nova aba" title="Pergunta: cidadania na prática">?</button></div>
 
     <h3>Direitos civis, políticos e sociais</h3>
     <p>Os historiadores costumam dividir a cidadania em três tipos de direito. O historiador José Murilo de Carvalho (1939–2023), que escreveu o livro <em>Cidadania no Brasil: o longo caminho</em>, explica cada um deles. Leia primeiro como ele define os direitos civis.</p>
@@ -1076,8 +1119,10 @@ function toggleCover(button){const cover=document.getElementById("capa");const s
 <script>
 (function(){
   var bar=document.getElementById('progress');
-  function onScroll(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.width=(p*100)+'%'}
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var tk=false;
+  function paint(){tk=false;var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.transform='scaleX('+Math.min(1,Math.max(0,p))+')'}
+  function onScroll(){if(!tk){tk=true;requestAnimationFrame(paint)}}
+  window.addEventListener('scroll',onScroll,{passive:true});paint();
   var tab=document.createElement('button');tab.className='toc-tab';tab.setAttribute('aria-label','Abrir sumário');tab.setAttribute('aria-expanded','false');tab.innerHTML='<b>\u2630</b> Sumário';
   var ov=document.createElement('div');ov.className='toc-ov';
   var dr=document.createElement('aside');dr.className='drawer';dr.setAttribute('aria-label','Sumário');dr.setAttribute('aria-hidden','true');
@@ -1119,8 +1164,8 @@ function toggleCover(button){const cover=document.getElementById("capa");const s
   var chIds=['etapa1','etapa2','etapa3','etapa4','sintese'];
   var g1=group('Capítulos',chIds,true);
   var g2=group('Para consultar',['glossario','fontes'],false);
-  function open(){dr.classList.add('open');ov.classList.add('open');tab.setAttribute('aria-expanded','true');dr.setAttribute('aria-hidden','false')}
-  function close(){dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded','false');dr.setAttribute('aria-hidden','true')}
+  function open(){document.documentElement.classList.add('no-scroll');dr.classList.add('open');ov.classList.add('open');tab.setAttribute('aria-expanded','true');dr.setAttribute('aria-hidden','false')}
+  function close(){document.documentElement.classList.remove('no-scroll');dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded','false');dr.setAttribute('aria-hidden','true')}
   tab.addEventListener('click',open);ov.addEventListener('click',close);dr.querySelector('.dr-close').addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   body.addEventListener('click',function(e){if(e.target.closest('a'))close()});
@@ -1143,108 +1188,103 @@ function toggleCover(button){const cover=document.getElementById("capa");const s
 })();
 </script>
 <script>
-function openAuthorsCarousel(e){
-  if(e) e.preventDefault();
-  const imgs=['img/cidadania1.webp','img/cidadania2.webp','img/cidadania3.webp'].map(x=>new URL(x,location.href).href);
-  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
-  const data=JSON.stringify(imgs);
-  w.document.open();
-  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Três obras sobre cidadania no Brasil</title><style>
-  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
-  </style></head><body><div class="bar"><div class="title">Três obras sobre cidadania no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Infográfico didático sobre cidadania"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
-  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
-  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.onclick=()=>show(i);dots.appendChild(b)});
-  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
-  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
-  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
-  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
-  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
-  <\/script></body></html>`);
-  w.document.close();
+/* ===== Abertura de conteúdos em NOVA ABA (sem arquivo/página separada) =====
+   O conteúdo é montado aqui, vira um Blob (endereço blob:) e é aberto por um clique
+   real em <a target="_blank">. Isso funciona em Android e iOS sem ser barrado como
+   pop-up e sem depender de window.open + document.write. */
+var _eduCache={};
+function _esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function _blobUrl(key,html){return _eduCache[key]||(_eduCache[key]=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'})))}
+function _openTab(url){
+  var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='opener';a.style.display='none';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
-</script>
-<script>
-function openCompareCarousel(e){
-  if(e) e.preventDefault();
-  const imgs=['img/cidadania4.webp','img/cidadania5.webp'].map(x=>new URL(x,location.href).href);
-  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
-  const data=JSON.stringify(imgs);
-  w.document.open();
-  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparando os três olhares sobre a cidadania no Brasil</title><style>
-  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
-  </style></head><body><div class="bar"><div class="title">Comparando os três olhares sobre a cidadania no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Comparação didática entre três interpretações da cidadania no Brasil"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
-  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
-  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
-  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
-  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
-  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
-  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
-  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
-  <\/script></body></html>`);
-  w.document.close();
-}
-</script>
 
-<script>
-function openIntroCarousel(e){
-  if(e) e.preventDefault();
-  const imgs=['img/cidadania6.webp','img/cidadania7.webp'].map(x=>new URL(x,location.href).href);
-  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
-  const data=JSON.stringify(imgs);
-  w.document.open();
-  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guias de estudo · Cidadania</title><style>
-  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
-  </style></head><body><div class="bar"><div class="title">Guias de estudo · Cidadania</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Guias de estudo sobre cidadania"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
-  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
-  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
-  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
-  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
-  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
-  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
-  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
-  <\/script></body></html>`);
-  w.document.close();
+/* ---------- carrossel de imagens (zoom, arrastar, deslizar) ---------- */
+function _carouselApp(imgs){
+  var idx=0,zoom=1,fitted=true;
+  var $=function(i){return document.getElementById(i)};
+  var pic=$('pic'),stage=$('stage'),pct=$('pct'),dots=$('dots');
+  imgs.forEach(function(_,i){var b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=function(){show(i)};dots.appendChild(b)});
+  if(imgs.length<2){$('prev').style.display=$('next').style.display='none';dots.style.display='none'}
+  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===idx)})}
+  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-24)/pic.naturalWidth,(stage.clientHeight-24)/pic.naturalHeight,1);fitted=true;apply()}
+  function setZoom(z){zoom=Math.max(.2,Math.min(4,z));fitted=false;apply()}
+  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0);apply()}
+  $('prev').onclick=function(){show(idx-1)};$('next').onclick=function(){show(idx+1)};
+  $('plus').onclick=function(){setZoom(zoom+.15)};$('minus').onclick=function(){setZoom(zoom-.15)};
+  $('fit').onclick=fit;$('one').onclick=function(){setZoom(1)};
+  addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='=')setZoom(zoom+.15);if(e.key==='-')setZoom(zoom-.15)});
+  addEventListener('resize',function(){if(fitted)fit()});addEventListener('orientationchange',function(){setTimeout(function(){if(fitted)fit()},250)});
+  stage.addEventListener('wheel',function(e){if(e.ctrlKey){e.preventDefault();setZoom(zoom+(e.deltaY<0?.1:-.1))}},{passive:false});
+  /* mouse: arrastar para rolar (no toque a rolagem nativa cuida disso) */
+  var down=false,sx=0,sy=0,sl=0,st=0;
+  stage.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)});
+  stage.addEventListener('pointermove',function(e){if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}});
+  stage.addEventListener('pointerup',function(){down=false;stage.classList.remove('drag')});
+  stage.addEventListener('pointercancel',function(){down=false;stage.classList.remove('drag')});
+  /* celular: deslizar para o lado troca de imagem quando ela cabe na tela */
+  var tx=0,ty=0,multi=false;
+  stage.addEventListener('touchstart',function(e){multi=e.touches.length>1;tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+  stage.addEventListener('touchend',function(e){
+    if(multi||imgs.length<2||stage.scrollWidth>stage.clientWidth+4)return;
+    var t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;
+    if(Math.abs(dx)>50&&Math.abs(dy)<60)show(idx+(dx<0?1:-1));
+  },{passive:true});
+  show(0);
 }
-</script>
-<script>
-function openSlides1Carousel(e){
-  if(e) e.preventDefault();
-  const imgs=['slides1/sd.webp','slides1/sd2.webp','slides1/sd3.webp','slides1/sd4.webp','slides1/sd5.webp','slides1/sd6.webp','slides1/sd7.webp','slides1/sd8.webp'].map(x=>new URL(x,location.href).href);
-  const w=window.open('','_blank'); if(!w){alert('Permita pop-ups para abrir o carrossel.');return;}
-  const data=JSON.stringify(imgs);
-  w.document.open();
-  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Slides · Cidadania e direitos no Brasil</title><style>
-  *{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden}.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#12304a;gap:12px}.title{font-weight:700}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:9px;height:40px;min-width:42px;padding:0 12px;font-weight:700;cursor:pointer}.controls button:hover{background:#ffffff30}.pct{min-width:54px;text-align:center}.stage{height:calc(100% - 104px);overflow:auto;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px;cursor:grab}.stage.drag{cursor:grabbing}.stage img{display:block;margin:auto;max-width:none;user-select:none;-webkit-user-drag:none;box-shadow:0 8px 28px #0008;background:#fff}.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff66;background:#12304add;color:#fff;font-size:28px;cursor:pointer}.prev{left:18px}.next{right:18px}.foot{height:40px;display:flex;justify-content:center;align-items:center;gap:8px;background:#0d1d2b}.dot{width:10px;height:10px;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}@media(max-width:700px){.title{font-size:13px}.bar{height:74px}.stage{height:calc(100% - 114px)}.controls button{padding:0 9px}}
-  </style></head><body><div class="bar"><div class="title">Slides · Cidadania e direitos no Brasil</div><div class="controls"><button id="minus">−</button><span class="pct" id="pct">100%</span><button id="plus">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div><button class="nav prev" id="prev">‹</button><div class="stage" id="stage"><img id="pic" alt="Slides sobre cidadania e direitos no Brasil"></div><button class="nav next" id="next">›</button><div class="foot" id="dots"></div><script>
-  const imgs=${data}; let idx=0,zoom=1; const pic=document.getElementById('pic'),stage=document.getElementById('stage'),pct=document.getElementById('pct'),dots=document.getElementById('dots');
-  imgs.forEach((_,i)=>{let b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Imagem '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
-  function apply(){pic.style.width=(pic.naturalWidth*zoom)+'px';pic.style.height='auto';pct.textContent=Math.round(zoom*100)+'%';[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===idx))}
-  function fit(){if(!pic.naturalWidth)return;zoom=Math.min((stage.clientWidth-32)/pic.naturalWidth,(stage.clientHeight-32)/pic.naturalHeight,1);apply()}
-  function show(i){idx=(i+imgs.length)%imgs.length;pic.onload=fit;pic.src=imgs[idx];stage.scrollTo(0,0)}
-  document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('plus').onclick=()=>{zoom=Math.min(zoom+.15,4);apply()};document.getElementById('minus').onclick=()=>{zoom=Math.max(zoom-.15,.2);apply()};document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{zoom=1;apply()};
-  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);if(e.key==='+'||e.key==='='){zoom=Math.min(zoom+.15,4);apply()}if(e.key==='-'){zoom=Math.max(zoom-.15,.2);apply()}});stage.addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.2,Math.min(4,zoom+(e.deltaY<0?.1:-.1)));apply()}},{passive:false});let down=false,sx=0,sy=0,sl=0,st=0;stage.onpointerdown=e=>{down=true;sx=e.clientX;sy=e.clientY;sl=stage.scrollLeft;st=stage.scrollTop;stage.classList.add('drag');stage.setPointerCapture(e.pointerId)};stage.onpointermove=e=>{if(down){stage.scrollLeft=sl-(e.clientX-sx);stage.scrollTop=st-(e.clientY-sy)}};stage.onpointerup=()=>{down=false;stage.classList.remove('drag')};show(0);
-  <\/script></body></html>`);
-  w.document.close();
+function _carouselPage(title,alt,imgs){
+  return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#12304a"><title>'+_esc(title)+'</title><style>'
+  +'*{box-sizing:border-box}html,body{margin:0;height:100%;background:#08121c;color:#fff;font-family:Arial,sans-serif;overflow:hidden;-webkit-text-size-adjust:100%}'
+  +'body{display:flex;flex-direction:column;height:100vh;height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);-webkit-tap-highlight-color:transparent}'
+  +'.bar{flex:none;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px;padding:8px 12px;background:#12304a}'
+  +'.title{flex:1 1 200px;min-width:0;font-weight:700;font-size:15px;line-height:1.25}'
+  +'.controls{display:flex;align-items:center;gap:6px}.controls button{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:10px;height:44px;min-width:44px;padding:0 12px;font:700 15px Arial,sans-serif;cursor:pointer;touch-action:manipulation}'
+  +'.pct{min-width:48px;text-align:center;font-size:14px}'
+  +'.stage{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;display:flex;padding:12px;touch-action:pan-x pan-y pinch-zoom;cursor:grab}.stage.drag{cursor:grabbing}'
+  +'.stage img{display:block;margin:auto;max-width:none;flex:none;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;box-shadow:0 8px 28px #0008;background:#fff}'
+  +'.nav{position:fixed;top:50%;margin-top:-22px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff66;background:#12304acc;color:#fff;font-size:26px;line-height:1;cursor:pointer;touch-action:manipulation}.prev{left:8px}.next{right:8px}'
+  +'.foot{flex:none;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;min-height:36px;padding:6px;background:#0d1d2b}'
+  +'.dot{width:12px;height:12px;border:0;padding:0;border-radius:50%;background:#ffffff55;cursor:pointer}.dot.on{width:28px;border-radius:7px;background:#e3b45a}'
+  +'@media(max-width:700px){.title{font-size:13px}.controls button{padding:0 9px}}'
+  +'</style></head><body><div class="bar"><div class="title">'+_esc(title)+'</div><div class="controls"><button id="minus" aria-label="Diminuir">−</button><span class="pct" id="pct">100%</span><button id="plus" aria-label="Aumentar">+</button><button id="fit">Ajustar</button><button id="one">1:1</button></div></div>'
+  +'<button class="nav prev" id="prev" aria-label="Anterior">‹</button><div class="stage" id="stage"><img id="pic" alt="'+_esc(alt)+'"></div><button class="nav next" id="next" aria-label="Próxima">›</button><div class="foot" id="dots"></div>'
+  +'<script>('+_carouselApp.toString()+')('+JSON.stringify(imgs)+');<\/script></body></html>';
 }
-</script>
-<script>
-function openEducationalPopup(title, content, width=760, height=620){
-  const w=window.open('','_blank',`popup=yes,width=${width},height=${height},resizable=yes,scrollbars=yes`);
-  if(!w){alert('Permita janelas pop-up neste site para visualizar a atividade.');return;}
-  w.document.open();
-  w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><style>*{box-sizing:border-box}body{margin:0;background:#f2f0e9;color:#20313e;font:clamp(20px,2.1vw,25px)/1.65 Georgia,serif}.top{background:#12304a;color:#fff;padding:22px 32px;border-bottom:5px solid #e3b45a}.top small{font:700 12px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e3b45a}h1{font:700 29px Georgia,serif;margin:7px 0}.page{max-width:none;width:calc(100% - 32px);margin:16px auto;padding:28px clamp(20px,4vw,64px);background:#fff;border-radius:14px;box-shadow:0 10px 30px #12304a14}p{margin:12px 0}li{margin:12px 0}.hint{background:#e6f1f1;border-left:4px solid #1f6f78;padding:12px 16px;border-radius:6px}.arrow{display:inline-flex;align-items:center;justify-content:center;background:#1768b3;color:#fff;text-decoration:none;border-radius:7px;width:26px;height:26px;font:bold 17px Arial;vertical-align:middle;margin-left:7px}.arrow:hover{background:#0b4175;color:#fff}.actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}.actions button{border:0;border-radius:8px;padding:10px 16px;background:#12304a;color:#fff;font:700 13px Arial;cursor:pointer}@media(max-width:600px){.top{padding:18px}.page{margin:12px;padding:20px}h1{font-size:24px}}</style></head><body><header class="top"><small>História · Cidadania</small><h1>${title}</h1></header><main class="page">${content}<div class="actions"><button onclick="window.close()">Fechar janela</button></div></main></body></html>`);
-  w.document.close();
-  w.openRepertorioPopup = openRepertorioPopup;
-  w.openCivilRightsPopup = openCivilRightsPopup;
-  w.focus();
+function _openCarousel(e,key,title,alt,files){
+  if(e&&e.preventDefault)e.preventDefault();
+  var imgs=files.map(function(x){return new URL(x,location.href).href});
+  _openTab(_blobUrl(key,_carouselPage(title,alt,imgs)));
 }
+function openAuthorsCarousel(e){_openCarousel(e,'authors','Três obras sobre cidadania no Brasil','Infográfico didático sobre cidadania',['img/cidadania1.webp','img/cidadania2.webp','img/cidadania3.webp'])}
+function openCompareCarousel(e){_openCarousel(e,'compare','Comparando os três olhares sobre a cidadania no Brasil','Comparação didática entre três interpretações da cidadania no Brasil',['img/cidadania4.webp','img/cidadania5.webp'])}
+function openIntroCarousel(e){_openCarousel(e,'intro','Guias de estudo · Cidadania','Guias de estudo sobre cidadania',['img/cidadania6.webp','img/cidadania7.webp'])}
+function openSlides1Carousel(e){_openCarousel(e,'slides1','Slides · Cidadania e direitos no Brasil','Slides sobre cidadania e direitos no Brasil',['slides1/sd.webp','slides1/sd2.webp','slides1/sd3.webp','slides1/sd4.webp','slides1/sd5.webp','slides1/sd6.webp','slides1/sd7.webp','slides1/sd8.webp'])}
+
+/* ---------- páginas de texto (perguntas e explicações) ---------- */
+function _eduPage(title,content){
+  return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#12304a"><title>'+_esc(title)+'</title><style>'
+  +'*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:#f2f0e9;color:#20313e;font:clamp(18px,2.1vw,25px)/1.65 Georgia,serif;-webkit-tap-highlight-color:transparent;overflow-wrap:break-word}'
+  +'.top{background:#12304a;color:#fff;padding:calc(22px + env(safe-area-inset-top)) max(32px,env(safe-area-inset-right)) 22px max(32px,env(safe-area-inset-left));border-bottom:5px solid #e3b45a}'
+  +'.top small{font:700 12px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e3b45a}h1{font:700 29px/1.2 Georgia,serif;margin:7px 0}'
+  +'.page{width:calc(100% - 32px);margin:16px auto;padding:28px clamp(20px,4vw,64px);background:#fff;border-radius:14px;box-shadow:0 10px 30px #12304a14}'
+  +'p{margin:12px 0}li{margin:12px 0}a{color:#1768b3}.hint{background:#e6f1f1;border-left:4px solid #1f6f78;padding:12px 16px;border-radius:6px}'
+  +'.arrow{display:inline-flex;align-items:center;justify-content:center;background:#1768b3;color:#fff;text-decoration:none;border-radius:8px;min-width:36px;min-height:36px;font:bold 17px Arial;vertical-align:middle;margin-left:7px}.arrow:hover{background:#0b4175}'
+  +'.actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.actions button{border:0;border-radius:10px;min-height:44px;padding:10px 18px;background:#12304a;color:#fff;font:700 14px Arial;cursor:pointer;touch-action:manipulation}.actions span{font:14px Arial;color:#5d6a74}'
+  +'@media(max-width:600px){.top{padding:calc(18px + env(safe-area-inset-top)) 18px 18px}.page{width:calc(100% - 20px);margin:10px auto;padding:20px 16px}h1{font-size:23px}}'
+  +'</style></head><body><header class="top"><small>História · Cidadania</small><h1>'+_esc(title)+'</h1></header><main class="page">'+content
+  +'<div class="actions"><button type="button" onclick="window.close();setTimeout(function(){document.getElementById(\'h\').textContent=\'Feche esta aba pelo navegador.\'},300)">Fechar aba</button><span id="h"></span></div></main></body></html>';
+}
+function _eduUrl(title,content){return _blobUrl('edu:'+title,_eduPage(title,content))}
+function openEducationalPopup(title,content){_openTab(_eduUrl(title,content))}
+
 function openCidadaniaQuestion(){
- const txt=`<p>“Cidadania não é apenas ter documentos ou direito ao voto: é participar da vida coletiva, exercer direitos e cumprir deveres, e isso se aprende e se pratica no cotidiano. Escreva um parágrafo argumentativo defendendo que a cidadania se constrói na prática, partindo de uma situação da sua vivência na escola, na família ou no bairro e sustentando seu ponto de vista com um <strong>repertório sociocultural (um fato histórico, uma lei, um filósofo ou sociólogo, uma obra, um filme ou uma notícia)</strong> <a class="arrow" href="#" title="O que é repertório sociocultural?" aria-label="Abrir explicação sobre repertório sociocultural em nova janela" onclick="event.preventDefault();window.openRepertorioPopup()">↗</a>.”</p>`;
+ const txt=`<p>“Cidadania não é apenas ter documentos ou direito ao voto: é participar da vida coletiva, exercer direitos e cumprir deveres, e isso se aprende e se pratica no cotidiano. Escreva um parágrafo argumentativo defendendo que a cidadania se constrói na prática, partindo de uma situação da sua vivência na escola, na família ou no bairro e sustentando seu ponto de vista com um <strong>repertório sociocultural (um fato histórico, uma lei, um filósofo ou sociólogo, uma obra, um filme ou uma notícia)</strong> <a class="arrow" href="${_repertorioUrl()}" target="_blank" rel="opener" title="O que é repertório sociocultural?" aria-label="Abrir explicação sobre repertório sociocultural em nova aba">↗</a>.”</p>`;
  openEducationalPopup('Cidadania se constrói na prática',txt,1100,720);
 }
 
 function openCivilQuestion(){
- const txt=`<p>“Para Carvalho, direitos civis, como ir e vir, manifestar o pensamento, escolher o trabalho e não ser preso sem processo legal regular, dependem de uma justiça independente, eficiente, barata e acessível a todos. Pense em uma situação da sua vida, na escola, na família ou no bairro, em que um desses direitos civis foi respeitado, ou deixou de ser, e explique o que essa situação mostra sobre a diferença entre ter um direito no papel e poder usá-lo na prática.” <a class="arrow" href="#" title="Saiba quais são os direitos civis" aria-label="Abrir explicação sobre os direitos civis" onclick="event.preventDefault();window.openCivilRightsPopup()">↗</a></p>`;
+ const txt=`<p>“Para Carvalho, direitos civis, como ir e vir, manifestar o pensamento, escolher o trabalho e não ser preso sem processo legal regular, dependem de uma justiça independente, eficiente, barata e acessível a todos. Pense em uma situação da sua vida, na escola, na família ou no bairro, em que um desses direitos civis foi respeitado, ou deixou de ser, e explique o que essa situação mostra sobre a diferença entre ter um direito no papel e poder usá-lo na prática.” <a class="arrow" href="${_civilUrl()}" target="_blank" rel="opener" title="Saiba quais são os direitos civis" aria-label="Abrir explicação sobre os direitos civis em nova aba">↗</a></p>`;
  openEducationalPopup('Questão · Direitos civis na prática',txt,1100,720);
 }
 function openPoliticalSocialQuestion(){
@@ -1266,17 +1306,19 @@ function openDireitoFavorQuestion(){
  const txt=`<p>“O texto explica que um favor pode ser retirado a qualquer momento, enquanto um direito está garantido em lei e pode ser cobrado. Como estudante de escola pública, pense em algo que você recebe hoje (como uniforme, material escolar, bolsa de estudo, merenda, transporte escolar ou livros didáticos) e que o governo poderia cortar. Explique se, no seu caso, isso funciona como direito ou como favor e o que você poderia fazer para impedir esse corte.”</p>`;
  openEducationalPopup('Questão · Direito ou favor na escola pública',txt,1100,720);
 }
-function openCivilRightsPopup(){
+function _civilTxt(){
  const txt=`<p>Costuma-se dividir a cidadania em três tipos de direitos: civis, políticos e sociais. Segundo Carvalho (2010, p. 9), o cidadão pleno é aquele que possui os três; quem tem apenas alguns é um cidadão incompleto; e quem não se beneficia de nenhum deles é um “não cidadão”.</p>
  <p>Os <strong>direitos civis</strong> são os direitos fundamentais à vida, à liberdade, à propriedade e à igualdade perante a lei. Na vida cotidiana, eles aparecem como garantias concretas: poder ir e vir sem ser impedido, escolher o próprio trabalho, manifestar o pensamento, organizar-se com outras pessoas, ter a casa e a correspondência respeitadas, não ser preso a não ser pela autoridade competente e de acordo com as leis, e não ser condenado sem processo legal regular. Em resumo, são eles que protegem cada pessoa do abuso de outras pessoas e do próprio Estado.</p>
  <p>Para que esses direitos funcionem de verdade, Carvalho (2010, p. 9) lembra que é preciso uma <strong>justiça independente, eficiente, barata e acessível a todos</strong>. Sem ela, o direito existe no papel, mas quem não tem dinheiro, tempo ou informação para recorrer a um tribunal não consegue usá-lo.</p>
  <p>Por isso, o autor afirma que os direitos civis garantem as relações civilizadas entre as pessoas e a própria existência da sociedade civil, surgida com o desenvolvimento do capitalismo. A “pedra de toque”, isto é, o ponto central, desses direitos é a <strong>liberdade individual</strong>.</p>
  <p class="hint"><strong>Para fixar:</strong> direitos civis protegem a liberdade e a igualdade perante a lei, e só valem na prática quando todos conseguem acessar a justiça.</p>
  <p><strong>Referências</strong></p><p>CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. 13. ed. Rio de Janeiro: Civilização Brasileira, 2010. p. 9.</p>`;
- openEducationalPopup('Direitos civis: a base da liberdade individual',txt,1100,780);
+ return txt;
 }
+function openCivilRightsPopup(){openEducationalPopup('Direitos civis: a base da liberdade individual',_civilTxt())}
+function _civilUrl(){return _eduUrl('Direitos civis: a base da liberdade individual',_civilTxt())}
 
-function openRepertorioPopup(){
+function _repertorioTxt(){
  const txt=`
  <p><strong>O que é.</strong> É o conhecimento que você leva para a redação para sustentar seus argumentos: um fato histórico, uma lei, um conceito de filósofo ou sociólogo, uma obra, um filme, uma notícia ou um dado. Ele pesa na <strong>Competência 2</strong>, que avalia se você entende o tema e usa conhecimentos de várias áreas para desenvolvê-lo. Cada competência vale de 0 a 200 pontos, e a redação soma até 1.000. Dois corretores avaliam o texto, e a nota final é a média das duas notas.</p>
  <p><strong>Como usar bem.</strong> Segundo a reportagem do Inep, o repertório precisa ser:</p>
@@ -1288,8 +1330,11 @@ function openRepertorioPopup(){
  <ol><li>Escolha uma referência que você realmente conheça.</li><li>Diga o que ela é, em uma frase.</li><li>Explique como ela se liga ao problema do tema.</li><li>Use-a para provar a sua tese.</li></ol>
  <p><strong>Ressalva.</strong> O Inep divulgou a Cartilha em 18 de setembro de 2026. A reportagem do jornal O Liberal informa que corretores teriam recebido orientação para que a Competência 2 dialogue com a Competência 3, ou seja, repertório mal usado pode custar pontos nas duas. Essa informação vem de um documento enviado por e-mail aos corretores, segundo o jornal, e não consta da Cartilha pública. Por isso, não a trate como regra oficial.</p>
  <p><strong>Fontes:</strong></p><ul><li><a href="https://www.oliberal.com/brasil/inep-divulga-cartilha-de-redacao-do-enem-2026-e-alerta-novamente-para-repertorios-de-bolso-1.1170640" target="_blank" rel="noopener noreferrer">O Liberal — Cartilha de Redação do Enem 2026</a></li><li><a href="https://www.poder360.com.br/poder-educacao/cartilha-reune-orientacoes-para-a-redacao-do-enem-2026/" target="_blank" rel="noopener noreferrer">Poder360 — Orientações para a redação do Enem 2026</a></li></ul>`;
- openEducationalPopup('Repertório sociocultural na redação do Enem 2026',txt,1100,780);
+ return txt;
 }
+function openRepertorioPopup(){openEducationalPopup('Repertório sociocultural na redação do Enem 2026',_repertorioTxt())}
+function _repertorioUrl(){return _eduUrl('Repertório sociocultural na redação do Enem 2026',_repertorioTxt())}
+
 </script>
 </body>
 </html>
