@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12304a">
+<meta name="description" content="Texto didático sobre Cidadania insurgente (James Holston) e O voto feminino no Brasil (Teresa Cristina de Novaes Marques) — História, 1ª série do Ensino Médio.">
+<title>Cidadania em disputa: Holston e o voto feminino — História, 1ª série</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+<style>
+:root{
+  --navy:#12304a;--navy2:#1c4a6b;--teal:#1f6f78;--teal-bg:#e6f1f1;
+  --gold:#b8842b;--gold-bg:#f8efdc;--terra:#a8472a;--terra-bg:#f7e8e2;
+  --green:#2f6b52;--green-bg:#e5f0ea;
+  --ink:#1d2731;--muted:#5d6a74;--line:#dcd6c8;--paper:#fcfbf7;--stone:#efece4;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --display:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --side:292px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--gold),#e3b45a);z-index:60}
+
+/* ---------- sumário (gaveta à direita) ---------- */
+.toc-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:60;background:var(--navy);color:#fff;border:0;border-radius:12px 0 0 12px;padding:14px 11px;cursor:pointer;font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;writing-mode:vertical-rl;box-shadow:-4px 4px 18px #0004;display:flex;align-items:center;gap:8px}
+.toc-tab:hover{background:var(--navy2)}
+.toc-tab b{font-size:16px;writing-mode:horizontal-tb;color:#e3b45a}
+.toc-ov{position:fixed;inset:0;background:#0b1a2988;opacity:0;pointer-events:none;transition:opacity .25s;z-index:70}
+.toc-ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,92vw);background:var(--navy);color:#e9eef2;z-index:80;transform:translateX(102%);transition:transform .28s ease;display:flex;flex-direction:column;font-family:var(--sans);box-shadow:-10px 0 40px #0006}
+.drawer.open{transform:none}
+.dr-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:22px 22px 14px;border-bottom:1px solid #ffffff1f}
+.dr-head .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#e3b45a;font-weight:700}
+.dr-head .t{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;margin-top:5px;color:#fff}
+.dr-close{background:#ffffff14;border:1px solid #ffffff33;color:#fff;width:36px;height:36px;border-radius:9px;font-size:20px;cursor:pointer;flex:none}
+.dr-prog{padding:12px 22px 0;font-size:12px;color:#b6c6d3}
+.dr-prog i{display:block;height:5px;border-radius:3px;background:#ffffff1f;margin-top:7px;overflow:hidden}
+.dr-prog i span{display:block;height:100%;width:0;background:#e3b45a;transition:width .2s}
+.dr-body{flex:1;overflow:auto;padding:10px 12px 24px}
+.dr-link{display:block;padding:9px 12px;border-radius:8px;color:#cfd9e1;text-decoration:none;font-size:14px;line-height:1.35}
+.dr-link:hover{background:#ffffff12;color:#fff}
+.dr-link.on{background:#ffffff1c;color:#fff}
+.acc{border-top:1px solid #ffffff14;margin-top:6px}
+.acc>button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:#fff;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:14px 12px 8px;cursor:pointer;text-align:left}
+.acc>button:after{content:"";width:8px;height:8px;border-right:2px solid #e3b45a;border-bottom:2px solid #e3b45a;transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
+.acc.open>button:after{transform:rotate(-135deg)}
+.acc>.panel{display:none}.acc.open>.panel{display:block}
+.item>.row{display:flex;align-items:center}
+.item>.row a{flex:1;display:flex;gap:11px;align-items:baseline;padding:9px 12px;border-radius:8px;color:#e1e9ef;text-decoration:none;font-size:14.5px;line-height:1.3}
+.item>.row a b{color:#e3b45a;min-width:16px;font-variant-numeric:tabular-nums}
+.item>.row a:hover{background:#ffffff12}
+.item>.row a.on{background:#ffffff1c;color:#fff}
+.item .row>button{background:none;border:0;cursor:pointer;padding:10px 14px;display:flex;align-items:center;justify-content:center;color:#e3b45a;font-size:14px;line-height:1}
+.item .row>button:after{content:"▾";width:auto;height:auto;border:0;transform:none;margin:0}
+.item.open .row>button:after{transform:rotate(180deg)}
+.item>.subs{display:none;margin:0 0 6px 38px;border-left:2px solid #ffffff22}
+.item.open>.subs{display:block}
+.subs a{display:block;padding:6px 12px;color:#aebfcc;text-decoration:none;font-size:13px;line-height:1.35}
+.subs a:hover{color:#fff}
+
+/* ---------- conteúdo ---------- */
+main{margin-left:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 40px}
+.sheet{background:var(--paper);box-shadow:0 1px 0 #0000000d,0 18px 44px -24px #1d27314d;margin:0 auto;max-width:980px}
+
+/* capa */
+.cover{background:var(--navy);margin:0;padding:0;line-height:0}
+.cover img{display:block;width:100%;height:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* bloco de abertura / seções */
+section.chapter{background:var(--paper);margin:28px auto;max-width:980px;box-shadow:0 1px 0 #0000000d,0 18px 44px -26px #1d27314d}
+.ch-head{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:end;padding:54px 64px 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f4f1e8,var(--paper))}
+.ch-num{font-family:var(--display);font-weight:800;font-size:96px;line-height:.8;color:var(--navy);opacity:.14;letter-spacing:-.04em}
+.eyebrow{font:700 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,42px);line-height:1.1;color:var(--navy);margin:0;letter-spacing:-.01em}
+.deck{font-size:19px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.body{padding:34px 64px 50px}
+.body>p:first-of-type:not(.nodrop)::first-letter{font-family:var(--display);font-weight:800;font-size:3.6em;float:left;line-height:.82;padding:6px 10px 0 0;color:var(--navy)}
+h3{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.2;color:var(--navy);margin:38px 0 8px}
+h4{font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:26px 0 6px}
+p{margin:12px 0}
+.lead{font-size:20.5px;line-height:1.6;color:#2a3744}
+ul,ol{padding-left:1.3em}li{margin:6px 0}
+strong,b{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px}
+.chip{font:700 11px var(--sans);letter-spacing:.04em;padding:5px 10px;border-radius:99px;background:var(--teal-bg);color:#14565d}
+.chip.g{background:var(--gold-bg);color:#7a5614}
+
+/* caixas */
+.callout{border-radius:12px;padding:18px 22px;margin:26px 0;border:1px solid var(--line);background:#fff;font-size:17px;line-height:1.6}
+.callout .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+.callout p{margin:6px 0}
+.callout.concept{background:var(--gold-bg);border-color:#ecd9ac}.callout.concept .lab{color:#8a5f12}
+.callout.teal{background:var(--teal-bg);border-color:#c4dede}.callout.teal .lab{color:#14565d}
+.callout.warn{background:var(--terra-bg);border-color:#ecc9bd}.callout.warn .lab{color:var(--terra)}
+.callout.green{background:var(--green-bg);border-color:#c5dccf}.callout.green .lab{color:var(--green)}
+.think{margin:30px 0;padding:22px 26px;border-radius:14px;background:var(--navy);color:#fff;font-family:var(--display);font-size:22px;line-height:1.35;font-weight:500}
+.think small{display:block;font:700 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#e3b45a;margin-bottom:8px}
+
+/* texto de apoio */
+.support{margin:34px 0;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.support>header{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--navy);color:#fff;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.support>header i{width:8px;height:8px;border-radius:50%;background:#e3b45a;display:block}
+.support .in{padding:6px 24px 4px;font-size:17px;line-height:1.65}
+.support h5{font:700 17px var(--display);color:var(--navy);margin:16px 0 0}
+.support .src{font:500 12.5px/1.5 var(--sans);color:var(--muted);background:#f5f2ea;border-top:1px solid var(--line);padding:11px 24px}
+.support .src b{color:var(--ink);font-weight:700}
+
+/* fonte histórica */
+figure.doc{margin:30px 0;padding:6px 0 6px 26px;border-left:5px solid var(--gold)}
+figure.doc blockquote{margin:0;font-style:italic;font-size:19.5px;line-height:1.55;color:#2e3b47}
+figure.doc figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:10px}
+figure.doc figcaption b{font-weight:700;color:var(--ink)}
+
+/* números em destaque */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:28px 0}
+.stat{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terra);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--terra)}
+.stat span{display:block;font:500 12.5px/1.35 var(--sans);color:var(--muted);margin-top:7px}
+
+/* cartões e comparativos */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card .n{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.card h6{font:700 18px var(--display);color:var(--navy);margin:4px 0 4px}
+.card p{font-size:15.5px;line-height:1.5;margin:4px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.two .callout{margin:0}
+
+/* linha do tempo */
+.tl{list-style:none;padding:0;margin:30px 0;position:relative}
+.tl:before{content:"";position:absolute;left:96px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--gold),var(--teal));border-radius:2px}
+.tl li{display:grid;grid-template-columns:96px 1fr;gap:0 26px;margin:0 0 20px;position:relative}
+.tl li:before{content:"";position:absolute;left:90px;top:8px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:4px solid var(--navy)}
+.tl .y{font:800 14px var(--sans);color:var(--navy);text-align:right;padding-top:3px;padding-right:22px;font-variant-numeric:tabular-nums}
+.tl .t{padding-left:12px}
+.tl .t b{display:block;font:700 18px var(--display);color:var(--navy)}
+.tl .t span{font-size:16px;color:#3d4a55;line-height:1.5;display:block}
+.tl li.hl:before{background:var(--terra);border-color:var(--terra)}
+.tl li.hl .y{color:var(--terra)}
+
+/* fluxo */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:26px 0;counter-reset:f}
+.flow div{position:relative;background:#fff;border:1px solid var(--line);padding:14px 14px 14px;margin-right:-1px;counter-increment:f}
+.flow div:first-child{border-radius:12px 0 0 12px}.flow div:last-child{border-radius:0 12px 12px 0}
+.flow div:before{content:counter(f);display:block;font:800 11px var(--sans);color:#fff;background:var(--teal);width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;margin-bottom:8px}
+.flow b{display:block;font:700 16px var(--display);color:var(--navy)}
+.flow span{font-size:14px;line-height:1.4;color:var(--muted);display:block;margin-top:3px}
+
+/* tabelas */
+table.tb{width:100%;border-collapse:collapse;margin:22px 0;font:400 15px/1.5 var(--sans);background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tb th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:700;font-size:13px}
+.tb td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+.tb tr:nth-child(even) td{background:#faf8f2}
+.tb td.fill{height:48px}
+.scroll{overflow-x:auto}
+
+/* atividades */
+.act{margin:34px 0;border:2px solid var(--gold);border-radius:14px;background:#fffdf6;padding:0;overflow:hidden}
+.act>header{background:var(--gold);color:#fff;padding:9px 22px;font:800 11px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.act .in{padding:16px 24px 20px;font-size:17px}
+.act h3{margin:6px 0 4px;font-size:22px}
+.lines{margin:12px 0}.lines i{display:block;border-bottom:1px solid #b9b5a6;height:30px}
+.act ol{margin:8px 0}
+.act li::marker{font-weight:700;color:var(--gold)}
+
+/* figura */
+figure.fig{margin:28px 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+figure.fig figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:8px}
+.ch-end{display:flex;justify-content:space-between;gap:12px;padding:16px 64px;background:#f4f1e8;border-top:1px solid var(--line);font:600 12.5px var(--sans);color:var(--muted)}
+
+/* glossário */
+.gl{columns:2;column-gap:36px}
+.gl dt{font:700 17px var(--display);color:var(--navy);break-after:avoid;margin-top:14px}
+.gl dd{margin:2px 0 0;font-size:16px;line-height:1.55;break-inside:avoid}
+
+/* bibliografia */
+.refs{list-style:none;padding:0;counter-reset:r}
+.refs li{counter-increment:r;position:relative;padding-left:38px;margin:0 0 14px;font:400 14.5px/1.55 var(--sans)}
+.refs li:before{content:counter(r);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--teal-bg);color:#14565d;font:800 12px/26px var(--sans);text-align:center}
+.refs em{font-style:italic}
+details.prof{margin:18px 0;border:1px solid var(--line);border-radius:12px;background:#fff}
+details.prof summary{cursor:pointer;padding:14px 20px;font:700 14px var(--sans);color:var(--navy)}
+details.prof .in{padding:0 22px 16px;font-size:16px}
+.colophon{text-align:center;font:500 12px var(--sans);color:var(--muted);padding:26px 0 60px}
+
+
+/* cidadania: imagem + explicação */
+.cid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;margin:30px 0;align-items:start}
+.cid-fig{margin:0}
+.cid-thumb{position:relative;display:block;width:100%;padding:0;border:2px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:0 10px 28px -16px #1d273180}
+.cid-thumb img{display:block;width:100%;height:auto}
+.cid-hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:var(--navy);color:#fff;font:700 12px var(--sans);padding:8px 14px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 14px #0005}
+.cid-thumb:hover .cid-hint,.cid-thumb:focus-visible .cid-hint{background:var(--gold)}
+.cid-thumb:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cid-fig figcaption b{color:var(--ink)}
+.cid-fig figcaption{font:500 12.5px/1.5 var(--sans);color:var(--muted);margin-top:8px}
+.cid-txt{background:var(--teal-bg);border:1px solid #c4dede;border-radius:14px;padding:20px 24px;font-size:17px;line-height:1.6}
+.cid-txt .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#14565d}
+.cid-txt h3{margin:4px 0 8px;font-size:26px}
+.cid-txt p{margin:8px 0}.cid-txt ul{margin:8px 0;padding-left:1.2em}.cid-txt li{margin:6px 0}
+.cid-key{background:#fff;border-left:5px solid var(--gold);border-radius:8px;padding:10px 14px}
+.cid-src{font:500 12px/1.5 var(--sans);color:var(--muted)}
+.cid-link{display:flex;gap:12px;align-items:flex-start;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink);font-family:var(--sans);transition:border-color .15s,box-shadow .15s}
+.cid-link:hover,.cid-link:focus-visible{border-color:var(--gold);box-shadow:0 6px 18px -10px #1d273190}
+.cid-link .ic{flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#e3b45a;display:grid;place-items:center;font-size:13px}
+.cid-link .tx{display:block;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.cid-link b{display:block;font-size:13.5px;color:var(--navy);margin-bottom:2px}
+.cid-link em{display:block;font-style:normal;font-weight:700;color:var(--teal);margin-top:4px}
+@media(max-width:760px){.cid{grid-template-columns:1fr}}
+.atv-box{display:flex;align-items:center;gap:18px;margin:0 0 26px;padding:18px 24px;border-radius:14px;background:linear-gradient(100deg,var(--navy),var(--navy2));color:#fff;text-decoration:none;box-shadow:0 12px 28px -16px #12304acc;transition:transform .15s,box-shadow .15s;font-family:var(--sans)}
+.atv-box:hover,.atv-box:focus-visible{transform:translateY(-2px);box-shadow:0 16px 32px -14px #12304a}
+.atv-box:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.atv-ic{flex:none;width:52px;height:52px;border-radius:14px;background:#ffffff1c;border:1px solid #ffffff40;display:grid;place-items:center;font-size:24px;color:#e3b45a}
+.atv-tx{flex:1;display:block;min-width:0}
+.atv-k{display:block;font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#e3b45a}
+.atv-tx b{display:block;font:700 21px/1.25 var(--display);margin:3px 0 4px}
+.atv-d{display:block;font-size:13.5px;line-height:1.5;color:#d3dee7}
+.atv-go{flex:none;background:#e3b45a;color:var(--navy);font:800 13px var(--sans);padding:11px 18px;border-radius:99px;white-space:nowrap}
+.atv-box:hover .atv-go{background:#fff}
+@media(max-width:640px){.atv-box{flex-wrap:wrap;padding:16px}.atv-go{width:100%;text-align:center}}
+/* carrossel */
+.car{position:relative;outline:none}
+.car:focus-visible .car-view{outline:3px solid var(--gold);outline-offset:2px}
+.car-view{overflow:hidden;border-radius:14px}
+.car-track{display:flex;transition:transform .35s ease;touch-action:pan-y}
+.car-slide{flex:0 0 100%;min-width:0}
+.car-slide .cid-thumb{border-radius:14px}
+.car-nav{position:absolute;top:calc(50% - 22px);width:40px;height:40px;border-radius:50%;border:1px solid #ffffff80;background:#12304acc;color:#fff;font:700 24px/1 var(--sans);cursor:pointer;display:grid;place-items:center;padding:0 0 3px;z-index:2;box-shadow:0 4px 14px #0004}
+.car-nav:hover{background:var(--gold)}
+.car-nav.prev{left:8px}.car-nav.next{right:8px}
+.car-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.car-dot{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:#c9c1ac;cursor:pointer}
+.car-dot.on{background:var(--navy);width:26px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.car-track{transition:none}}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:#08121cf8;display:none;flex-direction:column}
+.lb.open{display:flex}
+.lb-bar{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;color:#fff;font:600 13px var(--sans)}
+.lb-bar .grp{display:flex;gap:8px;align-items:center}
+.lb-bar button{background:#ffffff1a;border:1px solid #ffffff44;color:#fff;border-radius:9px;min-width:40px;height:40px;font:700 18px var(--sans);cursor:pointer;padding:0 12px}
+.lb-bar button:hover{background:#ffffff33}
+.lb-bar .pct{min-width:52px;text-align:center}
+.lb-stage{flex:1;overflow:auto;display:flex;padding:8px;cursor:grab;-webkit-overflow-scrolling:touch}
+.lb-stage.drag{cursor:grabbing}
+.lb-stage img{margin:auto;max-width:none;flex:none;user-select:none;-webkit-user-drag:none;background:#fff;border-radius:6px}
+.lb-help{text-align:center;color:#9fb3c3;font:500 12px var(--sans);padding:6px 10px 12px}
+
+/* responsivo */
+@media(max-width:1000px){
+  section.chapter,.cover{margin:14px 0;max-width:none}
+  
+  .ch-head{padding:56px 24px 22px;grid-template-columns:1fr;gap:6px}.ch-num{font-size:64px}
+  .body{padding:24px 22px 38px}.ch-end{padding:14px 22px}
+}
+@media(max-width:640px){
+  body{font-size:17px}
+  .two,.gl{grid-template-columns:1fr;columns:1}
+  .flow{grid-template-columns:1fr}.flow div,.flow div:first-child,.flow div:last-child{border-radius:0;margin:0 0 -1px}
+  .tl:before{left:14px}.tl li{grid-template-columns:1fr;padding-left:40px}.tl li:before{left:7px}.tl .y{text-align:left;padding:0}.tl .t{padding:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer{transition:none}}
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  body{background:#fff;font-size:11.5pt}
+  .toc-tab,.drawer,.toc-ov,#progress,.skip{display:none!important}
+  main{margin:0}
+  section.chapter,.cover{box-shadow:none;margin:0;max-width:none;page-break-after:always}
+  .cover img{max-height:none}
+  .ch-head{padding:0 0 14px;background:none}.body{padding:14px 0}.ch-end{display:none}
+  .callout,.support,.act,figure,.card,.stat,.tl li{break-inside:avoid}
+  .think,.support>header,.act>header,.tb th,.stat,.callout{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  details.prof{display:none}
+}
+
+.cover-art{line-height:1.3;color:#fff;padding:90px 64px 56px;background:radial-gradient(1200px 500px at 85% -10%,#1f6f78 0%,transparent 60%),linear-gradient(160deg,#12304a,#0c2236);position:relative}
+.cv-k{font:700 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#e3b45a;margin:0 0 18px}
+.cover-art h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,78px);line-height:1.02;margin:0;letter-spacing:-.02em;color:#fff}
+.cv-sub{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:500;color:#cfe3e6;margin:14px 0 0}
+.cv-fio{max-width:640px;font:400 18px/1.55 var(--serif);color:#e4ecf0;margin:26px 0 0;border-left:4px solid #e3b45a;padding-left:18px}
+.cv-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:44px 0 30px}
+.cv-steps span{font:700 11px var(--sans);letter-spacing:.08em;color:#9fc4cb;border-top:3px solid #e3b45a;padding-top:10px;display:block}
+.cv-steps b{display:block;font:700 18px var(--display);letter-spacing:0;color:#fff;margin-top:4px}
+.cv-foot{font:500 12px var(--sans);letter-spacing:.06em;color:#9fb3c0;margin:0}
+.perguntas-box{margin:24px 0;border:1px solid #c4dede;border-left:6px solid var(--teal);border-radius:12px;background:var(--teal-bg);padding:16px 22px}
+.perguntas-box .lab,.goias-box .lab{font:800 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+.perguntas-box .lab{color:#14565d}
+.perguntas-box ul{margin:6px 0 0;padding-left:20px}
+.goias-box{margin:30px 0;border:1px solid #ecd9ac;border-left:6px solid var(--gold);border-radius:12px;background:var(--gold-bg);padding:18px 24px;font-size:17px;line-height:1.62}
+.goias-box .lab{color:#8a5f12}
+.goias-box h4{font:700 19px var(--display);color:var(--navy);margin:16px 0 4px}
+.goias-box p{margin:6px 0}
+.seq{margin:26px 0;display:grid;gap:12px}
+.seq-row{display:grid;grid-template-columns:150px 1fr 1fr 1fr;gap:8px;align-items:stretch}
+.seq-l{font:700 14px var(--sans);color:var(--navy);align-self:center}
+.seq-l small{font-weight:500;color:var(--muted)}
+.seq-b{font:700 13.5px/1.35 var(--sans);padding:12px;border-radius:10px;text-align:center;display:flex;align-items:center;justify-content:center}
+.seq-b.c1{background:var(--teal-bg);color:#14565d}.seq-b.c2{background:var(--gold-bg);color:#7a5614}.seq-b.c3{background:var(--terra-bg);color:var(--terra)}
+.ch-end{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 64px;border-top:1px solid var(--line);background:#f4f1e8;font:600 12.5px var(--sans);color:var(--muted)}
+.callout ul,.goias-box ul{margin:6px 0 0;padding-left:20px}
+.tb th,.tb td{vertical-align:top}
+@media(max-width:760px){.cover-art{padding:60px 22px 40px}.cv-steps{grid-template-columns:1fr 1fr}.seq-row{grid-template-columns:1fr}.ch-end{padding:14px 22px}}
+
+/* Guia visual dos direitos civis: miniatura 3D com texto contornando */
+.ge1-float{float:right;width:clamp(135px,29%,205px);margin:5px 0 14px 22px;perspective:900px}
+.ge1-float a{display:block;transform:rotateY(-7deg) rotateZ(1deg);transform-origin:center;transition:transform .25s,box-shadow .25s;border-radius:9px;box-shadow:10px 13px 20px #102c3450,3px 3px 0 #b6cbbf;border:3px solid #f8f9f5;overflow:hidden;background:#fff}
+.ge1-float a:hover,.ge1-float a:focus-visible{transform:rotateY(0) rotateZ(0) scale(1.035);outline:2px solid #b8842b}
+.ge1-float img{display:block;width:100%;height:auto}
+.ge1-float figcaption{text-align:center;font:600 11px/1.4 var(--sans);color:var(--green);margin-top:9px}
+.support .in:after{content:"";display:block;clear:both}
+@media(max-width:480px){.ge1-float{width:42%;margin-left:12px}}
+
+/* Miniatura do infográfico histórico, mantendo o padrão original */
+.texto1-fig{width:clamp(170px,38%,280px);margin:4px 0 16px 22px}
+.texto1-fig a{box-shadow:12px 15px 24px #102c3450,4px 4px 0 #c9b99b;transform:perspective(900px) rotateY(-7deg) rotateZ(1deg)}
+@media(max-width:480px){.texto1-fig{width:48%;margin-left:12px}}
+.texto-wide{width:clamp(210px,46%,350px)}
+.texto-tall{width:clamp(130px,25%,190px)}
+figure.doc.doc-img{display:flow-root}
+figure.doc.doc-img .texto1-fig{margin:2px 0 12px 22px}
+@media(max-width:480px){.texto-wide{width:56%}.texto-tall{width:40%}}
+
+/* Imagem dos quatro capítulos substitui os cartões */
+.capitulos-visual{margin:22px 0 28px;text-align:center}
+.capitulos-visual a{display:block;border-radius:12px;overflow:hidden;box-shadow:0 8px 22px #12304a22;transition:transform .2s}
+.capitulos-visual a:hover{transform:translateY(-2px)}
+.capitulos-visual img{display:block;width:100%;height:auto}
+.capitulos-visual figcaption{font:500 12px var(--sans);color:var(--muted);margin-top:9px}
+/* Ícone de abertura do carrossel de slides, à direita do texto introdutório */
+.lead-slides-row{display:flex;align-items:center;gap:18px}
+.lead-slides-row .lead{flex:1;min-width:0}
+.slides1-icon{flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:var(--navy);color:#e3b45a;box-shadow:0 6px 16px #12304a30;transition:transform .2s,background .2s}
+.slides1-icon:hover,.slides1-icon:focus-visible{background:var(--teal);transform:translateY(-2px);outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:480px){.lead-slides-row{gap:10px}.slides1-icon{width:32px;height:32px}.slides1-icon svg{width:19px;height:19px}}
+
+/* Transição gradual: imagem sobreposta à capa HTML */
+.cover{position:relative;line-height:normal;isolation:isolate}
+.cover-art{position:relative;z-index:1}
+.cover img.cover-image{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;z-index:2;pointer-events:none;transition:opacity 2.8s ease-in-out}
+.cover.show-image img.cover-image{opacity:1}
+.cover-toggle{position:absolute;right:18px;top:18px;z-index:5;border:1px solid #ffffff99;border-radius:999px;background:#102c43ed;color:white;padding:12px 18px;font:700 13px var(--sans);cursor:pointer;box-shadow:0 4px 16px #0006}
+.cover-toggle:hover,.cover-toggle:focus-visible{background:#b8842b;color:#102c43;outline:2px solid white;outline-offset:2px}
+@media(max-width:600px){.cover-toggle{top:10px;right:10px;padding:9px 12px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.cover img.cover-image{transition:none}}
+@media print{.cover-toggle{display:none!important}}
+/* Proporção exata da imagem original: 1672 × 941; sem recortes */
+.cover{aspect-ratio:1672 / 941;container-type:inline-size;overflow:hidden}
+.cover-art{position:absolute;inset:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding:4.3% 4%;overflow:hidden}
+.cover img.cover-image{width:100%;height:100%;object-fit:contain;object-position:center}
+.cover-art .cv-k{font-size:1.15cqw;margin-bottom:1.5cqw}
+.cover-art h1{font-size:clamp(12px,5.7cqw,90px);line-height:1.02}
+.cover-art .cv-sub{font-size:2.6cqw;margin-top:1.1cqw}
+.cover-art .cv-fio{font-size:1.45cqw;line-height:1.45;max-width:60%;margin-top:2cqw;padding-left:1.3cqw;border-left-width:.35cqw}
+.cover-art .cv-steps{margin:3.5cqw 0 1.5cqw;gap:1cqw}
+.cover-art .cv-steps span{font-size:1.05cqw;padding-top:.7cqw;border-top-width:.25cqw}
+.cover-art .cv-steps b{font-size:1.7cqw;margin-top:.3cqw}
+.cover-art .cv-foot{font-size:1cqw}
+@media(max-width:760px){.cover-art{padding:3% 4%}.cover-art .cv-steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:600px){.cover-toggle{font-size:10px;padding:6px 9px;top:6px;right:6px}}
+
+
+/* Acesso à proposta argumentativa e ao repertório */
+.question-icon{border:0;cursor:pointer;background:var(--teal);color:#fff;font:800 20px var(--sans)}
+.question-icon:hover{background:var(--gold);color:var(--navy)}
+.repertorio-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-left:7px;width:25px;height:25px;border-radius:7px;background:#e3b45a;color:#12304a;text-decoration:none;font:800 17px var(--sans);border:0;cursor:pointer}
+.repertorio-arrow:hover{background:#12304a;color:#fff}
+.civil-question-icon{display:inline-grid;place-items:center;vertical-align:middle;margin-left:9px;width:30px;height:30px;border:0;border-radius:8px;background:#1f6f78;color:#fff;font:800 19px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 9px #12304a33}.civil-question-icon:hover,.civil-question-icon:focus-visible{background:#12304a;outline:2px solid #b8842b;outline-offset:2px}
+.favor-actions{display:inline-flex;align-items:center;gap:8px;margin:0 0 0 12px;vertical-align:middle;flex-wrap:nowrap;white-space:nowrap}.favor-arrow-btn{display:inline-flex;align-items:center;gap:5px;background:#1768b3;color:#fff;border:1px solid #ffffff66;border-radius:7px;padding:5px 8px;font:700 12px Arial,sans-serif;line-height:1.2;cursor:pointer}.favor-arrow-btn:hover,.favor-arrow-btn:focus-visible{background:#0d4b85;outline:2px solid #e3b45a;outline-offset:2px}.favor-actions .civil-question-icon{margin-left:0;background:#1f6f78;border:1px solid #ffffff66;width:28px;height:28px;font-size:18px}
+
+/* ---------- otimizações para celular (Android/iOS) ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;overflow-wrap:break-word}
+a,button,[onclick]{touch-action:manipulation}
+#progress{width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+html.no-scroll{overflow:hidden}
+.drawer{height:100vh;height:100dvh;padding-bottom:env(safe-area-inset-bottom)}
+.dr-body{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.scroll{-webkit-overflow-scrolling:touch}
+@media(hover:none){
+  .ge1-float a,.ge1-float a:hover{transform:none}
+  .atv-box:hover,.capitulos-visual a:hover,.slides1-icon:hover{transform:none}
+}
+@media(max-width:640px){
+  .toc-tab{top:auto;bottom:calc(16px + env(safe-area-inset-bottom));right:12px;transform:none;writing-mode:horizontal-tb;border-radius:999px;padding:12px 18px;letter-spacing:.1em;box-shadow:0 6px 18px #0006}
+  .dr-close{width:44px;height:44px}
+  .dr-link,.item>.row a,.subs a{padding-top:12px;padding-bottom:12px}
+  .item .row>button{padding:12px 16px}
+  .slides1-icon{width:40px;height:40px}
+  .civil-question-icon,.repertorio-arrow{min-width:38px;min-height:38px}
+  .wrap{padding:0 16px}
+  .ch-end{font-size:12px}
+}
+/* capa: em telas pequenas o texto deixa de depender de cqw (ficava ilegível) */
+@media(max-width:600px){
+  .cover{aspect-ratio:auto}
+  .cover img.cover-image{background:var(--navy)}
+  .cover-art{position:relative;inset:auto;display:block;padding:58px 20px 28px}
+  .cover-art .cv-k{font-size:11px;margin-bottom:14px}
+  .cover-art h1{font-size:clamp(34px,11vw,48px)}
+  .cover-art .cv-sub{font-size:19px;margin-top:10px}
+  .cover-art .cv-fio{font-size:15px;max-width:none;margin-top:18px;padding-left:14px;border-left-width:3px}
+  .cover-art .cv-steps{grid-template-columns:1fr 1fr;margin:26px 0 16px;gap:12px}
+  .cover-art .cv-steps span{font-size:11px;padding-top:8px;border-top-width:3px}
+  .cover-art .cv-steps b{font-size:16px;margin-top:3px}
+  .cover-art .cv-foot{font-size:11px}
+  .cover-toggle{top:10px;right:10px;font-size:12px;padding:10px 14px;min-height:40px}
+  .cover.show-image{aspect-ratio:1672/941}
+}
+</style>
+<style>
+/* Livro em 3D (capa clicável) */
+.book3d{margin:0;perspective:900px;text-align:center}
+.book3d a{display:block;position:relative;border-radius:3px 8px 8px 3px;transform:rotateY(-17deg) rotateZ(.6deg);transform-origin:50% 50%;transition:transform .3s,box-shadow .3s;box-shadow:16px 18px 26px #102c3466,5px 5px 0 #c9c1ac,8px 8px 0 #b9b09a;outline-offset:3px}
+.book3d a:before{content:"";position:absolute;inset:0 auto 0 0;width:9%;background:linear-gradient(90deg,#00000052,#ffffff38 55%,#0000);border-radius:3px 0 0 3px;pointer-events:none;z-index:1}
+.book3d a:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ffffff40 0%,#ffffff00 38%);border-radius:inherit;pointer-events:none}
+.book3d a:hover,.book3d a:focus-visible{transform:rotateY(-4deg) rotateZ(0) scale(1.04);box-shadow:20px 22px 30px #102c3470,5px 5px 0 #c9c1ac,8px 8px 0 #b9b09a}
+.book3d a:focus-visible{outline:3px solid var(--gold)}
+.book3d img{display:block;width:100%;height:auto;border-radius:3px 8px 8px 3px}
+.book3d figcaption{font:600 11.5px/1.4 var(--sans);color:var(--muted);margin-top:16px}
+.book3d figcaption b{display:block;color:var(--teal);margin-top:3px}
+@media(prefers-reduced-motion:reduce){.book3d a{transition:none}}
+
+/* obra: texto + livro em 3D ao lado */
+.obra-head{display:grid;grid-template-columns:minmax(0,1fr) clamp(125px,21%,175px);gap:34px;align-items:start;margin:0 0 8px}
+.obra-head .lead{margin-top:0}
+.obra-head .book3d{padding:6px 6px 0 0}
+@media(max-width:760px){.obra-head{grid-template-columns:1fr;gap:18px}.obra-head .book3d{order:-1;width:170px;margin:0 auto}}
+.body>.obra-head+*{margin-top:22px}
+.cover-art{padding-bottom:64px}
+.obra-dl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:8px 10px;border-radius:10px;background:var(--navy);color:#fff;text-decoration:none;font:700 10.5px/1.3 var(--sans);text-align:left;box-shadow:0 8px 20px -12px #12304a}
+.book3d a.obra-dl,.book3d a.obra-dl:hover,.book3d a.obra-dl:focus-visible{transform:none;border-radius:10px;box-shadow:0 8px 20px -12px #12304a}
+.book3d a.obra-dl:before,.book3d a.obra-dl:after{display:none}
+.obra-dl svg{flex:none;color:#e3b45a}
+.obra-dl:hover,.obra-dl:focus-visible{background:var(--teal)}
+.obra-dl:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.charge-fig{margin:14px 0 8px}.charge-fig a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}.charge-fig img{display:block;width:100%;height:auto}
+.card h6 a.wiki{color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px}
+.card h6 a.wiki:hover,.card h6 a.wiki:focus-visible{color:var(--teal)}
+.card h6 a.wiki:after{content:" \2197";font:700 .65em var(--sans);color:var(--teal)}
+.h2-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.h2-row h2{flex:1;min-width:0}
+.h2-link{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;margin-top:2px;border-radius:10px;background:var(--navy);color:#e3b45a;box-shadow:0 6px 14px -8px #12304a;transition:transform .2s,background .2s;text-decoration:none}
+.h2-link:hover,.h2-link:focus-visible{background:var(--teal);transform:translateY(-2px);outline:2px solid var(--gold);outline-offset:2px}
+.back-link{display:inline-block;margin:0 0 14px;font:700 13px var(--sans);text-decoration:none}
+</style>
+<style>.civil-question-icon{display:inline-grid;place-items:center;vertical-align:middle;margin-left:9px;width:30px;height:30px;border:0;border-radius:8px;background:#1f6f78;color:#fff;font:800 19px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 9px #12304a33}.civil-question-icon:hover,.civil-question-icon:focus-visible{background:#12304a;outline:2px solid #b8842b;outline-offset:2px}
+.question-icon,.civil-question-icon{position:relative}.question-icon[data-n]::after,.civil-question-icon[data-n]::after{content:attr(data-n);position:absolute;top:-8px;right:-9px;min-width:17px;height:17px;padding:0 3px;border-radius:99px;background:#12304a;color:#fff;border:2px solid #fff;font:800 10px/13px var(--sans);text-align:center;box-sizing:border-box}@media(max-width:640px){.question-icon[data-n]::after,.civil-question-icon[data-n]::after{top:-6px;right:-8px}}</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<div id="progress" aria-hidden="true"></div>
+<main id="conteudo">
+
+<section class="cover" id="capa" aria-labelledby="titulo-capa">
+<div class="cover-art">
+<p class="cv-k">História · 1ª série do Ensino Médio · Livro de apoio</p>
+<h1 id="titulo-capa">Cidadania<br><span style="color:#e3b45a">em disputa</span></h1>
+<p class="cv-sub">Duas obras para entender quem tem direitos — e quem luta por eles</p>
+<p class="cv-fio">James Holston mostra como a cidadania brasileira foi construída de modo desigual e como moradores da periferia a reinventaram. Teresa Marques mostra que as mulheres precisaram de mais de cem anos de campanha para conquistar o direito de votar.</p>
+<div class="cv-steps"><span>Obra 1<b>Holston</b></span><span>Conceito<b>Cidadania diferenciada</b></span><span>Conceito<b>Cidadania insurgente</b></span><span>Obra 2<b>O voto feminino</b></span></div>
+<p class="cv-foot">Colégio Estadual Rodolfo de Oliveira · História · 2026</p>
+</div>
+</section>
+
+<section class="chapter" id="abertura">
+  <header class="ch-head"><div class="ch-num">0</div><div>
+    <p class="eyebrow">Antes de ler</p><h2>O que você vai encontrar aqui</h2>
+    <p class="deck">Este material continua a conversa do livro principal sobre os “outros autores” da cidadania no Brasil.</p></div></header>
+  <div class="body">
+    <p class="lead">No livro principal, você viu que José Murilo de Carvalho explica a cidadania pela <b>ordem em que os direitos chegaram</b> ao Brasil e que Wanderley Guilherme dos Santos a explica pelo <b>vínculo com a profissão</b>. Agora vamos conhecer mais duas leituras: a de um antropólogo, <b>James Holston</b>, que olha para as periferias das cidades, e a de uma historiadora, <b>Teresa Cristina de Novaes Marques</b>, que acompanha a longa luta das mulheres pelo voto.</p>
+
+    <div class="cards">
+      <div class="card"><span class="n">Obra 1</span><h6>Cidadania insurgente</h6><p>Por que existem cidadãos “de primeira” e “de segunda” e como moradores da periferia conquistaram direitos construindo a própria casa e o próprio bairro.</p></div>
+      <div class="card"><span class="n">Obra 2</span><h6>O voto feminino no Brasil</h6><p>Quem foram as mulheres que enfrentaram deputados, juízes e jornais para votar e ser votadas, e por que isso levou tanto tempo.</p></div>
+      <div class="card"><span class="n">Ponte</span><h6>Dois olhares, uma pergunta</h6><p>O que as duas obras mostram, juntas, sobre direitos que não chegam a todos ao mesmo tempo.</p></div>
+    </div>
+
+    <h3>Habilidades em foco</h3>
+    <div class="scroll"><table class="tb">
+      <thead><tr><th style="width:55%">Habilidade</th><th>O que você vai fazer</th></tr></thead>
+      <tbody>
+        <tr><td><b>(EM13CHS101)</b> Identificar, analisar e comparar diferentes fontes e narrativas expressas em diversas linguagens, com vistas à compreensão de ideias filosóficas e de processos e eventos históricos, geográficos, políticos, econômicos, sociais, ambientais e culturais.</td>
+            <td>Ler trechos de discursos, leis e entrevistas e comparar o que dizem sobre quem pode ter direitos.</td></tr>
+        <tr><td><b>(EM13CHS605)</b> Analisar os princípios da declaração dos Direitos Humanos, recorrendo às noções de justiça, igualdade e fraternidade, identificar os progressos e entraves à concretização desses direitos nas diversas sociedades contemporâneas e promover ações concretas diante da desigualdade e das violações desses direitos em diferentes espaços de vivência, respeitando a identidade de cada grupo e de cada indivíduo.</td>
+            <td>Identificar os entraves e as conquistas de direitos no caso das mulheres e dos moradores da periferia.</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ OBRA 1 — HOLSTON ============ -->
+<section class="chapter" id="obra1">
+  <header class="ch-head"><div class="ch-num">1</div><div>
+    <p class="eyebrow">Obra 1 · Antropologia e História</p><div class="h2-row"><h2>Holston: cidadania diferenciada e cidadania insurgente</h2><a class="h2-link" href="https://drive.google.com/file/d/1xMkzl5brKN4e91NVsRTqHxYeaBV3dqpz/view?usp=sharing" target="_blank" rel="noopener noreferrer" title="Abrir arquivo no Google Drive" aria-label="Abrir arquivo no Google Drive (nova aba)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14h6"/><path d="M9 17h4"/></svg></a></div>
+    <p class="deck">Como a desigualdade foi organizada pela lei, e como os mais pobres a enfrentaram construindo a própria cidade.</p></div></header>
+  <div class="body">
+
+    <div class="obra-head">
+      <div class="obra-txt">
+        <p class="lead">Quando você pensa em cidadania, talvez imagine algo que todo brasileiro tem: certidão de nascimento, título de eleitor, CPF. O antropólogo <b>James Holston</b>, professor da Universidade da Califórnia, em Berkeley, faz uma pergunta mais incômoda: <b>ter o título de cidadão garante os mesmos direitos a todos?</b></p>
+        <p>Para responder, ele escreveu <em>Cidadania insurgente: disjunções da democracia e da modernidade no Brasil</em>, publicado nos Estados Unidos em 2008 e no Brasil em 2013. O livro percorre a história do país desde o período colonial e chega às periferias de São Paulo nos anos 1970 e 1980, durante a ditadura militar e a redemocratização.</p>
+        <div class="chips"><span class="chip">Cidadania</span><span class="chip g">Desigualdade</span><span class="chip">Periferia de São Paulo</span><span class="chip g">Direito à cidade</span></div>
+      </div>
+      <figure class="book3d">
+        <a href="img/holston-cidadania-insurgente.jpg" target="_blank" rel="noopener noreferrer" title="Abrir a capa em tamanho original"><img src="img/holston-cidadania-insurgente.jpg" alt="Capa do livro Cidadania insurgente, de James Holston: foto em preto e branco de uma pessoa com sombrinha caminhando sob uma rede de fios elétricos" loading="lazy"></a>
+        <figcaption>HOLSTON, James. <i>Cidadania insurgente</i>. Companhia das Letras, 2013.</figcaption>
+      </figure>
+    </div>
+
+    <div class="callout concept"><span class="lab">A ideia central em uma frase</span>Para Holston, a cidadania brasileira sempre foi, ao mesmo tempo, <b>inclusiva e desigual</b>: quase todos pertencem à nação, mas os direitos são distribuídos de modo diferente conforme a categoria social de cada pessoa.</div>
+
+    <h3>Quem é o autor e o que ele estudou</h3>
+    <p>Holston é antropólogo e estuda o Brasil há décadas. Antes de escrever sobre cidadania, pesquisou a construção de Brasília. Depois, passou anos acompanhando bairros da periferia de São Paulo. Em uma entrevista de 2014, ele disse que as classes mais humildes “têm noção do direito de ocupar, de viver, de circular” (HOLSTON, 2014). Essa frase resume o que ele encontrou: pessoas pobres que, mesmo sem muitos direitos garantidos, <b>passaram a exigi-los</b>.</p>
+
+    <h3>Cidadania diferenciada: todos são cidadãos, mas não do mesmo jeito</h3>
+    <p>Pela Constituição de 1824, eram cidadãos brasileiros os nascidos no Brasil, inclusive os libertos; os escravizados ficavam de fora. Só que ser cidadão no papel não significava ter os mesmos direitos. Quem tinha renda mais alta podia votar e ser votado para mais cargos; mulheres não votavam; e a terra, que dava poder e prestígio, tornou-se cada vez mais difícil de obter para os pobres depois da <b>Lei de Terras de 1850</b>, que passou a exigir a compra como forma de acesso.</p>
+    <p>Esse padrão atravessou o século XIX e continuou na República. A <b>Lei Saraiva</b>, de 1881, por exemplo, exigiu renda mínima e instrução para votar, reduziu o número de eleitores e, na prática, afastou os analfabetos das urnas. Só em 1985 eles voltaram a votar, e a Constituição de 1988 tornou o voto do analfabeto <b>facultativo</b>. Veja que essa história se cruza com a das mulheres, que você vai estudar no capítulo 2.</p>
+
+    <div class="callout concept"><span class="lab">Conceito-chave</span><b>Cidadania diferenciada:</b> situação em que todos são reconhecidos como membros da nação, mas os direitos, a proteção da lei e o tratamento recebido variam conforme categorias sociais como renda, escolaridade, gênero, cor, ocupação e local de moradia.</div>
+
+    <div class="scroll"><table class="tb">
+      <thead><tr><th>Autor</th><th>Onde ele olha</th><th>Ideia central</th></tr></thead>
+      <tbody>
+        <tr><td><b>José Murilo de Carvalho</b></td><td>A sequência dos direitos ao longo do tempo</td><td>No Brasil, os direitos sociais chegaram antes dos civis e dos políticos (“estadania”).</td></tr>
+        <tr><td><b>Wanderley Guilherme dos Santos</b></td><td>A relação entre profissão e direitos</td><td>Só tinha direitos sociais quem exercia uma profissão reconhecida pelo Estado (“cidadania regulada”).</td></tr>
+        <tr><td><b>James Holston</b></td><td>As categorias sociais e a luta dos grupos populares</td><td>Os direitos são distribuídos de forma desigual (“cidadania diferenciada”), e os excluídos criam novos direitos (“cidadania insurgente”).</td></tr>
+      </tbody></table></div>
+
+    <h3>Cidadania insurgente: a periferia constrói direitos</h3>
+    <p>A palavra <i>insurgente</i> vem de insurgir-se, isto é, levantar-se contra algo. Holston chama de cidadania insurgente a prática de pessoas que, <b>vindas de baixo</b>, desafiam a ordem desigual e inventam novas formas de exigir direitos.</p>
+    <p>O exemplo central do livro é a periferia de São Paulo. A partir dos anos 1950, a cidade cresceu e os trabalhadores, sem condições de pagar por terrenos bem localizados, compravam lotes baratos e distantes, muitas vezes sem a documentação em ordem. Ali faziam a <b>autoconstrução</b>: levantavam a casa aos poucos, nos fins de semana, com a ajuda de parentes e vizinhos.</p>
+
+    <div class="cards">
+      <div class="card"><span class="n">1 · Terra e casa</span><h6>Construir o próprio lugar</h6><p>Famílias compravam terrenos baratos na periferia e erguiam a casa com as próprias mãos, sem ruas, esgoto ou transporte.</p></div>
+      <div class="card"><span class="n">2 · Ameaça</span><h6>Medo do despejo</h6><p>No início dos anos 1970, muitos moradores foram acusados de ocupar terrenos “invadidos” e ameaçados por capangas contratados por empresas e particulares.</p></div>
+      <div class="card"><span class="n">3 · Organização</span><h6>Associações e Justiça</h6><p>Sem dinheiro, os moradores criaram associações de bairro e passaram a usar o próprio sistema jurídico para defender suas casas.</p></div>
+    </div>
+
+    <p>Segundo Holston, nesse processo mudou a maneira como essas pessoas se enxergavam. Elas deixaram de pedir favores e passaram a reivindicar <b>direitos</b>: à moradia, à regularização do terreno, à água, à rua asfaltada, ao transporte, ao lugar na cidade. Isso aconteceu justamente durante a ditadura militar, quando a participação política era reprimida, o que mostra que a cidadania também se constrói <b>fora das eleições</b>.</p>
+
+    <figure class="doc">
+      <blockquote>“As classes mais humildes têm noção do direito de ocupar, de viver, de circular.”</blockquote>
+      <figcaption><b>James Holston</b>, em entrevista a Eleonora de Lucena, <i>Folha de S.Paulo</i>, 19 jan. 2014, reproduzida pelo Instituto Humanitas Unisinos (IHU). Ele fala sobre as periferias e a reação aos “rolezinhos” em shopping centers.</figcaption>
+    </figure>
+
+    <div class="callout concept"><span class="lab">Conceito-chave</span><b>Cidadania insurgente:</b> cidadania que nasce da ação de grupos populares que, ao enfrentar a desigualdade, criam novos direitos, como o direito à cidade, à moradia e a ser tratado com respeito pelas autoridades.</div>
+
+    <h3>Democracia disjuntiva: eleições sim, direitos nem sempre</h3>
+    <p>O subtítulo do livro fala em <b>disjunções da democracia</b>. Disjunção quer dizer desencontro, algo que não se encaixa. Holston observa que, depois do fim da ditadura, o Brasil passou a ter eleições livres e direitos políticos amplos, mas isso convive com <b>violência, impunidade e desrespeito a direitos civis</b>, principalmente nas periferias. A democracia funciona nas urnas, mas falha no dia a dia de quem depende de uma justiça lenta ou convive com a violência policial.</p>
+
+    <div class="goias-box"><span class="lab">Olhe para o seu bairro</span>
+      <p>Pense na rua onde você mora ou onde a sua escola fica. Quem abriu essa rua, instalou a luz ou conseguiu o ponto de ônibus? Foi um favor de algum político ou uma conquista de moradores organizados? Converse com um vizinho ou familiar mais velho e descubra a história do bairro. Essa pesquisa é um pequeno estudo de caso de cidadania insurgente. <button data-n="6" type="button" class="civil-question-icon" onclick="openBairroQuestion()" aria-label="Abrir questão sobre favor ou conquista no seu bairro" title="Questão: favor ou conquista no seu bairro">?</button></p>
+    </div>
+
+    <aside class="support"><header><i></i>Ficha da obra</header>
+      <div class="in">
+        <h5>Cidadania insurgente: disjunções da democracia e da modernidade no Brasil</h5>
+        <p><b>Autor:</b> James Holston. <b>Tradução:</b> Claudio Carina. <b>Editora:</b> Companhia das Letras, 2013, 488 páginas. <b>Título original:</b> <i>Insurgent Citizenship: Disjunctions of Democracy and Modernity in Brazil</i>, Princeton University Press, 2008.</p>
+        <p>O livro reconstitui a trajetória dos movimentos comunitários que surgiram nas periferias de São Paulo no início dos anos 1970 e analisa como as elites mantiveram a dominação política e econômica ao longo da história do país.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> COMPANHIA DAS LETRAS. <em>Cidadania insurgente</em> (ficha e sinopse da obra). Disponível em: companhiadasletras.com.br.</div>
+    </aside>
+
+    <div class="think"><small>Para pensar</small>Se uma pessoa tem documentos de cidadão, mas mora onde a rua não tem asfalto, o posto de saúde fica longe e a polícia a trata com desconfiança, ela tem a mesma cidadania de quem mora em um bairro bem servido? O que Holston responderia? <button data-n="7" type="button" class="civil-question-icon" onclick="openDiferencaQuestion()" aria-label="Abrir questão sobre a cidadania em bairros diferentes" title="Questão: a mesma cidadania em bairros diferentes?">?</button></div>
+  </div>
+  <footer class="ch-end"><span>Capítulo 1 · Holston</span><a href="#obra2" style="color:inherit">Próximo: o voto feminino →</a></footer>
+</section>
+
+<!-- ============ OBRA 2 — MARQUES ============ -->
+<section class="chapter" id="obra2">
+  <header class="ch-head"><div class="ch-num">2</div><div>
+    <p class="eyebrow">Obra 2 · História política</p><div class="h2-row"><h2>Teresa Marques: O voto feminino no Brasil</h2><a class="h2-link" href="https://drive.google.com/file/d/19s40Exmp-QpHX8OgxeiSQluLqiBU4IRV/view?usp=sharing" target="_blank" rel="noopener noreferrer" title="Abrir arquivo no Google Drive" aria-label="Abrir arquivo no Google Drive (nova aba)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14h6"/><path d="M9 17h4"/></svg></a></div>
+    <p class="deck">Com documentos do Congresso, a historiadora conta como as brasileiras conquistaram o direito de votar e ser votadas.</p></div></header>
+  <div class="body">
+
+    <div class="obra-head">
+      <div class="obra-txt">
+        <p class="lead">Hoje parece natural que mulheres votem, mas no Brasil isso só foi garantido em lei em <b>1932</b>. Antes disso, houve mais de cem anos de debates, pedidos recusados, jornais, passeatas e até uma festa de carnaval em favor do voto.</p>
+        <p>A historiadora <b>Teresa Cristina de Novaes Marques</b>, professora da Universidade de Brasília, reuniu essa história em <em>O voto feminino no Brasil</em>, publicado pela Câmara dos Deputados (1ª edição em 2018, 2ª edição em 2019). O livro foi pensado para o <b>jovem leitor</b> que começa a se interessar por política e mostra os momentos em que o Legislativo brasileiro discutiu a entrada das mulheres na vida política do país.</p>
+        <div class="chips"><span class="chip">Sufrágio feminino</span><span class="chip g">Constituintes</span><span class="chip">Bertha Lutz</span><span class="chip g">Carlota Queirós</span></div>
+      </div>
+      <figure class="book3d">
+        <a href="img/infovotofeminino.webp" target="_blank" rel="noopener noreferrer" title="Abrir o infográfico sobre o voto feminino"><img src="img/voto-feminino-camara.jpg" alt="Capa do livro O voto feminino no Brasil, de Teresa Cristina de Novaes Marques: ilustração de mulheres com chapéus segurando uma faixa" loading="lazy"></a>
+        <figcaption>MARQUES, Teresa C. de N. <i>O voto feminino no Brasil</i>. 2. ed. Edições Câmara, 2019.</figcaption>
+        <a class="obra-dl" href="https://bd.camara.leg.br/bd/items/7b0550dd-1b14-4f25-aa16-a0a3ad310a20" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Baixe a obra em vários formatos</span></a>
+      </figure>
+    </div>
+
+    <h3>Igualdade para quem?</h3>
+    <p>A autora começa lembrando que a palavra <b>igualdade</b> entrou no vocabulário político do Ocidente no século XVIII e se tornou um dos fundamentos das democracias. Mas, quando se dizia que “todos os homens são iguais”, nem todos eram incluídos de fato. As mulheres, consideradas incapazes de participar das decisões políticas, recebiam <b>tratamento jurídico desigual</b>. Esse é um caso claro do que Holston chamaria de cidadania diferenciada.</p>
+
+    <h3>Império e 1891: a lei abre uma brecha e depois fecha a porta</h3>
+    <p>A <b>Lei Saraiva</b> (1881) exigia renda mínima e aceitava diplomas como prova de qualificação. Com isso, abriu uma brecha: mulheres diplomadas poderiam votar? A dentista <b>Isabel de Souza Mattos</b>, do Rio Grande do Sul, conseguiu se registrar como eleitora em 1887. Mas, quando a República convocou eleições para a Constituinte em 1890, o presidente da mesa não a deixou votar.</p>
+
+    <aside class="support charge-box"><header><i></i>Fonte histórica · Charge de 1890</header>
+      <div class="in">
+        <h5>Quando o voto das mulheres virou charge</h5>
+        <figure class="charge-fig">
+          <a href="img/charge2.jpeg" target="_blank" rel="noopener noreferrer" title="Abrir a charge em tamanho original"><img src="img/charge2.jpeg" alt="Charge em preto e branco com duas cenas: à esquerda, mulheres de chapéu e saia longa expulsam um homem de casaca; à direita, mulheres reunidas diante do retrato de um ministro leem um documento" loading="lazy"></a>
+        </figure>
+        <p>Na legenda da própria charge, lê-se: <i>“Não terá, decerto, manifestação congratulatoria promovida pelo bello sexo, o honrado ministro do interior que acaba de desfechar tremendo golpe com a sua resolução, negando ao bello sexo o direito do voto.”</i> A ironia mostra que a negativa ao voto feminino já era tema de debate nos jornais, não apenas no Congresso.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> Charge de Antônio Bernardes Pereira Netto na <a href="https://pt.wikipedia.org/wiki/Revista_Illustrada" target="_blank" rel="noopener noreferrer">Revista Illustrada</a>, 29 de março de 1890 retratando a negativa do ministro Cesário Alvim ao <a href="https://pt.wikipedia.org/wiki/Sufr%C3%A1gio_feminino_no_Brasil" target="_blank" rel="noopener noreferrer">voto feminino</a>.</div>
+    </aside>
+
+    <p>Em janeiro de 1891, deputados defenderam emendas para dar o voto às mulheres, entre eles <b>César Zama</b> e <b>Saldanha Marinho</b>, cuja proposta recebeu 32 assinaturas. Ambas foram rejeitadas. Os opositores usaram argumentos como a defesa da família e a ideia do “cidadão-soldado”, segundo a qual só votaria quem pudesse lutar na guerra. Um deputado chegou a dizer que o voto feminino seria “imoral e anárquica” e provocaria a “dissolubilidade da família brasileira”.</p>
+
+    <figure class="doc">
+      <blockquote>“À mulher, como ao homem, deve competir a faculdade de preponderar na representação da sua pátria. [...] Ou estaremos fora do regímen das leis criadas pelos homens, ou teremos também o direito de legislar para todas.”</blockquote>
+      <figcaption><b>Josefina Álvares de Azevedo</b>, jornal <i>A Família</i>, 1889, citada em MARQUES (2019). Josefina editou o jornal sufragista de 1888 a 1897.</figcaption>
+    </figure>
+
+    <h3>Mulheres organizadas: jornais, partido e federação</h3>
+    <p>Barradas nas urnas, as mulheres inventaram outros caminhos de participação. Três delas aparecem com destaque no livro:</p>
+    <div class="cards">
+      <div class="card"><span class="n">Imprensa</span><h6><a class="wiki" href="https://pt.wikipedia.org/wiki/Josefina_%C3%81lvares_de_Azevedo" target="_blank" rel="noopener noreferrer" title="Ler sobre Josefina Álvares de Azevedo na Wikipédia">Josefina Álvares de Azevedo</a></h6><p>Professora e jornalista. Criou o jornal <i>A Família</i> (1888) e escreveu a peça <i>O voto feminino</i>, encenada no Rio de Janeiro.</p></div>
+      <div class="card"><span class="n">Partido e rua</span><h6><a class="wiki" href="https://pt.wikipedia.org/wiki/Leolinda_Daltro" target="_blank" rel="noopener noreferrer" title="Ler sobre Leolinda Daltro na Wikipédia">Leolinda Daltro</a></h6><p>Professora. Em 1910, registrou o Partido Republicano Feminino. Organizou passeatas, abaixo-assinados e até um carro alegórico no carnaval de 1917. Criou a escola Orsina da Fonseca para formar mulheres para o trabalho.</p></div>
+      <div class="card"><span class="n">Federação</span><h6><a class="wiki" href="https://pt.wikipedia.org/wiki/Bertha_Lutz" target="_blank" rel="noopener noreferrer" title="Ler sobre Bertha Lutz na Wikipédia">Bertha Lutz</a></h6><p>Bióloga, formada na França. Presidiu a Federação Brasileira pelo Progresso Feminino (1922), promoveu congressos e fez articulação política. Foi pacifista e discordava de Leolinda sobre como conquistar o voto.</p></div>
+    </div>
+    <p>Em dezembro de 1922, a federação de Bertha Lutz reuniu o <b>Primeiro Congresso Internacional Feminista</b>, no Rio de Janeiro, com a presença da sufragista norte-americana Carrie Chapman Catt, que havia liderado a campanha pelo voto feminino nos Estados Unidos, conquistado em 1920. Em 1927, a federação entregou ao Senado um abaixo-assinado com cerca de duas mil assinaturas a favor do projeto do senador Justo Chermont. A batalha foi perdida.</p>
+
+    <div class="callout warn"><span class="lab">Atenção</span>Em 1928, no Rio Grande do Norte, mulheres como as professoras <b>Celina Guimarães</b> e <b>Júlia Barbosa</b> conseguiram se alistar e votar. O Senado, porém, decidiu contra a validade desses votos. Em 1929, o juiz que negou o alistamento da advogada Adalzira Bittencourt escreveu que a palavra “cidadãos” da Constituição “somente designa os cidadãos do sexo masculino”.</div>
+
+    <h3>1932: enfim, eleitoras</h3>
+    <p>Em 1930, Getúlio Vargas chegou ao poder. As feministas procuraram o novo governo e, em junho de 1931, foram recebidas no Palácio do Catete. Uma comissão de juristas propôs um voto com restrições: só viúvas ou solteiras com renda própria, e casadas somente com autorização do marido. Vargas revisou o texto, e o <b>Código Eleitoral de 24 de fevereiro de 1932</b> reconheceu o voto feminino <b>sem condições especiais</b>.</p>
+    <p>As mulheres votaram pela primeira vez em âmbito nacional na eleição de <b>3 de maio de 1933</b>, para a Assembleia Constituinte. Sete candidatas concorreram no Distrito Federal (então no Rio de Janeiro). Bertha Lutz foi a mais votada entre elas, com 16.423 votos, e ficou como primeira suplente do Partido Autonomista.</p>
+
+    <div class="stats">
+      <div class="stat"><b>1932</b><span>Código Eleitoral reconhece o voto feminino</span></div>
+      <div class="stat"><b>7</b><span>candidatas à Constituinte no Distrito Federal, em 1933</span></div>
+      <div class="stat"><b>176 mil</b><span>votos de Carlota Queirós, a primeira deputada federal</span></div>
+      <div class="stat"><b>2</b><span>eleições em que as mulheres votaram antes do autoritarismo do Estado Novo</span></div>
+    </div>
+
+    <h3>A primeira deputada</h3>
+    <p>Em São Paulo, a médica e professora <b>Carlota Pereira de Queirós</b> ficou conhecida por coordenar a assistência aos feridos durante a revolta de 1932. Obteve a terceira maior votação do estado, na casa dos 176 mil votos, e se tornou a <b>primeira mulher a ocupar uma cadeira na Câmara dos Deputados</b>. Bertha Lutz assumiu como deputada em 1936, tornando-se a segunda.</p>
+    <p>As duas discordavam. Carlota defendeu que as mulheres jurassem a bandeira e prestassem serviços de assistência em troca do direito de votar. Bertha defendia direitos políticos <b>sem condições</b>. A proposta de Carlota foi derrotada em maio de 1934.</p>
+
+    <figure class="doc">
+      <blockquote>“Art. 108. São eleitores os brasileiros de um e de outro sexo, maiores de 18 anos, que se alistarem na forma da lei. [...] Art. 109. O alistamento e o voto são obrigatórios para os homens e para as mulheres, quando estas exerçam função pública remunerada.”</blockquote>
+      <figcaption><b>Constituição de 1934</b>, citada em MARQUES (2019). Note que o artigo 108 ainda excluía os analfabetos, os mendigos e os praças de pré.</figcaption>
+    </figure>
+
+    <p>Em 1946, a nova Constituição tornou o voto obrigatório para homens e mulheres. Ivete Vargas foi deputada de 1950 a 1968, quando perdeu os direitos políticos pelo Ato Institucional nº 5. E só em <b>1988</b>, com a Constituição atual, o direito de votar foi estendido aos homens e mulheres analfabetos.</p>
+
+    <h3>Linha do tempo</h3>
+    <ul class="tl">
+      <li><span class="y">1881</span><span class="t"><b>Lei Saraiva</b><span>Reforma eleitoral que exige renda e instrução e torna o voto facultativo.</span></span></li>
+      <li><span class="y">1887</span><span class="t"><b>Isabel de Souza Mattos se registra eleitora</b><span>É a dentista que usou o diploma como prova de qualificação, mas foi barrada em 1890.</span></span></li>
+      <li><span class="y">1888</span><span class="t"><b>Jornal “A Família”</b><span>Josefina Álvares de Azevedo faz campanha pelo voto feminino.</span></span></li>
+      <li><span class="y">1891</span><span class="t"><b>Constituinte rejeita o voto feminino</b><span>As emendas de Zama e de Saldanha Marinho são derrotadas.</span></span></li>
+      <li><span class="y">1910</span><span class="t"><b>Partido Republicano Feminino</b><span>Leolinda Daltro registra o partido, que defende o sufrágio das mulheres.</span></span></li>
+      <li><span class="y">1922</span><span class="t"><b>Federação Brasileira pelo Progresso Feminino</b><span>Bertha Lutz lidera a entidade e organiza o Congresso Internacional Feminista.</span></span></li>
+      <li><span class="y">1928</span><span class="t"><b>Eleitoras no Rio Grande do Norte</b><span>Votos de mulheres potiguares não são reconhecidos pelo Senado.</span></span></li>
+      <li class="hl"><span class="y">1932</span><span class="t"><b>Código Eleitoral</b><span>Decreto de 24 de fevereiro reconhece o voto das mulheres.</span></span></li>
+      <li><span class="y">1933–34</span><span class="t"><b>Primeiras eleições e Constituição de 1934</b><span>Carlota Queirós é eleita deputada federal.</span></span></li>
+      <li><span class="y">1946</span><span class="t"><b>Voto obrigatório para homens e mulheres</b><span>A Constituição não retrocede quanto ao direito das mulheres.</span></span></li>
+      <li><span class="y">1988</span><span class="t"><b>Constituição atual</b><span>Estende o voto a homens e mulheres analfabetos.</span></span></li>
+    </ul>
+
+    <div class="callout concept"><span class="lab">Para não cair em mitos</span><b>O voto feminino não foi um “presente”.</b> Foi Vargas quem assinou o decreto de 1932, mas a decisão veio depois de mais de um século de pedidos, projetos, jornais e campanhas de mulheres. Lembre-se da <b>estadania</b> de Carvalho: um direito que chega “de cima” pode parecer favor, mas nesse caso foi a pressão “de baixo” que o tornou possível.</div>
+
+    <aside class="support"><header><i></i>Sobre a autora e a obra</header>
+      <div class="in">
+        <p><b>Teresa Cristina de Novaes Marques</b> é historiadora, doutora pela Universidade de Brasília e mestra pela UFRJ. É professora da UnB e se dedica à história parlamentar do voto feminino. Foi curadora da exposição <em>Oh, igualdade! Por que tardas?</em>, realizada na Câmara dos Deputados em 2016.</p>
+        <p>O livro está organizado em capítulos curtos, com biografias, imagens do acervo da Câmara e uma linha do tempo mundial do voto feminino.</p>
+      </div>
+      <div class="src"><b>Fonte:</b> MARQUES, Teresa Cristina de Novaes. <em>O voto feminino no Brasil</em>. 2. ed. Brasília: Câmara dos Deputados, Edições Câmara, 2019.</div>
+    </aside>
+
+    <div class="think"><small>Para pensar</small>Entre 1891 e 1932, as sufragistas tentaram o jornal, o partido, o abaixo-assinado, o carnaval, o cartório eleitoral e o Congresso. Qual dessas estratégias você acha que foi mais eficaz? Por quê? <button data-n="8" type="button" class="civil-question-icon" onclick="openEstrategiaQuestion()" aria-label="Abrir questão sobre a estratégia mais eficaz das sufragistas" title="Questão: a estratégia mais eficaz das sufragistas">?</button></div>
+  </div>
+  <footer class="ch-end"><span>Capítulo 2 · Teresa Marques</span><a href="#ponte" style="color:inherit">Próximo: dois olhares, uma pergunta →</a></footer>
+</section>
+
+<!-- ============ PONTE ============ -->
+<section class="chapter" id="ponte">
+  <header class="ch-head"><div class="ch-num">3</div><div>
+    <p class="eyebrow">Síntese</p><div class="h2-row"><h2>Dois olhares, uma pergunta</h2><a class="h2-link" href="https://drive.google.com/file/d/1oKQQeFDTQ_RG1WNx9hV5XgnjMpKIx5hn/view?usp=sharing" target="_blank" rel="noopener noreferrer" title="Abrir arquivo no Google Drive" aria-label="Abrir arquivo no Google Drive (nova aba)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14h6"/><path d="M9 17h4"/></svg></a></div>
+    <p class="deck">O que Holston e Marques mostram, juntos, sobre direitos que não chegam a todos ao mesmo tempo.</p></div></header>
+  <div class="body">
+    <p class="lead">As duas obras tratam de assuntos diferentes, mas fazem a mesma pergunta: <b>quem tem direito a ter direitos?</b> Veja como elas se encontram.</p>
+
+    <div class="scroll"><table class="tb">
+      <thead><tr><th></th><th>Holston</th><th>Teresa Marques</th></tr></thead>
+      <tbody>
+        <tr><td><b>Quem ficou de fora</b></td><td>Pobres, moradores da periferia, analfabetos, trabalhadores sem terra.</td><td>Mulheres, em especial as casadas, as pobres e as analfabetas.</td></tr>
+        <tr><td><b>Como a desigualdade foi organizada</b></td><td>Leis de terras, exigência de renda e de instrução, documentos de propriedade.</td><td>Interpretação da palavra “cidadãos” como “homens”, rejeição das emendas de 1891.</td></tr>
+        <tr><td><b>Como a luta aconteceu</b></td><td>Associações de bairro, autoconstrução, ações na Justiça.</td><td>Jornais, partido, abaixo-assinados, congressos, pedidos de alistamento nos cartórios.</td></tr>
+        <tr><td><b>O que mudou</b></td><td>Novos direitos à moradia, à regularização e à cidade, ainda incompletos.</td><td>Voto e candidatura a partir de 1932, consolidados na Constituição de 1946.</td></tr>
+      </tbody></table></div>
+
+    <div class="callout teal"><span class="lab">Pontos de contato</span>
+      <p>Esta é uma leitura que fazemos neste material, juntando as duas obras; os autores não escreveram essa comparação.</p>
+      <ul>
+        <li><b>A lei serve a quem?</b> Nos dois casos, a lei foi usada para excluir, mas também virou instrumento de luta: moradores recorreram à Justiça para defender a casa, e mulheres foram aos cartórios eleitorais pedir o alistamento.</li>
+        <li><b>Direito no papel, direito na prática.</b> A Constituição de 1934 garantia o voto feminino, mas tornava o voto obrigatório para as mulheres apenas quando tinham função pública remunerada e excluía os analfabetos. É a disjunção de que fala Holston.</li>
+        <li><b>Direitos conquistados podem ser perdidos.</b> As mulheres votaram em duas eleições antes do Estado Novo (1937). Já os moradores da periferia viram a cidadania insurgente nascer durante uma ditadura.</li>
+      </ul>
+    </div>
+
+    <h3 data-t="Retome o que aprendeu">Retome o que aprendeu <button data-n="9" type="button" class="civil-question-icon" onclick="openRetomeQuestions()" aria-label="Abrir as questões para retomar o que você aprendeu" title="Questões: retome o que aprendeu">?</button></h3>
+    <ul>
+      <li>Explique com suas palavras a diferença entre <b>cidadania diferenciada</b> e <b>cidadania insurgente</b>.</li>
+      <li>Cite um exemplo de cidadania diferenciada no caso das mulheres e um no caso dos moradores da periferia.</li>
+      <li>Quais foram as estratégias usadas pelas sufragistas? Alguma delas lembra as associações de bairro estudadas por Holston?</li>
+    </ul>
+
+    <div class="think"><small>Para pensar</small>Se o direito de votar foi conquistado por mulheres que insistiram por décadas, quais direitos que você tem hoje também podem ter sido conquistados por pessoas que insistiram? E quais ainda estão em disputa? <button data-n="10" type="button" class="civil-question-icon" onclick="openConquistasQuestion()" aria-label="Abrir questão sobre direitos conquistados e direitos em disputa" title="Questão: direitos conquistados e em disputa">?</button></div>
+  </div>
+  <footer class="ch-end"><span>Capítulo 3 · Síntese</span><a href="#glossario" style="color:inherit">Próximo: glossário →</a></footer>
+</section>
+
+<!-- ============ GLOSSÁRIO ============ -->
+<section class="chapter" id="glossario">
+  <header class="ch-head"><div class="ch-num">G</div><div>
+    <p class="eyebrow">Para consultar</p><h2>Glossário</h2>
+    <p class="deck">Palavras-chave das duas obras.</p></div></header>
+  <div class="body">
+    <dl class="gl">
+      <dt>Alistamento eleitoral</dt><dd>Registro da pessoa como eleitora; sem ele, não é possível votar.</dd>
+      <dt>Autoconstrução</dt><dd>Construção da própria casa pelos moradores, aos poucos, com ajuda de parentes e vizinhos, sem projeto de engenheiro ou financiamento.</dd>
+      <dt>Cidadania diferenciada</dt><dd>Todos são membros da nação, mas os direitos e o tratamento da lei variam conforme a categoria social (conceito de Holston).</dd>
+      <dt>Cidadania insurgente</dt><dd>Cidadania criada “de baixo” por grupos que lutam contra a desigualdade e inventam novos direitos (conceito de Holston).</dd>
+      <dt>Constituinte</dt><dd>Assembleia eleita para escrever uma nova Constituição.</dd>
+      <dt>Democracia disjuntiva</dt><dd>Democracia em que direitos políticos convivem com violência, impunidade e desrespeito a direitos civis (Holston).</dd>
+      <dt>Deputado classista</dt><dd>Representante de sindicatos e associações profissionais, escolhido por empregados ou empregadores em 1933.</dd>
+      <dt>Estadania</dt><dd>Termo de Carvalho para a busca de direitos pela aliança com o Estado, e não pela participação independente.</dd>
+      <dt>Lei de Terras (1850)</dt><dd>Lei que estabeleceu a compra como forma de acesso à terra pública no Império.</dd>
+      <dt>Lei Saraiva (1881)</dt><dd>Reforma eleitoral do Império que exigiu renda e instrução para votar e tornou o voto facultativo.</dd>
+      <dt>Periferia</dt><dd>Áreas mais distantes do centro da cidade, em geral com menos infraestrutura e serviços públicos.</dd>
+      <dt>Sufrágio</dt><dd>Direito de votar. Quem lutava pelo voto feminino era chamada de sufragista.</dd>
+      <dt>Voto censitário</dt><dd>Voto que exige comprovação de renda mínima.</dd>
+      <dt>Voto facultativo / obrigatório</dt><dd>No facultativo, a pessoa vota se quiser; no obrigatório, a lei exige o voto.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ FONTES ============ -->
+<section class="chapter" id="fontes">
+  <header class="ch-head"><div class="ch-num">F</div><div>
+    <p class="eyebrow">Para consultar</p><h2>Fontes e leituras</h2>
+    <p class="deck">Obras e documentos usados neste material.</p></div></header>
+  <div class="body">
+    <ol class="refs">
+      <li>HOLSTON, James. <em>Cidadania insurgente: disjunções da democracia e da modernidade no Brasil</em>. Tradução de Claudio Carina. São Paulo: Companhia das Letras, 2013. 488 p.</li>
+      <li>HOLSTON, James. <em>Insurgent citizenship: disjunctions of democracy and modernity in Brazil</em>. Princeton: Princeton University Press, 2008.</li>
+      <li>HOLSTON, James. Entrevista a Eleonora de Lucena. <em>Folha de S.Paulo</em>, 19 jan. 2014. Reproduzida em: INSTITUTO HUMANITAS UNISINOS (IHU), 21 jan. 2014. Disponível em: ihu.unisinos.br/527451.</li>
+      <li>MARQUES, Teresa Cristina de Novaes. <em>O voto feminino no Brasil</em>. 2. ed. Brasília: Câmara dos Deputados, Edições Câmara, 2019.</li>
+      <li>CARVALHO, José Murilo de. <em>Cidadania no Brasil: o longo caminho</em>. Rio de Janeiro: Civilização Brasileira, 2001.</li>
+      <li>COMPANHIA DAS LETRAS. <em>Cidadania insurgente</em>: ficha e sinopse da obra. Disponível em: companhiadasletras.com.br.</li>
+    </ol>
+    <p><a class="atv-box" href="index.html#outros-autores" style="margin:24px 0 0"><span class="atv-ic" aria-hidden="true">←</span><span class="atv-tx"><span class="atv-k">Livro principal</span><b>Voltar a “Poder, Resistência e Cidadania”</b><span class="atv-d">Retorne à seção “Outros autores” do livro.</span></span><span class="atv-go">Voltar ←</span></a></p>
+  </div>
+</section>
+
+<p class="colophon">Colégio Estadual Rodolfo de Oliveira · História · 1ª série do Ensino Médio · 2026</p>
+</main>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  var tk=false;
+  function paint(){tk=false;var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.transform='scaleX('+Math.min(1,Math.max(0,p))+')'}
+  function onScroll(){if(!tk){tk=true;requestAnimationFrame(paint)}}
+  window.addEventListener('scroll',onScroll,{passive:true});paint();
+  var tab=document.createElement('button');tab.className='toc-tab';tab.setAttribute('aria-label','Abrir sumário');tab.setAttribute('aria-expanded','false');tab.innerHTML='<b>\u2630</b> Sumário';
+  var ov=document.createElement('div');ov.className='toc-ov';
+  var dr=document.createElement('aside');dr.className='drawer';dr.setAttribute('aria-label','Sumário');dr.setAttribute('aria-hidden','true');
+  dr.innerHTML='<div class="dr-head"><div><div class="k">História \u00b7 1\u00aa série</div><div class="t">Cidadania em disputa</div></div><button class="dr-close" aria-label="Fechar sumário">\u00d7</button></div><div class="dr-prog"><span id="drLbl">Capa</span><i><span id="drBar"></span></i></div><div class="dr-body" id="drBody"></div>';
+  document.body.append(tab,ov,dr);
+  var body=dr.querySelector('#drBody');
+  function slug(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+  function sec(id){return document.getElementById(id)}
+  function title(id){var h=sec(id).querySelector('h2');return h?h.textContent:'Capa'}
+  function num(id){var n=sec(id).querySelector('.ch-num');return n?n.textContent:'\u00b7'}
+  function subs(id){var out=[];sec(id).querySelectorAll('.body h3').forEach(function(h){if(!h.id)h.id=id+'-'+slug(h.textContent);out.push(h)});return out}
+  var links={};
+  function link(id,cls){var a=document.createElement('a');a.href='#'+id;a.className=cls;links[id]=a;return a}
+  [['capa','Capa'],['abertura','Antes de ler']].forEach(function(p){var a=link(p[0],'dr-link');a.textContent=p[1];body.appendChild(a)});
+  var back=document.createElement('a');back.href='index.html#outros-autores';back.className='dr-link';back.textContent='\u2190 Voltar ao livro principal';body.appendChild(back);
+  function group(label,ids,open){
+    var g=document.createElement('div');g.className='acc'+(open?' open':'');
+    var b=document.createElement('button');b.textContent=label;b.setAttribute('aria-expanded',open?'true':'false');
+    var pn=document.createElement('div');pn.className='panel';
+    ids.forEach(function(id){
+      var it=document.createElement('div');it.className='item';
+      var row=document.createElement('div');row.className='row';
+      var a=link(id,'');a.innerHTML='<b>'+num(id)+'</b><span>'+title(id)+'</span>';row.appendChild(a);
+      var ss=subs(id);
+      if(ss.length){
+        var tb=document.createElement('button');tb.setAttribute('aria-label','Mostrar tópicos');tb.setAttribute('aria-expanded','false');
+        tb.addEventListener('click',function(e){e.stopPropagation();var o=it.classList.toggle('open');tb.setAttribute('aria-expanded',o)});
+        row.appendChild(tb);
+        var sb=document.createElement('div');sb.className='subs';
+        ss.forEach(function(h){var s=document.createElement('a');s.href='#'+h.id;s.textContent=(h.dataset.t||h.textContent);sb.appendChild(s)});
+        it.append(row,sb);
+      } else it.appendChild(row);
+      pn.appendChild(it);
+    });
+    b.addEventListener('click',function(){var o=!g.classList.contains('open');
+      body.querySelectorAll('.acc').forEach(function(x){x.classList.remove('open');x.firstChild.setAttribute('aria-expanded','false')});
+      if(o){g.classList.add('open');b.setAttribute('aria-expanded','true')}});
+    g.append(b,pn);body.appendChild(g);return g;
+  }
+  var chIds=['obra1','obra2','ponte'];
+  var g1=group('Capítulos',chIds,true);
+  var g2=group('Para consultar',['glossario','fontes'],false);
+  function open(){document.documentElement.classList.add('no-scroll');dr.classList.add('open');ov.classList.add('open');tab.setAttribute('aria-expanded','true');dr.setAttribute('aria-hidden','false')}
+  function close(){document.documentElement.classList.remove('no-scroll');dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded','false');dr.setAttribute('aria-hidden','true')}
+  tab.addEventListener('click',open);ov.addEventListener('click',close);dr.querySelector('.dr-close').addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  body.addEventListener('click',function(e){if(e.target.closest('a'))close()});
+  var order=['capa','abertura'].concat(chIds,['glossario','fontes']);
+  var lbl=dr.querySelector('#drLbl'),pbar=dr.querySelector('#drBar');
+  function setActive(id){
+    Object.keys(links).forEach(function(k){links[k].classList.remove('on')});
+    if(links[id])links[id].classList.add('on');
+    var ci=chIds.indexOf(id);
+    lbl.textContent=(ci>=0&&ci<3)?'Capítulo '+(ci+1)+' de 3 \u00b7 '+title(id):title(id)||'Capa';
+    pbar.style.width=((order.indexOf(id)+1)/order.length*100)+'%';
+    var grp=ci>=0?g1:(['glossario','fontes'].indexOf(id)>=0?g2:null);
+    if(grp&&!grp.classList.contains('open')&&!dr.classList.contains('open')){body.querySelectorAll('.acc').forEach(function(x){x.classList.remove('open')});grp.classList.add('open')}
+  }
+  setActive('capa');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id)})},{rootMargin:'-30% 0px -60% 0px'});
+    order.forEach(function(k){io.observe(sec(k))});
+  }
+})();
+</script>
+<script>
+/* Questão em nova aba (mesmo modelo da questão 5 do livro principal) */
+var _eduCache={};
+function _esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function _blobUrl(key,html){_eduCache[key]=html;return '#popup-'+encodeURIComponent(key)}
+function closePopup(){var p=document.getElementById('popupLayer');if(p){p.remove();document.body.style.overflow=''}}
+function _openTab(token){
+  var key=decodeURIComponent(String(token).replace(/^#popup-/,'')),html=_eduCache[key];
+  if(!html)return;
+  closePopup();
+  var p=document.createElement('div');p.id='popupLayer';
+  p.style.cssText='position:fixed;inset:0;z-index:99999;background:#08121c;display:flex;flex-direction:column';
+  var f=document.createElement('iframe');f.title='Conte\u00fado ampliado';f.style.cssText='flex:1;border:0;width:100%;background:#fff';
+  f.srcdoc=html;
+  p.appendChild(f);document.body.appendChild(p);document.body.style.overflow='hidden';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePopup()});
+
+function _eduPage(title,content){
+  return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#12304a"><title>'+_esc(title)+'</title><style>'
+  +'*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:#f2f0e9;color:#20313e;font:clamp(18px,2.1vw,25px)/1.65 Georgia,serif;-webkit-tap-highlight-color:transparent;overflow-wrap:break-word}'
+  +'.top{background:#12304a;color:#fff;padding:calc(22px + env(safe-area-inset-top)) max(32px,env(safe-area-inset-right)) 22px max(32px,env(safe-area-inset-left));border-bottom:5px solid #e3b45a}'
+  +'.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.xt{flex:none;border:1px solid #ffffff66;border-radius:10px;background:#ffffff1f;color:#fff;font:700 14px Arial,sans-serif;min-height:44px;padding:0 16px;cursor:pointer;touch-action:manipulation}'
+  +'.top small{font:700 12px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e3b45a}h1{font:700 29px/1.2 Georgia,serif;margin:7px 0}'
+  +'.page{width:calc(100% - 32px);margin:16px auto;padding:28px clamp(20px,4vw,64px);background:#fff;border-radius:14px;box-shadow:0 10px 30px #12304a14}'
+  +'p{margin:12px 0}li{margin:12px 0}a{color:#1768b3}.hint{background:#e6f1f1;border-left:4px solid #1f6f78;padding:12px 16px;border-radius:6px}'
+  +'.help{display:inline-grid;place-items:center;vertical-align:middle;margin-left:8px;width:36px;height:36px;border:0;border-radius:50%;background:#1f6f78;color:#fff;font:800 20px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 9px #12304a33}.help:hover{background:#12304a}'
+  +'.arrow{display:inline-flex;align-items:center;justify-content:center;background:#1768b3;color:#fff;text-decoration:none;border-radius:8px;min-width:36px;min-height:36px;font:bold 17px Arial;vertical-align:middle;margin-left:7px}.arrow:hover{background:#0b4175}'
+  +'.actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.actions button{border:0;border-radius:10px;min-height:44px;padding:10px 18px;background:#12304a;color:#fff;font:700 14px Arial;cursor:pointer;touch-action:manipulation}.actions span{font:14px Arial;color:#5d6a74}'
+  +'@media(max-width:600px){.top{padding:calc(18px + env(safe-area-inset-top)) 18px 18px}.page{width:calc(100% - 20px);margin:10px auto;padding:20px 16px}h1{font-size:23px}}'
+  +'</style></head><body><header class="top"><div><small>História · Cidadania</small><h1>'+_esc(title)+'</h1></div><button type="button" class="xt" onclick="parent.closePopup()">Fechar</button></header><main class="page">'+content
+  +'<div class="actions"><button type="button" onclick="parent.closePopup()">Fechar aba</button><span id="h"></span></div></main></body></html>';
+}
+function _eduUrl(title,content){return _blobUrl('edu:'+title,_eduPage(title,content))}
+function openEducationalPopup(title,content){_openTab(_eduUrl(title,content))}
+function _guiaCss(){
+  return '<style>.g{display:flex;gap:12px;align-items:flex-start;margin:0 0 10px;padding:11px 14px;border-radius:10px;border-left:6px solid}.g i{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;display:grid;place-items:center;font:700 15px Arial,sans-serif;font-style:normal}.g b{display:block;font:700 16px Arial,sans-serif;margin:0 0 2px}.g span{display:block;font-size:16px;line-height:1.45}'
+ +'.g1{background:#e3eefa;border-color:#1768b3}.g1 i{background:#1768b3}.g2{background:#e2f3e8;border-color:#2e8b57}.g2 i{background:#2e8b57}.g3{background:#fdf0d2;border-color:#c98a00}.g3 i{background:#c98a00}.g4{background:#efe6f7;border-color:#7b4ea3}.g4 i{background:#7b4ea3}'
+ +'.ex{margin:8px 0 12px;padding:16px 18px;border:1px solid #d9e0e4;border-radius:12px;background:#fff;line-height:1.9;font-size:17px}.ex mark{padding:2px 4px;border-radius:5px;color:#12304a;-webkit-box-decoration-break:clone;box-decoration-break:clone}.ex .m1{background:#cfe2f7}.ex .m2{background:#c9ebd5}.ex .m3{background:#fbe2a3}.ex .m4{background:#e1d0f0}'
+ +'.leg{display:flex;flex-wrap:wrap;gap:6px 10px;font:700 13px Arial,sans-serif;margin:0 0 6px}.leg span{padding:3px 9px;border-radius:20px}.leg .m1{background:#cfe2f7}.leg .m2{background:#c9ebd5}.leg .m3{background:#fbe2a3}.leg .m4{background:#e1d0f0}'
+ +'h3.t{font:700 13px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#1f6f78;margin:20px 0 8px}.tip{font:15px/1.5 Arial,sans-serif;color:#41525e;background:#f3f5f6;border-radius:8px;padding:10px 14px;margin:12px 0 0}'
+ +'@media(max-width:600px){body{font-size:16px!important}.top{padding:14px!important}.top h1{font-size:18px!important}.page{width:calc(100% - 16px)!important;margin:8px auto!important;padding:16px 14px!important}.g{padding:10px 12px}.ex{font-size:16px;padding:14px}.actions{display:none}}</style>';
+}
+
+function openBairroGuia(){
+ const css=_guiaCss();
+ const steps='<h3 class="t">Passo a passo</h3>'
+ +'<div class="g g1"><i>1</i><div><b>Escolha uma melhoria</b><span>Diga qual melhoria do seu bairro ou do entorno da escola você vai analisar: rua asfaltada, iluminação, ponto de ônibus, posto de saúde, praça ou outra.</span></div></div>'
+ +'<div class="g g2"><i>2</i><div><b>Descubra como ela foi conseguida</b><span>Conte o que você soube sobre a origem dessa melhoria, de preferência conversando com um vizinho ou familiar mais velho.</span></div></div>'
+ +'<div class="g g3"><i>3</i><div><b>Favor ou conquista?</b><span>Diga se ela veio como favor de alguém com poder ou como conquista de moradores organizados, e explique o que mostra isso.</span></div></div>'
+ +'<div class="g g4"><i>4</i><div><b>Ligue ao conceito de Holston</b><span>Mostre se o caso se parece com a cidadania insurgente, em que moradores deixam de pedir favores e passam a reivindicar direitos.</span></div></div>';
+ const ex='<h3 class="t">Exemplo de resposta</h3><div class="leg"><span class="m1">1 A melhoria</span><span class="m2">2 Como foi conseguida</span><span class="m3">3 Favor ou conquista</span><span class="m4">4 Conceito de Holston</span></div>'
+ +'<div class="ex"><mark class="m1">A melhoria que escolhi foi o ponto de ônibus coberto perto da minha escola.</mark> <mark class="m2">Uma vizinha mais velha me contou que os moradores fizeram um abaixo-assinado, foram a uma reunião na prefeitura e voltaram várias vezes até o pedido ser atendido.</mark> <mark class="m3">Por isso, considero que foi uma conquista de moradores organizados, e não um favor, porque ninguém deu o ponto de ônibus de presente: ele foi cobrado por quem precisava dele.</mark> <mark class="m4">Isso se aproxima da cidadania insurgente descrita por Holston, pois os moradores deixaram de esperar um favor e passaram a exigir um direito, como o transporte, que a Constituição de 1988 inclui entre os direitos sociais.</mark></div>'
+ +'<p class="tip"><b>Lembre-se:</b> escolha uma melhoria que exista de verdade no seu bairro e conte o que você descobriu. O exemplo serve de modelo de estrutura, não para copiar.</p>';
+ openEducationalPopup('Como responder: favor ou conquista no seu bairro',css+steps+ex);
+}
+function openBairroQuestion(){
+ const txt=`<p>“Holston mostra que moradores da periferia de São Paulo conquistaram direitos ao se organizar em associações de bairro, em vez de esperar favores de quem tinha poder. Escolha uma melhoria que existe hoje no seu bairro ou perto da sua escola (como rua asfaltada, iluminação, ponto de ônibus, posto de saúde ou praça) e explique se ela foi um favor de alguém com poder ou uma conquista de moradores organizados.” <button type="button" class="help" onclick="parent.openBairroGuia()" title="Como responder? Veja o passo a passo" aria-label="Abrir o passo a passo para responder a questão">?</button></p>`;
+ openEducationalPopup('Questão · Favor ou conquista no seu bairro',txt,1100,720);
+}
+
+function openDiferencaGuia(){
+ const css=_guiaCss();
+ const steps='<h3 class="t">Passo a passo</h3>'
+ +'<div class="g g1"><i>1</i><div><b>Escolha os dois bairros</b><span>Diga qual é o seu bairro e escolha outro bairro da sua cidade que você conheça, de preferência bem diferente do seu.</span></div></div>'
+ +'<div class="g g2"><i>2</i><div><b>Compare o que cada um oferece</b><span>Observe ruas e asfalto, iluminação, transporte, posto de saúde, escola, praça e o jeito como as autoridades tratam os moradores.</span></div></div>'
+ +'<div class="g g3"><i>3</i><div><b>Responda: é a mesma cidadania?</b><span>Diga com clareza se os moradores dos dois bairros têm ou não a mesma cidadania e explique por quê, usando a ideia de cidadania diferenciada.</span></div></div>'
+ +'<div class="g g4"><i>4</i><div><b>Mostre o que Holston diria</b><span>Feche explicando que ter documentos não basta e lembrando que os moradores podem lutar por mais direitos, como na cidadania insurgente.</span></div></div>';
+ const ex='<h3 class="t">Exemplo de resposta</h3><div class="leg"><span class="m1">1 Os dois bairros</span><span class="m2">2 A comparação</span><span class="m3">3 Mesma cidadania?</span><span class="m4">4 Holston</span></div>'
+ +'<div class="ex"><mark class="m1">Vou comparar o meu bairro, que fica na periferia da cidade, com um bairro central que conheço.</mark> <mark class="m2">No meu bairro, algumas ruas ainda não têm asfalto e o posto de saúde fica longe; no bairro central, as ruas são asfaltadas e os serviços ficam perto das casas.</mark> <mark class="m3">Por isso, considero que os moradores dos dois bairros não têm a mesma cidadania na prática, embora todos tenham os mesmos documentos.</mark> <mark class="m4">Holston diria que isso é cidadania diferenciada: todos pertencem à nação, mas os direitos chegam de forma desigual, e que moradores organizados, como em sua cidadania insurgente, podem lutar para diminuir essa diferença.</mark></div>'
+ +'<p class="tip"><b>Lembre-se:</b> use bairros que você realmente conhece e compare serviços que você já viu ou usou. O exemplo serve de modelo de estrutura, não para copiar.</p>';
+ openEducationalPopup('Como responder: a mesma cidadania em bairros diferentes',css+steps+ex);
+}
+function openDiferencaQuestion(){
+ const txt=`<p>“Holston mostra que ter documentos de cidadão não garante os mesmos direitos a todos: quem mora na periferia convive com ruas sem asfalto, serviços distantes e tratamento desigual por parte das autoridades. Explique, comparando o seu bairro com outro bairro da sua cidade que você conheça, se os moradores dos dois têm a mesma cidadania.” <button type="button" class="help" onclick="parent.openDiferencaGuia()" title="Como responder? Veja o passo a passo" aria-label="Abrir o passo a passo para responder a questão">?</button></p>`;
+ openEducationalPopup('Questão · A mesma cidadania em bairros diferentes?',txt,1100,720);
+}
+
+function openEstrategiaGuia(){
+ const css=_guiaCss();
+ const steps='<h3 class="t">Passo a passo</h3>'
+ +'<div class="g g1"><i>1</i><div><b>Escolha uma estratégia</b><span>Diga qual das seis você considera mais eficaz: o jornal, o partido, o abaixo-assinado, o carnaval, o cartório eleitoral ou o Congresso.</span></div></div>'
+ +'<div class="g g2"><i>2</i><div><b>Mostre o que ela fez</b><span>Apoie-se em um fato do texto: quem usou essa estratégia, quando e o que conseguiu ou deixou de conseguir.</span></div></div>'
+ +'<div class="g g3"><i>3</i><div><b>Compare com outra estratégia</b><span>Escolha uma segunda estratégia e explique em que ela foi mais limitada ou menos duradoura que a sua escolha.</span></div></div>'
+ +'<div class="g g4"><i>4</i><div><b>Explique o porquê</b><span>Feche dizendo por que a sua escolha pesou mais, reconhecendo que nenhuma estratégia, sozinha, garantiu o voto em 1932.</span></div></div>';
+ const ex='<h3 class="t">Exemplo de resposta</h3><div class="leg"><span class="m1">1 A escolha</span><span class="m2">2 O que ela fez</span><span class="m3">3 Comparação</span><span class="m4">4 O porquê</span></div>'
+ +'<div class="ex"><mark class="m1">Considero o jornal a estratégia mais eficaz das sufragistas.</mark> <mark class="m2">Josefina Álvares de Azevedo editou <i>A Família</i> de 1888 a 1897, manteve a campanha por quase uma década e continuou a defender o voto mesmo depois da derrota na Constituinte de 1891.</mark> <mark class="m3">O carnaval, por exemplo, chamou atenção com o carro alegórico de 1917, mas foi uma ação de um único momento, enquanto o jornal sustentou a campanha por quase uma década.</mark> <mark class="m4">Por isso, considero que o jornal foi mais eficaz, porque formou uma opinião favorável ao voto ao longo do tempo, embora sozinho não tenha garantido o direito, que só veio com o Código Eleitoral de 1932.</mark></div>'
+ +'<p class="tip"><b>Lembre-se:</b> use um fato do texto para sustentar a sua escolha e responda com suas palavras. O exemplo serve de modelo de estrutura, não para copiar.</p>';
+ openEducationalPopup('Como responder: a estratégia mais eficaz das sufragistas',css+steps+ex);
+}
+function openEstrategiaQuestion(){
+ const txt=`<p>“Entre 1891 e 1932, as sufragistas tentaram o jornal, o partido, o abaixo-assinado, o carnaval, o cartório eleitoral e o Congresso. Qual dessas estratégias você acha que foi mais eficaz? Por quê?” <button type="button" class="help" onclick="parent.openEstrategiaGuia()" title="Como responder? Veja o passo a passo" aria-label="Abrir o passo a passo para responder a questão">?</button></p>`;
+ openEducationalPopup('Questão · A estratégia mais eficaz das sufragistas',txt,1100,720);
+}
+
+function openRetomeQuestions(){
+ const qa=[
+  ['a','Explique com suas palavras a diferença entre cidadania diferenciada e cidadania insurgente.','A cidadania diferenciada é a situação em que todos são reconhecidos como cidadãos, mas os direitos e o tratamento da lei variam conforme a categoria social, como renda, instrução, gênero ou local de moradia. A cidadania insurgente é a ação de grupos populares que, ao enfrentar essa desigualdade, criam novos direitos, como o direito à moradia e à cidade. Em resumo, a primeira descreve a desigualdade na distribuição dos direitos, e a segunda, a luta de quem fica de fora para conquistá-los.'],
+  ['b','Cite um exemplo de cidadania diferenciada no caso das mulheres e um no caso dos moradores da periferia.','No caso das mulheres, a Constituinte de 1891 rejeitou as emendas a favor do voto feminino e, em 1929, um juiz escreveu que a palavra “cidadãos” da Constituição designava somente os homens, embora as mulheres fossem brasileiras. No caso dos moradores da periferia, as famílias que construíam a própria casa em bairros distantes conviviam com a falta de ruas asfaltadas, esgoto e transporte e eram ameaçadas de despejo, enquanto outras áreas da cidade recebiam melhores serviços.'],
+  ['c','Quais foram as estratégias usadas pelas sufragistas? Alguma delas lembra as associações de bairro estudadas por Holston?','As sufragistas usaram jornais, como <em>A Família</em>; a criação de um partido e de uma federação; abaixo-assinados; passeatas e até um carro alegórico no carnaval; pedidos de alistamento nos cartórios eleitorais; projetos apresentados no Congresso; e congressos feministas. Os abaixo-assinados e a organização em partido e federação lembram as associações de bairro de Holston, pois nos dois casos pessoas excluídas se uniram, pressionaram as autoridades e recorreram à lei para defender seus direitos.']
+ ].map(function(q){return '<div class="qa"><div class="qh" role="button" tabindex="0" aria-expanded="false" onclick="tg(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();tg(this)}"><span class="qn">'+q[0]+'</span><p>'+q[1]+'</p><span class="chev" aria-hidden="true">▾</span></div><div class="model" hidden><b>Resposta</b><p>'+q[2]+'</p></div></div>'}).join('');
+ const content='<style>'
+  +'body{font-size:17px!important;line-height:1.6!important}.top{padding:16px 24px!important}.top h1{font-size:22px!important}.page{max-width:900px;padding:22px 26px!important}'
+  +'.page h2{font:700 20px/1.3 Georgia,serif;color:#12304a;margin:0 0 4px}.sub{color:#5d6a74;font:15px Arial,sans-serif;margin:0 0 16px}'
+  +'.qa{border:1px solid #dde4e8;border-radius:12px;padding:16px 18px;margin:0 0 14px;background:#fff}.qh{display:flex;gap:12px;align-items:flex-start;cursor:pointer;border-radius:8px;margin:-6px -8px;padding:6px 8px}.qh:hover{background:#f1f6f9}.qh:focus-visible{outline:2px solid #1768b3}.qh p{flex:1;margin:0;font-weight:700;color:#12304a}.qn{flex:none;width:30px;height:30px;border-radius:50%;background:#12304a;color:#e3b45a;display:grid;place-items:center;font:700 15px Arial,sans-serif}'
+  +'.chev{flex:none;color:#1768b3;font-size:20px;line-height:30px;transition:transform .2s}.qh[aria-expanded=true] .chev{transform:rotate(180deg)}'
+  +'.model{margin:16px 0 0;padding:12px 16px;border-left:5px solid #1f6f78;background:#e6f1f1;border-radius:6px}.model[hidden]{display:none}.model>b{font:700 13px Arial,sans-serif;color:#1f6f78;letter-spacing:.04em;text-transform:uppercase}.model p{margin:4px 0 0}'
+  +'@media(max-width:600px){body{font-size:16px!important}.top{padding:14px 14px!important}.top h1{font-size:18px!important}.page{width:calc(100% - 16px)!important;margin:8px auto!important;padding:16px 14px!important}.qa{padding:12px 14px}.qh{gap:10px}.qh p{font-size:16px}.qn{width:28px;height:28px}.actions{display:none}}</style>'
+  +'<script>function tg(h){var m=h.parentNode.querySelector(".model"),o=m.hidden;m.hidden=!o;h.setAttribute("aria-expanded",o)}<\/script>'
+  +'<h2>Cidadania diferenciada e cidadania insurgente</h2><p class="sub">Clique em cada questão para ver a resposta</p>'+qa;
+ openEducationalPopup('Retome o que aprendeu',content);
+}
+
+function openConquistasGuia(){
+ const css=_guiaCss();
+ const steps='<h3 class="t">Passo a passo</h3>'
+ +'<div class="g g1"><i>1</i><div><b>Escolha um direito que você tem hoje</b><span>Pense em um direito do seu dia a dia, como saúde pública, escola, voto, proteção da criança e do adolescente ou combate à violência contra a mulher.</span></div></div>'
+ +'<div class="g g2"><i>2</i><div><b>Mostre quem insistiu por ele</b><span>Explique que pessoas, movimentos ou grupos lutaram para que esse direito existisse e como ele passou a valer em lei.</span></div></div>'
+ +'<div class="g g3"><i>3</i><div><b>Indique um direito em disputa</b><span>Diga um direito que ainda não chega a todos ou que ainda é debatido, e explique em que ele continua incompleto.</span></div></div>'
+ +'<div class="g g4"><i>4</i><div><b>Ligue às sufragistas</b><span>Feche mostrando o que a luta das mulheres pelo voto ensina sobre direitos: eles costumam depender de pessoas que insistem.</span></div></div>';
+ const ex='<h3 class="t">Exemplo de resposta</h3><div class="leg"><span class="m1">1 O direito</span><span class="m2">2 Quem insistiu</span><span class="m3">3 Em disputa</span><span class="m4">4 Ligação com as sufragistas</span></div>'
+ +'<div class="ex"><mark class="m1">Um direito que tenho hoje é o atendimento gratuito no Sistema Único de Saúde (SUS).</mark> <mark class="m2">Ele foi reconhecido pela Constituição de 1988 depois de anos de mobilização de profissionais de saúde e de movimentos sociais que defendiam a saúde como direito de todos.</mark> <mark class="m3">Considero que ainda está em disputa o acesso real a esse direito, pois em muitos lugares há filas e falta de profissionais, o que mostra que ter o direito na lei não basta.</mark> <mark class="m4">Assim como as sufragistas, que insistiram por décadas até o voto feminino virar lei, essas pessoas mostraram que os direitos dependem de quem não desiste de cobrá-los.</mark></div>'
+ +'<p class="tip"><b>Lembre-se:</b> escolha um direito que você realmente conhece e explique com suas palavras. O exemplo serve de modelo de estrutura, não para copiar.</p>';
+ openEducationalPopup('Como responder: direitos conquistados e direitos em disputa',css+steps+ex);
+}
+function openConquistasQuestion(){
+ const txt=`<p>“Se o direito de votar foi conquistado por mulheres que insistiram por décadas, quais direitos que você tem hoje também podem ter sido conquistados por pessoas que insistiram? E quais ainda estão em disputa?” <button type="button" class="help" onclick="parent.openConquistasGuia()" title="Como responder? Veja o passo a passo" aria-label="Abrir o passo a passo para responder a questão">?</button></p>`;
+ openEducationalPopup('Questão · Direitos conquistados e direitos em disputa',txt,1100,720);
+}
+</script>
+</body>
+</html>
