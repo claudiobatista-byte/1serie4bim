@@ -47,6 +47,7 @@ a{color:var(--teal)}
 .dr-link{display:block;padding:9px 12px;border-radius:8px;color:#cfd9e1;text-decoration:none;font-size:14px;line-height:1.35}
 .dr-link:hover{background:#ffffff12;color:#fff}
 .dr-link.on{background:#ffffff1c;color:#fff}
+.dr-link.ext{margin-top:12px;border:1px solid #ffffff2e}.dr-link.ext b{display:block;font-weight:600;color:#fff}.dr-link.ext span{display:block;font-size:12.5px;opacity:.75;margin-top:2px}
 .acc{border-top:1px solid #ffffff14;margin-top:6px}
 .acc>button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:#fff;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:14px 12px 8px;cursor:pointer;text-align:left}
 .acc>button:after{content:"";width:8px;height:8px;border-right:2px solid #e3b45a;border-bottom:2px solid #e3b45a;transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
@@ -1209,6 +1210,7 @@ function toggleCover(button){const cover=document.getElementById("capa");const s
   var chIds=['etapa1','etapa2','etapa3','etapa4','sintese'];
   var g1=group('Capítulos',chIds,true);
   var g2=group('Para consultar',['glossario','fontes'],false);
+  var rv=document.createElement('a');rv.href='rev4bim.html';rv.className='dr-link ext';rv.innerHTML='<b>Revisão 4ºBim PROVA DE BLOCO</b>';body.appendChild(rv);
   function open(){document.documentElement.classList.add('no-scroll');dr.classList.add('open');ov.classList.add('open');tab.setAttribute('aria-expanded','true');dr.setAttribute('aria-hidden','false')}
   function close(){document.documentElement.classList.remove('no-scroll');dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded','false');dr.setAttribute('aria-hidden','true')}
   tab.addEventListener('click',open);ov.addEventListener('click',close);dr.querySelector('.dr-close').addEventListener('click',close);
